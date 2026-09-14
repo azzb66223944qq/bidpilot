@@ -13,6 +13,8 @@ const ASSETS = [
   './icon-192.png',
   './icon-512.png',
   './icon-maskable-512.png',
+  './pdfjs/pdf.min.js',
+  './pdfjs/pdf.worker.min.js',
   './apple-touch-icon.png'
 ];
 

@@ -994,8 +994,8 @@
     $('pane-concl').innerHTML = h + auditPanel + wFoot;
     renderAuditPanel();
     drawRadar(R, Rb);
-    animateRing('A', cc.score);
-    if (Rb) animateRing('B', Rb.conclusion.score);
+    if (Rb) { animateRing('A', cc.score); animateRing('B', Rb.conclusion.score); }
+    else { animateRing('', cc.score); }
   }
   function renderAuditPanel(){
     var host = document.getElementById('auditPanel'); if (!host) return;

@@ -394,7 +394,7 @@
     var conclusion = buildConclusion(params, meta, opts && opts.weights);
     var timeline = buildTimeline(meta);
 
-    return { meta: meta, params: params, quals: quals, risks: risks, conclusion: conclusion, timeline: timeline, generatedAt: new Date() };
+    return { meta: meta, params: params, quals: quals, risks: risks, conclusion: conclusion, timeline: timeline, highlights: params.highlights || [], generatedAt: new Date() };
   }
 
   /* ---------- 投标行动时间表（倒排） ---------- */
@@ -457,7 +457,7 @@
       var lib = extractNum(libText, kw, def.unit, def.mode);
       if (!req && !lib) return; // 双方都未提及该参数 → 不产生噪音行
 
-      var row = { id: def.id, name: def.name, kind: 'param' };
+      var row = { id: def.id, name: def.name, kind: 'param', conf: '高' };
 
       if (!req) {
         row.reqText = '原文未检索到该参数，请以招标文件第四章原文核对';
@@ -470,6 +470,7 @@
       row.reqText = req.raw;
       row.mark = markForParam(tenderText, req.idx);
       row.key = row.mark === '★';
+      row.reqIdx = req.idx; row.reqLen = req.raw.length;
 
       if (!lib) {
         // 半年质保特殊识别（无数值可提取时）
@@ -491,7 +492,7 @@
 
       /* 单位口径冲突检测（如爬坡 % 与 °、掘起力 kN 与 吨） */
       if (def.unitStrict && unitClass(def, lib.unit) !== unitClass(def, req.unit)) {
-        row.status = '待人工核对';
+        row.status = '待人工核对'; row.conf = '中';
         row.note = '双方单位口径不同（' + lib.unit + ' 与 ' + req.unit + '），系统不做自动换算，请人工核对';
         row.proof = '官方参数表（资料库）';
         rows.push(row);
@@ -507,6 +508,7 @@
       if (reqN.max !== null) reqN.max = normalizeValue(def, reqN.max, req.unit);
       var reqVal = reqN.prefix === 'range' ? reqN.max : reqN.value;
       var hitTerm = aliasHit(def, aliases, lib.raw);
+      if (hitTerm) row.conf = '中';
       if (hitTerm && !row.note) row.note = '资料库以「' + hitTerm + '」表述，依自定义词库匹配为「' + def.name + '」';
 
       if (def.id === 'warranty') {
@@ -571,6 +573,13 @@
       });
     });
 
+    /* 原文批注数据（v2.0）：按位置排序供批注视图渲染 */
+    var highlights = [];
+    rows.forEach(function (r) {
+      if (r.reqIdx != null) highlights.push({ s: r.reqIdx, e: r.reqIdx + r.reqLen, mark: r.mark || null, status: r.status, name: r.name });
+    });
+    highlights.sort(function (a, b) { return a.s - b.s; });
+    rows.highlights = highlights;
     return rows;
   }
 
@@ -754,8 +763,8 @@
     L.push('# 标书快反 · 投标分析报告' + (company ? '（' + company + '）' : ''));
     L.push('');
     L.push('> 生成时间：' + new Date(R.generatedAt).toLocaleString('zh-CN') +
-      ' ｜ 投标就绪度评分：**' + R.conclusion.score + '/100（' + R.conclusion.gradeText + '）** ｜' +
-      ' 本报告由规则引擎基于所提供资料生成，所有"待核实"项必须人工复核后方可用于投标。');
+      ' ｜ 投标就绪度评分：**' + R.conclusion.score + '/100（' + R.conclusion.gradeText + '）** ｜ 报告指纹：' + (opts && opts.fingerprint ? opts.fingerprint : '—') +
+      ' ｜ 本报告由规则引擎基于所提供资料生成，所有"待核实"项必须人工复核后方可用于投标。');
     if (R.conclusion.killRisk) {
       L.push('');
       L.push('> 🚨 **★关键参数负偏离：按招标惯例直接否决投标——本标不可投，除非书面澄清或更换机型。**');
@@ -778,11 +787,11 @@
     L.push('');
     L.push('## 二、技术偏离表');
     L.push('');
-    L.push('| # | 参数项 | 招标要求 | 投标响应 | 偏离结论 | 证明材料 |');
-    L.push('| --- | --- | --- | --- | --- | --- |');
+    L.push('| # | 参数项 | 招标要求 | 投标响应 | 偏离结论 | 置信 | 证明材料 |');
+    L.push('| --- | --- | --- | --- | --- | --- | --- |');
     R.params.forEach(function (p, i) {
       L.push('| ' + (i + 1) + ' | ' + (p.key ? '★' : (p.mark === '▲' ? '▲' : '')) + p.name + ' | ' + p.reqText + ' | ' + p.respText +
-        (p.note ? '（' + p.note + '）' : '') + ' | ' + p.status + ' | ' + p.proof + ' |');
+        (p.note ? '（' + p.note + '）' : '') + ' | ' + p.status + ' | ' + (p.conf === '中' ? '◐ 中' : '● 高') + ' | ' + p.proof + ' |');
     });
     L.push('');
     L.push('## 三、废标风险 TOP5');
@@ -858,7 +867,10 @@
   function buildHtmlReport(R, opts) {
     if (!R || R.error) return '';
     var company = opts && opts.company;
+    var T = (opts && opts.theme) || null;
+    var logo = (opts && opts.logo) || null;
     function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+    var conf = function (c) { return c === '中' ? '◐ 中' : '● 高'; };
     var c = R.conclusion, cc = c.counts;
     var CIRC = 2 * Math.PI * 52;
     var ringColor = { A: '#0ea472', B: '#2f6fe0', C: '#c07b12', D: '#cf3f3f' }[c.grade] || '#2f6fe0';
@@ -870,8 +882,8 @@
     H.push('<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>标书快反 · 投标分析报告</title><style>');
     H.push('body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;color:#1a2233;margin:0;background:#f4f6fa}');
     H.push('.wrap{max-width:960px;margin:0 auto;padding:32px 24px}');
-    H.push('h1{font-size:22px;border-bottom:3px solid #2f6fe0;padding-bottom:10px}');
-    H.push('h2{font-size:16px;margin:26px 0 10px;color:#2f6fe0}');
+    H.push('h1{font-size:22px;border-bottom:3px solid ' + (T || '#2f6fe0') + ';padding-bottom:10px}');
+    H.push('h2{font-size:16px;margin:26px 0 10px;color:' + (T || '#2f6fe0') + '}');
     H.push('table{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff}');
     H.push('th,td{border:1px solid #dde3ee;padding:7px 10px;text-align:left;line-height:1.65;vertical-align:top}');
     H.push('th{background:#eef3fc;color:#3a4a66}');
@@ -888,7 +900,8 @@
     H.push('.foot{color:#8896b3;font-size:11px;margin-top:24px;border-top:1px solid #dde3ee;padding-top:10px}');
     H.push('@media print{body{background:#fff}.wrap{padding:0}}');
     H.push('</style></head><body><div class="wrap">');
-    H.push('<h1>⚙️ 标书快反 · 投标分析报告' + (company ? '（' + esc(company) + '）' : '') + '</h1>');
+    if (logo) H.push('<div style="text-align:center;margin-bottom:6px"><img src="' + logo + '" style="height:56px" alt="logo"></div>');
+    H.push('<h1 style="' + (T ? 'border-bottom-color:' + T + ';' : '') + '">⚙️ 标书快反 · 投标分析报告' + (company ? '（' + esc(company) + '）' : '') + '</h1>');
     H.push('<p style="color:#7a88a3;font-size:12px">生成时间：' + new Date(R.generatedAt).toLocaleString('zh-CN') + '</p>');
 
     H.push('<div class="meta">');
@@ -928,12 +941,12 @@
     var hasB = opts && opts.resultB && !opts.resultB.error;
     var bp = {};
     if (hasB) opts.resultB.params.forEach(function (p) { bp[p.id] = p; });
-    H.push('<h2>二、技术偏离表</h2><table><tr><th>#</th><th>参数项</th><th>招标要求</th><th>投标响应（A）</th><th>A结论</th>' +
-      (hasB ? '<th>投标响应（B）</th><th>B结论</th>' : '') + '<th>证明材料</th></tr>');
+    H.push('<h2>二、技术偏离表</h2><table><tr><th>#</th><th>参数项</th><th>招标要求</th><th>投标响应（A）</th><th>A结论</th><th>置信</th>' +
+      (hasB ? '<th>投标响应（B）</th><th>B结论</th><th>置信</th>' : '') + '<th>证明材料</th></tr>');
     R.params.forEach(function (p, i) {
       var b = hasB ? bp[p.id] : null;
-      H.push('<tr><td>' + (i + 1) + '</td><td><b>' + (p.key ? '★' : (p.mark === '▲' ? '▲' : '')) + esc(p.name) + '</b></td><td>' + esc(p.reqText) + '</td><td>' + esc(p.respText) + (p.note ? '<span class="note">⚠ ' + esc(p.note) + '</span>' : '') + '</td><td><span class="pill ' + pillCls(p.status) + '">' + esc(p.status) + '</span></td>' +
-        (hasB ? '<td>' + (b ? esc(b.respText) + (b.note ? '<span class="note">⚠ ' + esc(b.note) + '</span>' : '') : '—（未检索到）') + '</td><td><span class="pill ' + pillCls(b ? b.status : '—') + '">' + (b ? esc(b.status) : '—') + '</span></td>' : '') +
+      H.push('<tr><td>' + (i + 1) + '</td><td><b>' + (p.key ? '★' : (p.mark === '▲' ? '▲' : '')) + esc(p.name) + '</b></td><td>' + esc(p.reqText) + '</td><td>' + esc(p.respText) + (p.note ? '<span class="note">⚠ ' + esc(p.note) + '</span>' : '') + '</td><td><span class="pill ' + pillCls(p.status) + '">' + esc(p.status) + '</span></td><td>' + conf(p.conf || '高') + '</td>' +
+        (hasB ? '<td>' + (b ? esc(b.respText) + (b.note ? '<span class="note">⚠ ' + esc(b.note) + '</span>' : '') : '—（未检索到）') + '</td><td><span class="pill ' + pillCls(b ? b.status : '—') + '">' + (b ? esc(b.status) : '—') + '</span></td><td>' + conf(b ? b.conf || '高' : '高') + '</td>' : '') +
         '<td>' + esc(p.proof) + '</td></tr>');
     });
     H.push('</table>');
@@ -943,7 +956,7 @@
       H.push('<div class="risk' + (r.level === '中' ? ' mid' : '') + '"><b>TOP' + r.rank + ' · ' + esc(r.title) + '</b>（风险' + esc(r.level) + '）<br><span style="color:#5a6a88">' + esc(r.body) + '</span></div>');
     });
 
-    H.push('<h2>四、结论与建议</h2><div class="verdict"><b>' + c.score + '/100（' + esc(c.gradeText) + '）</b><br>' + esc(c.verdict) + '<br><span style="font-size:12px;color:#5a6a88">前提：' + esc(c.premises.join('；')) + '</span></div>');
+    H.push('<h2>四、结论与建议</h2><div class="verdict" style="' + (T ? 'border-color:' + T + ';' : '') + '"><b>' + c.score + '/100（' + esc(c.gradeText) + '）</b><br>' + esc(c.verdict) + '<br><span style="font-size:12px;color:#5a6a88">前提：' + esc(c.premises.join('；')) + '</span></div>');
     if (hasB) {
       var Bc = opts.resultB.conclusion, Bk = Bc.counts;
       H.push('<h2>五、对比分析（A设备 vs B设备）</h2>');
@@ -952,7 +965,7 @@
         '<span style="font-size:12px;color:#5a6a88">' + esc(Bc.verdict) + '</span><br>' +
         '<b>选型建议</b>：' + (c.score > Bc.score ? 'A设备综合就绪度更高，优先以A设备投本标。' : c.score < Bc.score ? 'B设备综合就绪度更高，优先以B设备投本标。' : '两台设备就绪度相当，按商务报价与库存周期取舍。') + '</div>');
     }
-    H.push('<p class="foot">数据声明：本报告由标书快反规则引擎基于所提供资料生成，内置演示数据为虚构；不编造任何未提供的品牌、机型、参数、业绩与资质。AI辅助分析不能替代人工复核，投标前必须逐条核对招标文件原文。</p>');
+    H.push('<p class="foot">报告指纹 ' + (opts && opts.fingerprint ? esc(opts.fingerprint) : '—') + ' · 引擎 v2.1.1 · 数据声明：本报告由标书快反规则引擎基于所提供资料生成，内置演示数据为虚构；不编造任何未提供的品牌、机型、参数、业绩与资质。AI辅助分析不能替代人工复核，投标前必须逐条核对招标文件原文。</p>');
     H.push('</div></body></html>');
     return H.join('');
   }
@@ -1040,9 +1053,38 @@
     return { rows: rows, total: rows.length, high: high, advice: advice };
   }
 
+  /* ---------- 采购文件技术参数章节定位（v2.1）----------
+   * 输入：采购文件全文（或公告+采购文件拼接文本）
+   * 输出：{ found, text, start } —— 定位失败时 found=false（如扫描件/无文本层）
+   * 策略：优先命中明确章节标题，其次命中参数关键词密集段；不做任何内容改写
+   */
+  function locateParamSection(text) {
+    text = (text || '').replace(/\r\n?/g, '\n');
+    if (!text.trim()) return { found: false, text: '', start: -1 };
+    var starts = [
+      /第[一二三四五六七八九十\d]+[章节][^\n]{0,40}(技术参数|采购需求|招标要求|技术要求)/,
+      /(技术参数与性能指标|主要技术参数|技术参数要求|技术规格要求)/,
+      /(采购需求|项目需求)[^\n]{0,20}(及技术参数|参数要求)/
+    ];
+    var start = -1;
+    for (var i = 0; i < starts.length && start < 0; i++) {
+      var m = text.match(starts[i]);
+      if (m) start = m.index;
+    }
+    if (start < 0) return { found: false, text: '', start: -1 };
+    // 章节终点：下一个"第X章/附件/其他章标题"或文末（上限2万字符防失控）
+    var ends = [/\n\s*第[一二三四五六七八九十\d]+[章节]/, /\n\s*附件/, /\n\s*(资格审查|评标办法|合同条款|商务要求)/];
+    var end = Math.min(text.length, start + 20000);
+    ends.forEach(function (re) {
+      var em = text.slice(start + 10).match(re);
+      if (em) { var e = start + 10 + em.index; if (e > start + 10) end = Math.min(end, e); }
+    });
+    return { found: true, text: text.slice(start, end), start: start, end: end };
+  }
+
   /* ---------- 导出 ---------- */
   return {
-    VERSION: '1.7.0',
+    VERSION: '2.1.1',
     DEFAULT_WEIGHTS: DEFAULT_WEIGHTS,
     MISSING_LIB: MISSING_LIB,
     DEMO_LIBRARY: DEMO_LIBRARY,
@@ -1053,6 +1095,7 @@
     SYSTEM_PROMPT: SYSTEM_PROMPT,
     analyze: analyze,
     diffAnnouncements: diffAnnouncements,
+    locateParamSection: locateParamSection,
     extractMeta: extractMeta,
     analyzeParams: analyzeParams,
     analyzeQuals: analyzeQuals,
