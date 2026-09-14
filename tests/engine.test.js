@@ -87,7 +87,7 @@ const CL = E.buildRefeedChecklist(R1, '宁波水务装载机');
 t('补料清单:含项目名与缺失证明', CL.indexOf('宁波水务') >= 0 && CL.indexOf('型式试验报告') >= 0 && CL.indexOf('环保信息公开编号') >= 0);
 t('补料清单:含商务待核实项', CL.indexOf('CA数字证书') >= 0);
 t('补料清单:不含已满足参数', CL.indexOf('标准斗容') === -1 && CL.indexOf('额定载重量 ——') === -1);
-t('版本=1.7.0', E.VERSION === '1.7.0');
+t('版本=2.1.1', E.VERSION === '2.1.1');
 
 /* ===== v1.4：★关键参数废标判定 + 行动时间表 + 公司抬头 ===== */
 t('装载机:★斗容已满足=不触发废标', R1.params.find(p => p.id === 'bucket').key === true && R1.conclusion.killRisk === false);
@@ -106,7 +106,7 @@ t('MD报告:含公司抬头', MD2.indexOf('（浙东机械经销有限公司）'
 t('MD报告:含时间表', MD2.indexOf('投标行动时间表') >= 0);
 const HTML2 = E.buildHtmlReport(R1, { company: '浙东机械' });
 t('HTML报告:含公司抬头与倒计时卡', HTML2.indexOf('（浙东机械）') >= 0 && HTML2.indexOf('距开标') >= 0);
-t('版本=1.7.0', E.VERSION === '1.7.0');
+t('版本=2.1.1', E.VERSION === '2.1.1');
 
 /* ===== v1.3：新机型场景与评分权重配置 ===== */
 const RC = E.analyze(E.DEMOS.crane.lib, E.DEMOS.crane.tender);
@@ -147,7 +147,7 @@ const RA2 = E.analyze('设备额定载荷 5t。', '要求额定载重量 ≥4吨
 t('词库+吨kg换算:达标', ['满足','正偏离'].indexOf(statusOf(RA2,'load')) >= 0);
 t('词库:正则特殊字符安全', (() => { const R = E.analyze('斗容(额定) 3.0m³。', '标准斗容 ≥2.7m³。', { aliases: [{ term:'斗容(额定)', param:'bucket' }] }); return statusOf(R,'bucket') !== '资料库无'; })());
 t('导出PARAM_DEFS=32类', E.PARAM_DEFS.length === 32);
-t('版本=1.7.0', E.VERSION === '1.7.0');
+t('版本=2.1.1', E.VERSION === '2.1.1');
 
 
 /* ===== v1.6b：真实公告适配（限价/预算分离 + （元）格式） ===== */
@@ -187,6 +187,54 @@ t('交货期新措辞:履行期限15 vs ≤10天 = 负偏离', statusOf(RD1,'del
 const RD2 = E.analyze('我方承诺自合同签订之日起8天内完成供货。', '第四章：合同履行期限：自签订之日起10天内完成供货。');
 t('交货期新措辞:8 vs ≤10天 = 满足', statusOf(RD2,'delivery') === '满足');
 t('参数总数=32', E.PARAM_DEFS.length === 32);
+
+
+/* ===== v2.0：原文批注数据 + 判定置信度 + 品牌报告 ===== */
+const R20 = E.analyze(E.DEMOS.loader.lib, E.DEMOS.loader.tender);
+t('v2.0:highlights存在且非空', Array.isArray(R20.highlights) && R20.highlights.length >= 8);
+t('v2.0:按位置升序排列', R20.highlights.every((h, i, a) => i === 0 || a[i-1].s <= h.s));
+t('v2.0:高亮区间合法', R20.highlights.every(h => h.e > h.s));
+t('v2.0:★条款被捕获', R20.highlights.some(h => h.mark === '★'));
+t('v2.0:高亮带判定状态', R20.highlights.every(h => h.status));
+const RC2 = E.analyze('我方设备：额定容积 3.0m³。', '第四章：标准斗容 ≥2.7m³。', { aliases: [{ term:'额定容积', param:'bucket' }] });
+t('置信度:别名匹配=中', RC2.params.find(p => p.id === 'bucket').conf === '中');
+t('置信度:默认=高', R20.params.find(p => p.id === 'load').conf === '高');
+t('置信度:资料库无=高', statusOf(RA0,'bucket') === '资料库无');
+const RB4 = E.analyze('我方设备：爬坡能力 30度。', '第四章：爬坡能力 ≥70%。');
+t('置信度:口径冲突=中', RB4.params.find(p => p.id === 'ride').conf === '中');
+const HTML20 = E.buildHtmlReport(R20, { company: '浙东机械', theme: '#0e7a4e', logo: 'data:image/png;base64,AAAA' });
+t('品牌报告:主题色渗透', HTML20.indexOf('#0e7a4e') >= 0);
+t('品牌报告:Logo嵌入', HTML20.indexOf('data:image/png;base64') >= 0);
+t('版本=2.1.1', E.VERSION === '2.1.1');
+
+
+/* ===== v2.1：采购文件章节定位 ===== */
+const DOC21 = '第一章 投标邀请\n正文\n第三章 技术参数与性能要求\n额定载重量 ≥5000kg；标准斗容 ≥2.7m³\n第四章 评标办法\n评分规则';
+const LOC = E.locateParamSection(DOC21);
+t('定位:章节命中', LOC.found === true);
+t('定位:截取含参数行', LOC.text.indexOf('额定载重量 ≥5000kg') >= 0);
+t('定位:第四章边界截断', LOC.text.indexOf('评标办法') === -1);
+t('定位:无章节文本=not found', E.locateParamSection('这里没有任何章节标记。').found === false);
+const RL21 = E.analyze('额定载重量 5000kg。', LOC.text);
+t('定位章节可直接驱动偏离表', RL21.params.find(p => p.id === 'load').status === '满足');
+t('版本=2.1.1', E.VERSION === '2.1.1');
+
+
+/* ===== v2.1.1：导出一致性（置信列+报告指纹） ===== */
+const R21 = E.analyze(E.DEMOS.loader.lib, E.DEMOS.loader.tender);
+const H21 = E.buildHtmlReport(R21, { company: '浙东机械', theme: '#0e7a4e', logo: 'data:image/png;base64,AAAA', fingerprint: 'FPDEMO2026' });
+t('v2.1.1:HTML偏离表含置信列', H21.indexOf('<th>置信</th>') >= 0);
+t('v2.1.1:HTML含●高置信标记', H21.indexOf('● 高') >= 0);
+t('v2.1.1:HTML尾注含报告指纹', H21.indexOf('FPDEMO2026') >= 0);
+const M21 = E.buildMarkdown(R21, { company: '浙东机械', fingerprint: 'FPDEMO2026' });
+t('v2.1.1:MD偏离表含置信列', M21.indexOf('| 置信 |') >= 0);
+t('v2.1.1:MD头部含报告指纹', M21.indexOf('FPDEMO2026') >= 0);
+t('v2.1.1:别名匹配中置信进入导出', (() => {
+  const RA = E.analyze('我方设备：额定容积 3.0m³。', '第四章：标准斗容 ≥2.7m³。', { aliases: [{ term:'额定容积', param:'bucket' }] });
+  const M = E.buildMarkdown(RA, { fingerprint: 'x' });
+  return M.indexOf('◐ 中') >= 0 && M.indexOf('额定容积') >= 0;
+})());
+t('版本=2.1.1', E.VERSION === '2.1.1');
 
 console.log('----------------------------------------');
 console.log('PASS=' + pass + '  FAIL=' + fail + (fail ? '  ← 存在失败，禁止发版' : '  ✅ 全部通过'));

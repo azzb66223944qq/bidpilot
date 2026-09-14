@@ -148,6 +148,14 @@
   .wgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
   .wgrid label{font-size:11.5px;color:var(--sub);display:block}
   .wgrid input{margin-top:4px}
+  .legend{font-size:11.5px;color:var(--sub);margin-bottom:10px;line-height:1.9}
+  .annotext{font-size:13.5px;line-height:2.2;background:rgba(0,0,0,.22);border:1px solid var(--line);border-radius:12px;padding:16px;white-space:pre-wrap;max-height:58vh;overflow:auto}
+  .hl-star{background:rgba(255,181,71,.28);border-bottom:2px solid var(--warn);font-weight:700}
+  .hl-tri{background:rgba(106,166,255,.18);border-bottom:2px solid var(--plus)}
+  .hl-bad{background:rgba(255,107,107,.18);border-bottom:2px solid var(--bad)}
+  .hl-plus{border-bottom:2px solid var(--plus)}
+  .hl-ok{border-bottom:2px solid rgba(47,224,162,.5)}
+  .hl-miss{background:rgba(255,181,71,.12);border-bottom:2px dashed var(--warn)}
   .killbar{background:rgba(255,107,107,.14);border:1px solid rgba(255,107,107,.45);color:var(--bad);
     border-radius:12px;padding:11px 15px;font-weight:700;margin-bottom:12px;line-height:1.8}
   .warnbar{background:rgba(255,181,71,.12);border:1px solid rgba(255,181,71,.4);color:var(--warn);
@@ -180,7 +188,7 @@
 
 <header>
   <div class="logo">⚙️ 标书快反 BidPilot</div>
-  <span class="chip hl">v1.7</span>
+  <span class="chip hl">v2.1.1</span>
   <span class="chip" data-i18n="h.sub">工程机械投标AI智能体</span>
   <span class="chip" data-i18n="h.anti">反幻觉引擎 · 只引用资料库与公告原文</span>
   <div class="spacer"></div>
@@ -223,6 +231,10 @@
     </div>
     <h2 style="margin-top:15px"><span data-i18n="h.tender">② <b>招标公告 / 招标要求</b>（可整段粘贴）</span></h2>
     <textarea id="tender" spellcheck="false" style="min-height:190px"></textarea>
+    <div class="row">
+      <button class="btn" id="btnPdf" style="flex:1">📄 导入采购文件PDF（本地解析·自动定位技术参数章节）</button>
+      <input type="file" id="pdfFile" accept="application/pdf" style="display:none">
+    </div>
     <details id="cmpBox">
       <summary>🔀 对比选型模式（可选）：贴入第二台设备的资料库，同一标谁更适合投</summary>
       <textarea id="libB" spellcheck="false" style="min-height:110px" placeholder="粘贴第二台设备的资料库（留空则只分析主资料库）"></textarea>
@@ -244,6 +256,7 @@
       <button data-t="dev" data-i18n="t.dev">📋 技术偏离表</button>
       <button data-t="risk" data-i18n="t.risk">🚨 废标风险 TOP5</button>
       <button data-t="concl" data-i18n="t.concl">🎯 结论与评分</button>
+      <button data-t="anno">🔍 原文批注</button>
       <button data-t="diff">🔀 公告对比</button>
       <button data-t="llm" id="tabLlm" style="display:none" data-i18n="t.llm">🤖 大模型输出</button>
     </div>
@@ -251,6 +264,10 @@
     <div class="tabpane" id="pane-dev"></div>
     <div class="tabpane" id="pane-risk"></div>
     <div class="tabpane" id="pane-concl"></div>
+    <div class="tabpane" id="pane-anno">
+      <div class="legend">图例：<span class="hl-star">★ 关键条款（负偏离=废标）</span> · <span class="hl-tri">▲ 重要条款（影响评分）</span> · <span class="hl-bad">负偏离</span> · <span class="hl-plus">正偏离</span> · <span class="hl-ok">满足</span> · <span class="hl-miss">待人工核实</span><br>悬停高亮可查看对应判定。本视图与偏离表同源，不做任何额外推断。</div>
+      <div class="annotext" id="annoView">请先在左侧生成投标分析。</div>
+    </div>
     <div class="tabpane" id="pane-diff">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
         <div><h2>旧版公告（澄清 / 补遗前）</h2><textarea id="diffOld" spellcheck="false" style="min-height:170px"></textarea></div>
@@ -288,6 +305,22 @@
   <input id="cfgKey" type="password" placeholder="粘贴你的 Key">
   <label data-i18n="d.model">模型名</label>
   <input id="cfgModel" placeholder="glm-4-flash">
+  <label>报告主题色（用于导出报告）</label>
+  <select id="cfgTheme" style="width:100%;background:rgba(0,0,0,.3);border:1px solid var(--line2);border-radius:10px;color:var(--txt);padding:8px;font-size:13px">
+    <option value="">默认蓝（#2f6fe0）</option>
+    <option value="#0e7a4e">墨绿</option>
+    <option value="#b8860b">金棕</option>
+    <option value="#7c3aed">紫</option>
+    <option value="#c0392b">砖红</option>
+  </select>
+  <label>报告品牌 Logo（PNG/JPG，可选，仅存本机）</label>
+  <input type="file" id="cfgLogoFile" accept="image/*" style="color:var(--sub)">
+  <label style="margin-top:16px;padding-top:12px;border-top:1px solid var(--line2)">📦 资产包（词库+设备库+权重+偏好，团队共享/换机迁移；不含API密钥）</label>
+  <div class="row" style="margin-top:6px">
+    <button class="btn" id="btnAssetExport" style="flex:1">⬇ 导出资产包</button>
+    <button class="btn" id="btnAssetImport" style="flex:1">📥 导入资产包</button>
+    <input type="file" id="assetFile" accept="application/json,.json" style="display:none">
+  </div>
   <label data-i18n="d.company">报告抬头公司名称（用于导出 HTML/MD 报告）</label>
   <input id="cfgCompany" placeholder="例：浙东机械经销有限公司">
   <div class="tip" data-i18n="d.tip">推荐智谱 GLM（open.bigmodel.cn 领取 Key，glm-4-flash 免费档即可运行）。注意：浏览器直连可能遇到 CORS 限制，若失败请 ① 使用内置规则引擎（离线可用）；② 或把"系统提示词"粘贴到扣子/Coze、Dify 等平台部署。</div>
@@ -354,14 +387,16 @@
   </div>
 </dialog>
 
-<script src="engine.js"></script>
+<script src="engine.js?v=2.1.1"></script>
+<script src="pdfjs/pdf.min.js"></script>
 <script>
 (function(){
   'use strict';
   var $ = function(id){ return document.getElementById(id); };
   var E = window.BidEngine;
   var mode = 'rule';
-  var lastRule = null, lastRuleB = null, lastMd = '', curTab = 'qual', curDemo = 'loader';
+  var lastRule = null, lastRuleB = null, lastMd = '', curTab = 'qual', curDemo = 'loader', lastTender = '', lastFP = '';
+  function hashStr(s){ var h = 5381; for (var i = 0; i < s.length; i++) h = ((h<<5)+h+s.charCodeAt(i))>>>0; return h.toString(16); }
 
   /* ---------- 初始化 ---------- */
   $('lib').value = E.DEMOS.loader.lib;
@@ -373,9 +408,17 @@
   $('cfgBase').value = cfg.base || 'https://open.bigmodel.cn/api/paas/v4';
   $('cfgKey').value  = cfg.key  || '';
   $('cfgModel').value = cfg.model || 'glm-4-flash';
+  if (cfg.theme) $('cfgTheme').value = cfg.theme;
+  $('cfgLogoFile').onchange = function(){
+    var f = this.files[0]; if (!f) return;
+    if (f.size > 200*1024){ setStatus('⚠ Logo请小于200KB','err'); this.value=''; return; }
+    var rd = new FileReader();
+    rd.onload = function(){ cfg.logo = rd.result; $('cfgLogoFile').dataset.ok = '1'; setStatus('✔ Logo已读取，保存设置后生效',''); };
+    rd.readAsDataURL(f);
+  };
   $('cfgCompany').value = cfg.company || '';
   function saveCfg(){
-    cfg = { base: $('cfgBase').value.trim(), key: $('cfgKey').value.trim(), model: $('cfgModel').value.trim() || 'glm-4-flash', company: $('cfgCompany').value.trim() };
+    cfg = { base: $('cfgBase').value.trim(), key: $('cfgKey').value.trim(), model: $('cfgModel').value.trim() || 'glm-4-flash', theme: $('cfgTheme').value, logo: cfg.logo || '', company: $('cfgCompany').value.trim() };
     localStorage.setItem('bidpilot_cfg', JSON.stringify(cfg));
   }
 
@@ -457,6 +500,64 @@
   applyLang(LANG);
 
   /* ---------- 自定义词库（v1.6） ---------- */
+  /* ---------- 采购文件PDF导入（v2.1 · 本地解析，不上传） ---------- */
+  if (window.pdfjsLib && pdfjsLib.GlobalWorkerOptions){
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdfjs/pdf.worker.min.js';
+  }
+  $('btnPdf').onclick = function(){ $('pdfFile').click(); };
+  $('pdfFile').onchange = async function(){
+    var f = this.files[0]; if (!f) return;
+    if (typeof pdfjsLib === 'undefined'){ setStatus('⚠ PDF组件未加载（需联网一次加载解析库）','err'); return; }
+    setStatus('📄 正在本地解析PDF（不上传服务器）…','');
+    try {
+      var buf = await f.arrayBuffer();
+      var pdf = await pdfjsLib.getDocument({ data: buf }).promise;
+      var text = '';
+      var pages = Math.min(pdf.numPages, 80);
+      for (var i = 1; i <= pages; i++){
+        var page = await pdf.getPage(i);
+        var tc = await page.getTextContent();
+        text += tc.items.map(function(it){ return it.str; }).join(' ') + '\n';
+      }
+      if (text.replace(/\s/g,'').length < 50){
+        setStatus('⚠ 该PDF疑似扫描件（无文本层）——请手动复制参数章节粘贴到公告区','err'); return;
+      }
+      var loc = E.locateParamSection(text);
+      if (!loc.found){
+        setStatus('⚠ 未定位到"技术参数"章节——请检查文件或手动复制参数部分粘贴到公告区','err'); return;
+      }
+      var ta = $('tender');
+      ta.value = ta.value.replace(/\s+$/,'') + '\n\n【采购文件 · 技术参数节选】\n' + loc.text;
+      var clues = (loc.text.match(/\d+(?:\.\d+)?\s*(?:kg|mm|m³|kW|kN|Hz|吨|台|L)/gi) || []).length;
+      setStatus('✔ 已提取技术参数章节（' + loc.text.length + '字符 · 参数线索' + clues + '处）并附加到公告区，可直接生成分析。','');
+    } catch(err){ setStatus('⚠ PDF解析失败：' + String(err.message||err).slice(0,80), 'err'); }
+    this.value = '';
+  };
+  $('btnAssetExport').onclick = function(){
+    var pack = { app: 'bidpilot', kind: 'assets', exportedAt: new Date().toLocaleString('zh-CN'),
+      aliases: getAliasData(), devices: (function(){ try { return JSON.parse(localStorage.getItem('bidpilot_machines') || '[]'); } catch(e){ return []; } })(),
+      weights: (function(){ try { return JSON.parse(localStorage.getItem('bidpilot_weights') || 'null'); } catch(e){ return null; } })(),
+      prefs: { theme: cfg.theme || '', company: cfg.company || '', model: cfg.model || '' } };
+    var blob = new Blob([JSON.stringify(pack, null, 2)], { type:'application/json' });
+    var a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+    a.download = 'bidpilot-assets-' + new Date().toISOString().slice(0,10) + '.json'; a.click(); URL.revokeObjectURL(a.href);
+    setStatus('✔ 资产包已导出（不含API密钥与审计隐私）。','');
+  };
+  $('btnAssetImport').onclick = function(){ $('assetFile').click(); };
+  $('assetFile').onchange = async function(){
+    var f = this.files[0]; if (!f) return;
+    try {
+      var pack = JSON.parse(await f.text());
+      if (pack.app !== 'bidpilot' && pack.kind !== 'assets') throw new Error('不是有效的标书快反资产包');
+      if (pack.aliases) store.set('bidpilot_aliases', pack.aliases);
+      if (pack.devices) store.set('bidpilot_machines', pack.devices);
+      if (pack.weights) store.set('bidpilot_weights', pack.weights);
+      if (pack.prefs){ if (pack.prefs.theme) cfg.theme = pack.prefs.theme; if (pack.prefs.company) cfg.company = pack.prefs.company; if (pack.prefs.model) cfg.model = pack.prefs.model; saveCfg(); }
+      renderLex(); var th = document.getElementById('cfgTheme'); if (th) th.value = cfg.theme || '';
+      setStatus('✔ 资产包已导入。重新生成分析后生效。','');
+    } catch(err){ setStatus('⚠ 资产包导入失败：' + String(err.message||err).slice(0,60), 'err'); }
+    this.value = '';
+  };
   function getAliasData(){ try { var d = JSON.parse(localStorage.getItem('bidpilot_aliases') || 'null'); return d && d.list ? d : { enabled:true, list:[] }; } catch(e){ return { enabled:true, list:[] }; } }
   function setAliasData(d){ localStorage.setItem('bidpilot_aliases', JSON.stringify(d)); }
   function activeAliases(){ var d = getAliasData(); return d.enabled ? d.list : null; }
@@ -500,7 +601,7 @@
     setAliasData(d); $('lexTerm').value = ''; renderLex();
     setStatus('✔ 别称「' + term + '」已入词库，重新生成分析后生效。','');
   };
-  $('lexReset').onclick = function(){ setAliasData({ enabled:true, list:[] }); renderLex(); setStatus('词库已清空。',''); };
+  $('lexReset').onclick = function(){ if (!confirm('确定清空全部词库？此操作不可恢复。')) return; setAliasData({ enabled:true, list:[] }); renderLex(); setStatus('词库已清空。',''); };
 
   /* ---------- 公告对比（v1.6） ---------- */
   function renderDiff(R){
@@ -559,6 +660,7 @@
     if (m){ $('lib').value = m.text; $('mName').value = m.name; setStatus('✔ 已载入设备库「' + m.name + '」，点击"生成投标分析"重新分析。',''); }
   };
   $('mDel').onclick = function(){
+    if (!confirm('确定删除该设备库？此操作不可恢复。')) return;
     var i = $('mList').value;
     if (i === ''){ setStatus('请先在下拉框选择要删除的设备库。','err'); return; }
     var ms = getMachines(); var name = ms[+i].name;
@@ -626,6 +728,7 @@
   });
   function switchTab(t){
     curTab = t;
+    if (t === 'anno') renderAnno();
     document.querySelectorAll('#tabs button').forEach(function(x){ x.classList.toggle('on', x.getAttribute('data-t')===t); });
     document.querySelectorAll('.tabpane').forEach(function(p){ p.classList.toggle('on', p.id === 'pane-'+t); });
   }
@@ -684,7 +787,14 @@
       Rb = E.analyze(libB, tender, OPTS);
       if (Rb.error) Rb = null;
     }
-    lastRule = R; lastRuleB = Rb;
+    lastRule = R; lastRuleB = Rb; lastTender = tender; lastFP = hashStr(lib + '||' + tender);
+    try {
+      var audit = JSON.parse(localStorage.getItem('bidpilot_audit') || '[]');
+      audit.unshift({ t: new Date().toLocaleString('zh-CN'), v: E.VERSION, score: R.conclusion.score,
+        grade: R.conclusion.grade, fp: hashStr(lib + '||' + tender), al: (activeAliases()||[]).length, w: getWeights() || {} });
+      if (audit.length > 30) audit.length = 30;
+      localStorage.setItem('bidpilot_audit', JSON.stringify(audit));
+    } catch(e) {}
     renderRule(R, Rb);
     switchTab('qual');
     var c = R.conclusion.counts;
@@ -697,6 +807,80 @@
     else renderHist();
   }
 
+  function renderAnno(){
+    var el = document.getElementById('annoView');
+    if (!lastRule || !lastRule.highlights){ el.innerHTML = '<div class="empty">请先在左侧生成投标分析。</div>'; return; }
+    var text = lastTender || $('tender').value;
+    function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+    var hs = (lastRule.highlights||[]).slice().sort(function(a,b){ return a.s - b.s; });
+    var html = '', pos = 0;
+    hs.forEach(function(h){
+      if (h.s < pos) return;
+      html += esc(text.slice(pos, h.s));
+      var cls = h.mark==='★' ? 'hl-star' : h.mark==='▲' ? 'hl-tri' : (h.status==='负偏离'?'hl-bad': h.status==='正偏离'?'hl-plus': h.status.indexOf('满足')===0?'hl-ok':'hl-miss');
+      html += '<span class="'+cls+'" title="【'+(h.name||'')+'】判定：'+h.status+'">' + esc(text.slice(h.s,h.e)) + '</span>';
+      pos = h.e;
+    });
+    html += esc(text.slice(pos));
+    el.innerHTML = html;
+  }
+  function drawRadar(Ra, Rb){
+    var cv = document.getElementById('radarCv'); if (!cv || !cv.getContext) return;
+    var ctx = cv.getContext('2d');
+    var shared = Ra.params.filter(function(p){ return p.kind === 'param' && Rb.params.some(function(b){ return b.id === p.id; }); });
+    var info = document.getElementById('radarInfo');
+    if (shared.length < 3){ if (info) info.textContent = '共同对比参数不足3项，无法绘制雷达'; return; }
+    function score(st){
+      if (st.indexOf('满足') === 0) return 100;
+      if (st === '正偏离') return 85;
+      if (st === '有记载') return 80;
+      if (st === '待人工核对') return 30;
+      if (st === '待人工补充') return 25;
+      if (st === '资料库无') return 15;
+      if (st === '负偏离') return 0;
+      return 40;
+    }
+    var n = shared.length, cx = cv.width/2, cy = cv.height/2 + 4, R = Math.min(cx, cy) - 42;
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    for (var ring = 1; ring <= 4; ring++){
+      ctx.beginPath();
+      for (var i = 0; i <= n; i++){
+        var ang = -Math.PI/2 + i*2*Math.PI/n;
+        var x = cx + R*ring/4*Math.cos(ang), y = cy + R*ring/4*Math.sin(ang);
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.closePath();
+      if (ring === 4) ctx.stroke(); else { ctx.fillStyle = 'rgba(255,255,255,.02)'; ctx.fill(); ctx.stroke(); }
+      ctx.strokeStyle = 'rgba(255,255,255,.10)';
+    }
+    ctx.font = '11px sans-serif';
+    for (var i = 0; i < n; i++){
+      var ang = -Math.PI/2 + i*2*Math.PI/n;
+      ctx.beginPath(); ctx.moveTo(cx, cy);
+      ctx.lineTo(cx + R*Math.cos(ang), cy + R*Math.sin(ang));
+      ctx.strokeStyle = 'rgba(255,255,255,.14)'; ctx.stroke();
+      ctx.fillStyle = '#93a5c4'; ctx.textAlign = 'center';
+      var lx = cx + (R+26)*Math.cos(ang), ly = cy + (R+20)*Math.sin(ang);
+      lx = Math.max(28, Math.min(cv.width-28, lx)); ly = Math.max(12, Math.min(cv.height-4, ly));
+      var lx = cx + (R+26)*Math.cos(ang), ly = cy + (R+20)*Math.sin(ang);
+      ctx.fillText(shared[i].name.slice(0, 5), cx + (R+26)*Math.cos(ang), cy + (R+20)*Math.sin(ang));
+    }
+    function poly(rows, color, fill){
+      ctx.beginPath();
+      shared.forEach(function(p, i){
+        var b = rows.find(function(x){ return x.id === p.id; });
+        var v = b ? score(b.status) : 15;
+        var ang = -Math.PI/2 + i*2*Math.PI/n;
+        var x = cx + R*v/100*Math.cos(ang), y = cy + R*v/100*Math.sin(ang);
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      });
+      ctx.closePath(); ctx.fillStyle = fill; ctx.fill();
+      ctx.strokeStyle = color; ctx.lineWidth = 2; ctx.stroke();
+    }
+    poly(Rb, '#e8960c', 'rgba(232,150,12,.20)');
+    poly(R, '#37e0ff', 'rgba(55,224,255,.22)');
+    if (info) info.textContent = '共同对比维度 ' + n + ' 项 · 青色=A设备 · 橙色=B设备';
+  }
   function metaCards(m){
     var items = [
       ['总价限价', m.priceLimit ? (m.priceLimit/10000) + ' 万元' : '未检索到', !!m.priceLimit],
@@ -750,11 +934,11 @@
     var bp = {};
     if (Rb) Rb.params.forEach(function(p){ bp[p.id] = p; });
     h = '<div class="tblwrap"><table><tr><th style="width:30px">#</th><th style="width:130px">参数项</th><th style="width:170px">招标要求</th><th>投标响应（A）</th><th style="width:96px">A结论</th>' +
-        (Rb ? '<th>投标响应（B）</th><th style="width:96px">B结论</th>' : '') + '<th style="width:170px">证明材料</th></tr>';
+        (Rb ? '<th>投标响应（B）</th><th style="width:96px">B结论</th>' : '') + '<th style="width:52px">置信</th><th style="width:170px">证明材料</th></tr>';
     R.params.forEach(function(p,i){
       var b = Rb ? bp[p.id] : null;
       h += '<tr><td>'+(i+1)+'</td><td><b>'+(p.key?'<span class="star">★</span> ':(p.mark==='▲'?'<span class="star" style="color:var(--plus)">▲</span> ':''))+p.name+'</b></td><td>'+p.reqText+'</td><td>'+p.respText+
-           (p.note?'<span class="note">⚠ '+p.note+'</span>':'')+'</td><td>'+pill(p.status)+'</td>' +
+           (p.note?'<span class="note">⚠ '+p.note+'</span>':'')+'</td><td>'+pill(p.status)+'</td><td><span title="'+(p.conf||'高')+'置信">'+(p.conf==='中'?'◐ 中':'● 高')+'</span></td>' +
            (Rb ? '<td>'+(b ? b.respText + (b.note?'<span class="note">⚠ '+b.note+'</span>':'') : '—（未检索到）')+'</td><td>'+(b?pill(b.status):'—')+'</td>' : '') +
            '<td>'+p.proof+'</td></tr>';
     });
@@ -781,6 +965,7 @@
         '<div class="vs">VS</div>' +
         ringHtml('B', Rb.conclusion.score, Rb.conclusion.gradeText, 'B设备 · 对比库') +
         '</div>' +
+        '<div style="margin-top:12px;text-align:center"><canvas id="radarCv" width="520" height="340" style="max-width:100%"></canvas><div id="radarInfo" style="font-size:11.5px;color:var(--sub);margin-top:4px"></div></div>' +
         '<div class="verdict"><b>A设备：</b>'+cc.verdict+'</div>' +
         '<div class="verdict" style="margin-top:10px"><b>B设备：</b>'+Rb.conclusion.verdict+'</div>' +
         '<div class="premise"><b style="color:var(--txt)">选型建议：</b>' +
@@ -804,9 +989,24 @@
       ' · 缺参数 -' + cc.weights.missing + ' · 待核对 -' + cc.weights.pending + ' · 缺证明 -' + cc.weights.cert +
       (Object.keys(E.DEFAULT_WEIGHTS).some(function(k){ return E.DEFAULT_WEIGHTS[k] !== cc.weights[k]; }) ? '（自定义）' : '（默认）') +
       ' —— 权重可在 ⚙设置 中按行业调整</div>';
-    $('pane-concl').innerHTML = h + wFoot;
-    animateRing('', cc.score);
+    var auditPanel = '<div style="margin-top:14px"><div style="font-size:12px;color:var(--sub)">🧾 审计日志（最近8次 · 完整日志可导出JSON）</div><div id="auditPanel"></div>' +
+      '<div style="display:flex;gap:8px;margin-top:6px"><button class="btn" id="btnAuditExport2" style="font-size:12px">⬇ 导出 JSON</button><button class="btn" id="btnAuditClear2" style="font-size:12px;color:#c0392b">清空</button></div></div>';
+    $('pane-concl').innerHTML = h + auditPanel + wFoot;
+    renderAuditPanel();
+    drawRadar(R, Rb);
+    animateRing('A', cc.score);
     if (Rb) animateRing('B', Rb.conclusion.score);
+  }
+  function renderAuditPanel(){
+    var host = document.getElementById('auditPanel'); if (!host) return;
+    var a = [];
+    try { a = JSON.parse(localStorage.getItem('bidpilot_audit') || '[]'); } catch(e){}
+    host.innerHTML = a.length
+      ? a.slice(0, 8).map(function(it){
+          return '<div style="font-size:11.5px;color:var(--sub);padding:3px 0;border-bottom:1px dashed var(--line)">' +
+            it.t + ' · ' + it.score + '分/' + it.grade + ' · 引擎v' + it.v + ' · 输入指纹' + it.fp + '</div>';
+        }).join('')
+      : '<div style="font-size:11.5px;color:var(--faint)">暂无审计记录——每次生成分析都会自动留痕。</div>';
   }
   function animateRing(sfx, score){
     var CIRC = 326.7256;
@@ -897,7 +1097,7 @@
   };
   $('btnMd').onclick = function(){
     var md = '';
-    if (mode === 'rule' && lastRule) md = E.buildMarkdown(lastRule, { company: cfg.company, resultB: lastRuleB });
+    if (mode === 'rule' && lastRule) md = E.buildMarkdown(lastRule, { company: cfg.company, resultB: lastRuleB, fingerprint: lastFP });
     else if (lastMd) md = lastMd;
     if (!md){ setStatus('请先生成分析结果。','err'); return; }
     var blob = new Blob([md], { type:'text/markdown;charset=utf-8' });
@@ -907,6 +1107,16 @@
     a.click(); URL.revokeObjectURL(a.href);
     setStatus('✔ 报告已下载。','');
   };
+  document.addEventListener('click', function(e){
+    if (e.target && (e.target.id === 'btnAuditExport2' || e.target.id === 'btnAuditExport')){
+      var audit = [];
+      try { audit = JSON.parse(localStorage.getItem('bidpilot_audit') || '[]'); } catch(err){}
+      var blob = new Blob([JSON.stringify(audit, null, 2)], { type:'application/json' });
+      var a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+      a.download = 'bidpilot-audit-' + new Date().toISOString().slice(0,10) + '.json'; a.click(); URL.revokeObjectURL(a.href);
+    }
+    if (e.target && e.target.id === 'btnAuditClear2'){ store.set('bidpilot_audit', []); renderAuditPanel(); }
+  });
   $('btnPrint').onclick = function(){ window.print(); };
   $('btnCheck').onclick = function(){
     if (!lastRule){ setStatus('请先生成分析结果。','err'); return; }
@@ -915,7 +1125,7 @@
   };
   $('btnHtml').onclick = function(){
     if (!lastRule){ setStatus('请先生成分析结果。','err'); return; }
-    var blob = new Blob([E.buildHtmlReport(lastRule, { company: cfg.company, resultB: lastRuleB })], { type:'text/html;charset=utf-8' });
+    var blob = new Blob([E.buildHtmlReport(lastRule, { company: cfg.company, resultB: lastRuleB, logo: cfg.logo, theme: cfg.theme, fingerprint: lastFP })], { type:'text/html;charset=utf-8' });
     var a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
     a.download = '标书快反-投标分析报告-' + new Date().toISOString().slice(0,10) + '.html';

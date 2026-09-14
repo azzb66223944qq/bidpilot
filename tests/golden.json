@@ -1,0 +1,534 @@
+{
+  "loader": {
+    "meta": {
+      "priceLimit": 340250,
+      "deposit": 6800,
+      "decryptMin": 60,
+      "bidDeadline": "2026年10月13日09:30",
+      "consortium": true,
+      "postQual": true
+    },
+    "score": 94,
+    "grade": "A",
+    "verdict": "核心参数零负偏离、4 项正偏离可作加分亮点，技术响应处于第一梯队水平，建议投标 —— 前提：补齐 2 项待人工核实/待补充材料，且总价控制在限价之内。",
+    "params": [
+      {
+        "id": "load",
+        "status": "满足",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "bucket",
+        "status": "正偏离",
+        "conf": "高",
+        "mark": "★"
+      },
+      {
+        "id": "power",
+        "status": "正偏离",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "mass",
+        "status": "满足",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "dumpHeight",
+        "status": "正偏离",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "force",
+        "status": "正偏离",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "delivery",
+        "status": "满足",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "warranty",
+        "status": "满足",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "emission",
+        "status": "满足",
+        "mark": null
+      },
+      {
+        "id": "service",
+        "status": "满足（框架性）",
+        "mark": null
+      },
+      {
+        "id": "cert:型式试验报告",
+        "status": "待人工补充",
+        "mark": null
+      },
+      {
+        "id": "cert:环保信息公开编号",
+        "status": "待人工补充",
+        "mark": null
+      }
+    ],
+    "quals": [
+      "有据",
+      "有据",
+      "有据",
+      "有据",
+      "有据",
+      "有据",
+      "有据",
+      "待人工核实",
+      "待人工核实",
+      "待人工核实",
+      "待人工核实"
+    ],
+    "counts": {
+      "satisfy": 6,
+      "plus": 4,
+      "minus": 0,
+      "missing": 0,
+      "pending": 0
+    },
+    "timelineNodes": 3
+  },
+  "excavator": {
+    "meta": {
+      "priceLimit": 886000,
+      "deposit": 17000,
+      "decryptMin": 45,
+      "bidDeadline": "2026年10月16日10:00",
+      "consortium": true,
+      "postQual": true
+    },
+    "score": 15,
+    "grade": "D",
+    "verdict": "🚨 ★关键参数存在负偏离——按招标惯例★号参数不满足即直接废标（不是扣分），本标不可投；除非与招标人书面澄清放宽该参数，或更换机型。",
+    "params": [
+      {
+        "id": "bucket",
+        "status": "正偏离",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "power",
+        "status": "正偏离",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "mass",
+        "status": "满足",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "digDepth",
+        "status": "正偏离",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "dumpHeight",
+        "status": "正偏离",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "ride",
+        "status": "负偏离",
+        "conf": "高",
+        "mark": "★"
+      },
+      {
+        "id": "force",
+        "status": "正偏离",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "delivery",
+        "status": "满足",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "warranty",
+        "status": "满足",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "emission",
+        "status": "满足",
+        "mark": null
+      },
+      {
+        "id": "service",
+        "status": "满足（框架性）",
+        "mark": null
+      },
+      {
+        "id": "cert:型式试验报告",
+        "status": "待人工补充",
+        "mark": null
+      },
+      {
+        "id": "cert:环保信息公开编号",
+        "status": "待人工补充",
+        "mark": null
+      }
+    ],
+    "quals": [
+      "有据",
+      "有据",
+      "待人工核实",
+      "有据",
+      "有据",
+      "有据",
+      "有据",
+      "待人工核实",
+      "待人工核实",
+      "待人工核实",
+      "待人工核实"
+    ],
+    "counts": {
+      "satisfy": 5,
+      "plus": 5,
+      "minus": 1,
+      "missing": 0,
+      "pending": 0
+    },
+    "timelineNodes": 2
+  },
+  "crane": {
+    "meta": {
+      "priceLimit": 968000,
+      "deposit": 20000,
+      "decryptMin": 30,
+      "bidDeadline": "2026年10月20日09:30",
+      "consortium": true,
+      "postQual": true
+    },
+    "score": 94,
+    "grade": "A",
+    "verdict": "核心参数零负偏离、3 项正偏离可作加分亮点，技术响应处于第一梯队水平，建议投标 —— 前提：补齐 2 项待人工核实/待补充材料，且总价控制在限价之内。",
+    "params": [
+      {
+        "id": "power",
+        "status": "正偏离",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "mass",
+        "status": "满足",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "liftCap",
+        "status": "满足",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "moment",
+        "status": "正偏离",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "delivery",
+        "status": "满足",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "warranty",
+        "status": "正偏离",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "emission",
+        "status": "满足",
+        "mark": null
+      },
+      {
+        "id": "service",
+        "status": "满足（框架性）",
+        "mark": null
+      },
+      {
+        "id": "cert:型式试验报告",
+        "status": "待人工补充",
+        "mark": null
+      },
+      {
+        "id": "cert:环保信息公开编号",
+        "status": "待人工补充",
+        "mark": null
+      }
+    ],
+    "quals": [
+      "有据",
+      "有据",
+      "待人工核实",
+      "有据",
+      "有据",
+      "有据",
+      "有据",
+      "待人工核实",
+      "待人工核实",
+      "待人工核实",
+      "待人工核实"
+    ],
+    "counts": {
+      "satisfy": 5,
+      "plus": 3,
+      "minus": 0,
+      "missing": 0,
+      "pending": 0
+    },
+    "timelineNodes": 2
+  },
+  "pump": {
+    "meta": {
+      "priceLimit": 1280000,
+      "deposit": 25000,
+      "decryptMin": 60,
+      "bidDeadline": "2026年10月25日14:00",
+      "consortium": true,
+      "postQual": true
+    },
+    "score": 64,
+    "grade": "C",
+    "verdict": "存在 2 项负偏离，按现行资料不建议直接投标；先解决负偏离参数（换机型或与招标人澄清）后再评估。",
+    "params": [
+      {
+        "id": "power",
+        "status": "负偏离",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "mass",
+        "status": "满足",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "pumpRate",
+        "status": "负偏离",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "boomHeight",
+        "status": "正偏离",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "delivery",
+        "status": "满足",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "warranty",
+        "status": "满足",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "emission",
+        "status": "满足",
+        "mark": null
+      },
+      {
+        "id": "service",
+        "status": "满足（框架性）",
+        "mark": null
+      },
+      {
+        "id": "cert:型式试验报告",
+        "status": "待人工补充",
+        "mark": null
+      },
+      {
+        "id": "cert:环保信息公开编号",
+        "status": "待人工补充",
+        "mark": null
+      }
+    ],
+    "quals": [
+      "有据",
+      "有据",
+      "待人工核实",
+      "有据",
+      "有据",
+      "有据",
+      "有据",
+      "待人工核实",
+      "待人工核实",
+      "待人工核实",
+      "待人工核实"
+    ],
+    "counts": {
+      "satisfy": 5,
+      "plus": 1,
+      "minus": 2,
+      "missing": 0,
+      "pending": 0
+    },
+    "timelineNodes": 2
+  },
+  "weights-pump": {
+    "meta": {
+      "priceLimit": 1280000,
+      "deposit": 25000,
+      "decryptMin": 60,
+      "bidDeadline": "2026年10月25日14:00",
+      "consortium": true,
+      "postQual": true
+    },
+    "score": 88,
+    "grade": "A",
+    "verdict": "存在 2 项负偏离，按现行资料不建议直接投标；先解决负偏离参数（换机型或与招标人澄清）后再评估。",
+    "params": [
+      {
+        "id": "power",
+        "status": "负偏离",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "mass",
+        "status": "满足",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "pumpRate",
+        "status": "负偏离",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "boomHeight",
+        "status": "正偏离",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "delivery",
+        "status": "满足",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "warranty",
+        "status": "满足",
+        "conf": "高",
+        "mark": null
+      },
+      {
+        "id": "emission",
+        "status": "满足",
+        "mark": null
+      },
+      {
+        "id": "service",
+        "status": "满足（框架性）",
+        "mark": null
+      },
+      {
+        "id": "cert:型式试验报告",
+        "status": "待人工补充",
+        "mark": null
+      },
+      {
+        "id": "cert:环保信息公开编号",
+        "status": "待人工补充",
+        "mark": null
+      }
+    ],
+    "quals": [
+      "有据",
+      "有据",
+      "待人工核实",
+      "有据",
+      "有据",
+      "有据",
+      "有据",
+      "待人工核实",
+      "待人工核实",
+      "待人工核实",
+      "待人工核实"
+    ],
+    "counts": {
+      "satisfy": 5,
+      "plus": 1,
+      "minus": 2,
+      "missing": 0,
+      "pending": 0
+    },
+    "timelineNodes": 2
+  },
+  "alias-bucket": {
+    "meta": {
+      "priceLimit": null,
+      "deposit": null,
+      "decryptMin": null,
+      "bidDeadline": null,
+      "consortium": false,
+      "postQual": false
+    },
+    "score": 100,
+    "grade": "A",
+    "verdict": "全部参数满足且零负偏离，含 1 项正偏离亮点，建议投标 —— 前提：商务材料齐全且总价不超限价。",
+    "params": [
+      {
+        "id": "bucket",
+        "status": "正偏离",
+        "conf": "中",
+        "mark": null
+      }
+    ],
+    "quals": [
+      "待人工核实",
+      "待人工核实",
+      "待人工核实",
+      "待人工核实",
+      "待人工核实",
+      "有据",
+      "有据",
+      "待人工核实",
+      "待人工核实",
+      "待人工核实",
+      "待人工核实"
+    ],
+    "counts": {
+      "satisfy": 0,
+      "plus": 1,
+      "minus": 0,
+      "missing": 0,
+      "pending": 0
+    },
+    "timelineNodes": 0
+  }
+}
