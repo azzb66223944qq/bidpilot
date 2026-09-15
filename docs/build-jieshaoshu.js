@@ -271,12 +271,12 @@ bodyChildren.push(bullet("输入层：", "白名单协议——只允许引用�
 bodyChildren.push(bullet("判定层：", "数值比较全部由确定性代码完成，绕开模型自由发挥；"));
 bodyChildren.push(bullet("输出层：", "缺失信息强制输出固定占位符，业务员拿到的是补料清单而非错误答案。"));
 bodyChildren.push(h2("4.3 质量保障"));
-bodyChildren.push(body("引擎配套 140 项自动化回归测试（含黄金快照面级回归）（tests/engine.test.js），覆盖四个演示场景（装载机、挖掘机、起重机、泵车）、单位换算边界、★定位精确性、权重配置、HTML 报告转义防注入与乱输入鲁棒性。全量测试可通过 node tests/engine.test.js 与 node tests/golden.test.js 一键复跑。"));
+bodyChildren.push(body("引擎配套 142 项自动化回归测试（含黄金快照面级回归）（tests/engine.test.js），覆盖四个演示场景（装载机、挖掘机、起重机、泵车）、单位换算边界、★定位精确性、权重配置、HTML 报告转义防注入与乱输入鲁棒性。全量测试可通过 node tests/engine.test.js 与 node tests/golden.test.js 一键复跑。"));
 bodyChildren.push(h2("4.4 文件结构"));
 bodyChildren.push(tbl(["文件", "职责"], [
   ["index.html", "前端应用（界面、交互、导出、历史、设备库、语言切换）"],
   ["engine.js", "核心解析引擎 v2.1（纯函数，32 类参数 7 大机型族，置信度分级，可单测）"],
-  ["tests/engine.test.js", "140 项自动化回归测试"],
+  ["tests/engine.test.js", "142 项自动化回归测试"],
   ["prompts/system-prompt.md", "智能体系统提示词（Coze/Dify/GLM 通用）"],
   ["docs/", "产品截图、答辩问答、商业计划书大纲、路演 PPT"],
 ], [3600, 6500]));

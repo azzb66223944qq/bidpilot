@@ -159,7 +159,7 @@ git push -u origin main
 | 元信息提取 | 最高限价、保证金、解密分钟数、报名/开标时间、资格后审、联合体条款 |
 | 评分模型 | 见"v1.2 新增"首条，评分随参数完备度实时变化 |
 
-运行测试（140 项断言，四机型场景+单位换算+权重配置+HTML报告+补料清单+黄金快照，见 `tests/engine.test.js` 与 `tests/golden.test.js`）：
+运行测试（142 项断言，四机型场景+单位换算+权重配置+HTML报告+补料清单+黄金快照，见 `tests/engine.test.js` 与 `tests/golden.test.js`）：
 
 ```bash
 node tests/engine.test.js
@@ -173,7 +173,7 @@ bidpilot/
 ├── manifest.json / sw.js / icon-*.png  # PWA 清单、离线缓存与App图标
 ├── engine.js             # 核心解析引擎 v1.5（纯函数，浏览器/Node 通用）
 ├── tests/
-│   ├── engine.test.js    # 140 项自动化断言（node tests/engine.test.js）
+│   ├── engine.test.js    # 142 项自动化断言（node tests/engine.test.js）
     │   └── golden.json         # 6 组黄金快照基线
 ├── docs/
 │   ├── Defense-QA.md         # 评委10问+话术

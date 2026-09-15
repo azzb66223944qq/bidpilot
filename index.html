@@ -552,8 +552,13 @@
       if (pack.aliases) localStorage.setItem('bidpilot_aliases', JSON.stringify(pack.aliases));
       if (pack.devices) localStorage.setItem('bidpilot_machines', JSON.stringify(pack.devices));
       if (pack.weights) localStorage.setItem('bidpilot_weights', JSON.stringify(pack.weights));
-      if (pack.prefs){ if (pack.prefs.theme) cfg.theme = pack.prefs.theme; if (pack.prefs.company) cfg.company = pack.prefs.company; if (pack.prefs.model) cfg.model = pack.prefs.model; saveCfg(); }
-      renderLex(); var th = document.getElementById('cfgTheme'); if (th) th.value = cfg.theme || '';
+      if (pack.prefs){
+        if (pack.prefs.theme){ cfg.theme = pack.prefs.theme; var thSel = document.getElementById('cfgTheme'); if (thSel) thSel.value = pack.prefs.theme; }
+        if (pack.prefs.company){ cfg.company = pack.prefs.company; document.getElementById('cfgCompany').value = pack.prefs.company; }
+        if (pack.prefs.model){ cfg.model = pack.prefs.model; document.getElementById('cfgModel').value = pack.prefs.model; }
+        saveCfg();
+      }
+      renderLex();
       setStatus('✔ 资产包已导入。重新生成分析后生效。','');
     } catch(err){ setStatus('⚠ 资产包导入失败：' + String(err.message||err).slice(0,60), 'err'); }
     this.value = '';

@@ -52,7 +52,7 @@ const bu = () => ({ code: "2022", indent: 12 });
     { text: "把投标标书处理从 2–3 天压缩到 10 秒：", options: { color: TXT, breakLine: true } },
     { text: "资格自查 · 技术偏离表 · 废标风险 TOP5 · 就绪度评分，一次生成。", options: { color: MUTED } }
   ], { x: M, y: 3.95, w: 9.2, h: 0.9, fontSize: 16, fontFace: F, margin: 0, paraSpaceAfter: 6 });
-  const chips = ["反幻觉引擎", "双引擎架构", "140 项测试", "32 类参数", "v2.1"];
+  const chips = ["反幻觉引擎", "双引擎架构", "142 项测试", "32 类参数", "v2.1"];
   chips.forEach((c, i) => {
     const cw = 2.28, cx = M + i * (cw + 0.25);
     s.addShape(p.shapes.ROUNDED_RECTANGLE, { x: cx, y: 5.15, w: cw, h: 0.5, fill: { color: CARD }, line: { color: PRIMARY, width: 1 }, rectRadius: 0.25 });
@@ -157,7 +157,7 @@ const bu = () => ({ code: "2022", indent: 12 });
 
   const boxes = [
     ["输入", "资料库 + 招标公告\n（唯一信息来源）", PRIMARY],
-    ["规则引擎", "白名单引用 · 确定性判定\n32类参数 · 140项测试 · 审计日志", PRIMARY],
+    ["规则引擎", "白名单引用 · 确定性判定\n32类参数 · 142项测试 · 审计日志", PRIMARY],
     ["输出协议", "缺失信息 → 固定占位符\n“该信息不在资料库中，请核实”", ACCENT]
   ];
   boxes.forEach((b, i) => {
@@ -200,7 +200,7 @@ const bu = () => ({ code: "2022", indent: 12 });
     s.addText(t[2], { x: x + 0.22, y: y + 1.32, w: 2.35, h: 0.7, fontSize: 10.5, fontFace: F, color: MUTED, margin: 0 });
   });
   card(s, M - 0.06, 6.0, 6.0, 1.1);
-  s.addText("140 项自动化测试全绿：正例可投 · 反例敢拒 · 乱输入不崩", { x: M + 0.2, y: 6.22, w: 5.7, h: 0.65, fontSize: 14, fontFace: F, bold: true, color: TXT, margin: 0 });
+  s.addText("142 项自动化测试全绿：正例可投 · 反例敢拒 · 乱输入不崩", { x: M + 0.2, y: 6.22, w: 5.7, h: 0.65, fontSize: 14, fontFace: F, bold: true, color: TXT, margin: 0 });
 
   card(s, 6.75, 1.7, 6.0, 5.4);
   s.addImage({ path: IMG.dev, x: 6.9, y: 1.95, w: 5.7, h: 3.2, sizing: { type: "cover", w: 5.7, h: 3.2 } });
@@ -340,11 +340,11 @@ const bu = () => ({ code: "2022", indent: 12 });
   card(s, M, 5.6, 5.6, 1.2);
   s.addText([
     { text: "AI 原生开发：", options: { bold: true, color: ACCENT } },
-    { text: "两周交付传统团队一个月的活；140 项自动化测试 + CI徽章 + 审计日志 = 严谨看得见。", options: { color: MUTED } }
+    { text: "两周交付传统团队一个月的活；142 项自动化测试 + CI徽章 + 审计日志 = 严谨看得见。", options: { color: MUTED } }
   ], { x: M + 0.25, y: 5.78, w: 5.1, h: 0.9, fontSize: 12.5, fontFace: F, margin: 0 });
 
   const tl = [
-    ["已完成", "v1.0–v2.1.1 可运行产品：四大输出 / 32类参数7大机型 / ★▲风控 / 原文批注 / 置信度 / 审计日志 / 140项测试", GREEN],
+    ["已完成", "v1.0–v2.1.1 可运行产品：四大输出 / 32类参数7大机型 / ★▲风控 / 原文批注 / 置信度 / 审计日志 / 142项测试", GREEN],
     ["30 天内", "3–5 家经销商试点 · 50 份真实标书扩充规则库 · 续费率验证", PRIMARY],
     ["90 天内", "Coze 公开版上线 · 客户交互智能体（工程机械外贸询盘，衔接国贸专业）", ACCENT]
   ];
