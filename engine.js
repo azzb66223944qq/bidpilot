@@ -476,8 +476,10 @@
         // 半年质保特殊识别（无数值可提取时）
         if (def.id === 'warranty' && /质保[^。\n]{0,8}半年|保修[^。\n]{0,8}半年/.test(libText)) {
           row.respText = '质保：半年（资料库）';
-          row.status = reqVal < 1 ? '满足' : '负偏离';
-          row.note = '半年质保通常不满足"不低于1年"要求';
+          var reqYears = req.prefix === 'range' ? req.min : req.value;
+          var halfOk = req.prefix === 'max' || 0.5 >= reqYears;
+          row.status = halfOk ? '满足' : '负偏离';
+          row.note = halfOk ? null : '半年质保不满足"不低于' + reqYears + '年"的公告要求';
           row.proof = '官方参数表（资料库）';
           rows.push(row);
           return;

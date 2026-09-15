@@ -1,6 +1,6 @@
 /* 标书快反 BidPilot · 路演PPT构建脚本（pptxgenjs）
  * 运行：NODE_PATH=$(npm root -g) node docs/build-lupian.js
- * 输出：docs/路演PPT-标书快反.pptx
+ * 输出：docs/Roadshow-Deck-BidPilot.pptx
  */
 const pptxgen = require("pptxgenjs");
 
@@ -52,9 +52,9 @@ const bu = () => ({ code: "2022", indent: 12 });
     { text: "把投标标书处理从 2–3 天压缩到 10 秒：", options: { color: TXT, breakLine: true } },
     { text: "资格自查 · 技术偏离表 · 废标风险 TOP5 · 就绪度评分，一次生成。", options: { color: MUTED } }
   ], { x: M, y: 3.95, w: 9.2, h: 0.9, fontSize: 16, fontFace: F, margin: 0, paraSpaceAfter: 6 });
-  const chips = ["反幻觉引擎", "双引擎架构", "98 项自动化测试", "32类参数 · 7大机型", "v1.7"];
+  const chips = ["反幻觉引擎", "双引擎架构", "140 项测试", "32 类参数", "v2.1"];
   chips.forEach((c, i) => {
-    const cw = 2.0, cx = M + i * (cw + 0.22);
+    const cw = 2.28, cx = M + i * (cw + 0.25);
     s.addShape(p.shapes.ROUNDED_RECTANGLE, { x: cx, y: 5.15, w: cw, h: 0.5, fill: { color: CARD }, line: { color: PRIMARY, width: 1 }, rectRadius: 0.25 });
     s.addText(c, { x: cx, y: 5.15, w: cw, h: 0.5, fontSize: 13, fontFace: F, color: ACCENT, align: "center", valign: "middle", margin: 0 });
   });
@@ -80,7 +80,7 @@ const bu = () => ({ code: "2022", indent: 12 });
   ], { x: M + 0.25, y: 5.25, w: 3.7, h: 1.0, fontSize: 15, fontFace: F, margin: 0, paraSpaceAfter: 6 });
 
   const rows = [
-    ["规则复杂", "16类技术参数、★关键条款、解密时限、保证金账户规则——漏一条即出局"],
+    ["规则复杂", "32类参数、★▲条款、解密时限、保证金规则——漏一条即出局"],
     ["废标频发", "★参数不满足、授权书漏盖章、保证金晚到账：每一项都是一票否决"],
     ["经验难传承", "老师傅的避坑清单存在脑子里，新人每次都要重交学费"]
   ];
@@ -102,7 +102,7 @@ const bu = () => ({ code: "2022", indent: 12 });
     { text: "2–3 天", options: { fontSize: 30, color: MUTED, strike: true } },
     { text: "  →  ", options: { fontSize: 30, color: FAINT } },
     { text: "10 秒", options: { fontSize: 44, color: ACCENT, bold: true } }
-  ], { x: M, y: 1.7, w: 4.6, h: 0.9, fontFace: F, margin: 0 });
+  ], { x: M, y: 1.7, w: 4.85, h: 0.9, fontFace: F, margin: 0 });
   s.addText("贴入资料库与招标公告，四份成果一次成型；\n资料库里没有的信息，一个字都不编。", { x: M, y: 2.75, w: 4.4, h: 1.0, fontSize: 14, fontFace: F, color: MUTED, margin: 0 });
   card(s, M, 4.15, 4.4, 2.2);
   s.addText("四大输出", { x: M + 0.25, y: 4.35, w: 3.9, h: 0.35, fontSize: 13, fontFace: F, color: ACCENT, charSpacing: 2, margin: 0 });
@@ -115,9 +115,9 @@ const bu = () => ({ code: "2022", indent: 12 });
 
   const rows = [
     ["输入", "本公司资料库（资质/业绩/设备参数） + 招标公告整段粘贴"],
-    ["解析", "16类参数提取 · 单位自动换算 · ★关键参数段级定位 · 元信息提取"],
+    ["解析", "32类参数 · 单位换算 · ★▲条款定位 · 变更检测"],
     ["判定", "满足/正偏离/负偏离 · 上下限语义区分 · 跨口径冲突不瞎换算"],
-    ["交付", "报告导出（MD/HTML/PDF）· 一键补料清单 · 公告变更对比（澄清/补遗diff）"]
+    ["交付", "MD/HTML/PDF报告 · 补料清单 · 公告对比"]
   ];
   rows.forEach((r, i) => {
     const y = 1.7 + i * 1.24;
@@ -134,7 +134,7 @@ const bu = () => ({ code: "2022", indent: 12 });
   const s = slide("PRODUCT", "产品实拍 · 资格自查与行动时间表");
   card(s, M - 0.06, 1.56, 7.6, 4.36);
   s.addImage({ path: IMG.qual, x: M, y: 1.62, w: 7.2, h: 4.05, sizing: { type: "cover", w: 7.2, h: 4.05 } });
-  s.addText("资格自查页（v1.4 实拍）", { x: M, y: 5.98, w: 7.2, h: 0.3, fontSize: 11, fontFace: F, color: FAINT, margin: 0 });
+  s.addText("资格自查页 · 产品实拍（演示数据为虚构）", { x: M, y: 5.98, w: 7.2, h: 0.3, fontSize: 11, fontFace: F, color: FAINT, margin: 0 });
 
   const pts = [
     ["7 张速览卡", "限价 / 保证金 / 解密时限 / 报名与开标时间 / 审查方式，一屏速览"],
@@ -157,7 +157,7 @@ const bu = () => ({ code: "2022", indent: 12 });
 
   const boxes = [
     ["输入", "资料库 + 招标公告\n（唯一信息来源）", PRIMARY],
-    ["规则引擎", "白名单引用 · 确定性判定\n16类参数 · 80项测试", PRIMARY],
+    ["规则引擎", "白名单引用 · 确定性判定\n32类参数 · 140项测试 · 审计日志", PRIMARY],
     ["输出协议", "缺失信息 → 固定占位符\n“该信息不在资料库中，请核实”", ACCENT]
   ];
   boxes.forEach((b, i) => {
@@ -185,11 +185,11 @@ const bu = () => ({ code: "2022", indent: 12 });
 
 /* ================= S6 引擎能力 ================= */
 {
-  const s = slide("ENGINE", "16 类参数 · 可解释判定");
+  const s = slide("ENGINE", "32 类参数 · 7 大机型族 · 可解释判定");
   const stats = [
-    ["16", "类技术参数", "装载/挖掘/起重/泵送\n四大机型族全覆盖", PRIMARY],
-    ["3 套", "单位自动换算", "mm↔m · 马力↔kW · 吨↔kg\n口径冲突拒绝瞎换算", ACCENT],
-    ["★", "关键参数段级定位", "★参数负偏离 → 直接废标级\n红色警告 + 评分压制", GOLD],
+    ["32", "类技术参数", "装载/挖掘/起重/泵送/道路/环卫\n七大机型族全覆盖", PRIMARY],
+    ["4 套", "单位自动换算", "mm↔m · 马力↔kW · 吨↔kg · L↔m³\n口径冲突拒绝瞎换算", ACCENT],
+    ["★▲", "双级条款风控", "★负偏离→废标级 · ▲负偏离→评分复核\n原文批注视图：风险在原文上发光", GOLD],
     ["0–100", "就绪度评分", "权重可配置，脚注随报告输出\n权重 = 业务价值观", GREEN]
   ];
   stats.forEach((t, i) => {
@@ -200,11 +200,11 @@ const bu = () => ({ code: "2022", indent: 12 });
     s.addText(t[2], { x: x + 0.22, y: y + 1.32, w: 2.35, h: 0.7, fontSize: 10.5, fontFace: F, color: MUTED, margin: 0 });
   });
   card(s, M - 0.06, 6.0, 6.0, 1.1);
-  s.addText("115 项自动化测试全绿 · 32类参数 · 7大机型族 · 正例可投/反例敢拒", { x: M + 0.2, y: 6.22, w: 5.7, h: 0.65, fontSize: 14, fontFace: F, bold: true, color: TXT, margin: 0 });
+  s.addText("140 项自动化测试全绿：正例可投 · 反例敢拒 · 乱输入不崩", { x: M + 0.2, y: 6.22, w: 5.7, h: 0.65, fontSize: 14, fontFace: F, bold: true, color: TXT, margin: 0 });
 
   card(s, 6.75, 1.7, 6.0, 5.4);
   s.addImage({ path: IMG.dev, x: 6.9, y: 1.95, w: 5.7, h: 3.2, sizing: { type: "cover", w: 5.7, h: 3.2 } });
-  s.addText("偏离表实拍：★仅标记关键参数 · 6.58m 自动对比 ≥6500mm", { x: 6.95, y: 5.25, w: 5.6, h: 0.35, fontSize: 11.5, fontFace: F, color: MUTED, margin: 0 });
+  s.addText("偏离表实拍：★精准定位 · 6.58m 自动对比 ≥6500mm", { x: 6.95, y: 5.25, w: 5.6, h: 0.35, fontSize: 11.5, fontFace: F, color: MUTED, margin: 0 });
   s.addText("每个判定可回溯原文片段", { x: 6.95, y: 6.55, w: 5.6, h: 0.35, fontSize: 12, fontFace: F, color: ACCENT, margin: 0 });
   s.addNotes("左边四张卡按顺序讲，落到右边截图的★与单位换算两处细节。");
 }
@@ -257,7 +257,7 @@ const bu = () => ({ code: "2022", indent: 12 });
   s.addText([
     { text: "付费动因：一次废标损失（保证金 + 机会成本）≈ 数年 SaaS 年费，付费逻辑成立", options: { bullet: bu(), breakLine: true } },
     { text: "获客路径：行业协会与厂商渠道 —— 我们帮厂商的经销商中标，厂商有推荐动力", options: { bullet: bu(), breakLine: true } },
-    { text: "扩品路径：装载/挖掘/起重/泵送四类机型已覆盖，规则库横向复制成本低", options: { bullet: bu() } }
+    { text: "扩品路径：七大机型族已覆盖，规则库横向复制成本低", options: { bullet: bu() } }
   ], { x: M + 0.28, y: 5.18, w: 11.6, h: 1.05, fontSize: 13, fontFace: F, color: TXT, paraSpaceAfter: 5, margin: 0 });
   s.addText("以上为示例测算（est.），参赛提交前以中国工程机械工业协会等公开数据核校。", { x: M, y: 6.55, w: 12, h: 0.35, fontSize: 10.5, fontFace: F, color: FAINT, margin: 0 });
   s.addNotes("强调数字是示例口径，答辩时展示测算框架而非编造精确数。");
@@ -297,7 +297,7 @@ const bu = () => ({ code: "2022", indent: 12 });
   const head = ["维度", "通用大模型", "传统标书软件", "标书快反"];
   const rows = [
     ["反幻觉合规", "会编造参数", "模板无判定", "白名单协议+占位符"],
-    ["偏离判定规则库", "无行业规则", "无智能判定", "16类参数·上下限语义"],
+    ["偏离判定规则库", "无行业规则", "无智能判定", "32类参数·上下限语义"],
     ["结论可审计", "黑盒输出", "不可追溯", "逐条对应原文片段"],
     ["离线可用", "需联网", "可离线", "规则引擎离线运行"]
   ];
@@ -340,11 +340,11 @@ const bu = () => ({ code: "2022", indent: 12 });
   card(s, M, 5.6, 5.6, 1.2);
   s.addText([
     { text: "AI 原生开发：", options: { bold: true, color: ACCENT } },
-    { text: "两周交付传统团队一个月的活；80 项自动化测试 = 业务理解的固化，不写一行多余代码。", options: { color: MUTED } }
+    { text: "两周交付传统团队一个月的活；140 项自动化测试 + CI徽章 + 审计日志 = 严谨看得见。", options: { color: MUTED } }
   ], { x: M + 0.25, y: 5.78, w: 5.1, h: 0.9, fontSize: 12.5, fontFace: F, margin: 0 });
 
   const tl = [
-    ["已完成", "v1.0–v1.7 可运行产品：四大输出 / 32类参数7大机型 / ★▲双级风控 / 公告变更检测 / 自定义词库 / 115项测试", GREEN],
+    ["已完成", "v1.0–v2.1.1 可运行产品：四大输出 / 32类参数7大机型 / ★▲风控 / 原文批注 / 置信度 / 审计日志 / 140项测试", GREEN],
     ["30 天内", "3–5 家经销商试点 · 50 份真实标书扩充规则库 · 续费率验证", PRIMARY],
     ["90 天内", "Coze 公开版上线 · 客户交互智能体（工程机械外贸询盘，衔接国贸专业）", ACCENT]
   ];
@@ -367,10 +367,10 @@ const bu = () => ({ code: "2022", indent: 12 });
   s.addText("反幻觉 · 可回溯 · 双引擎 · 敢说不", { x: M, y: 4.1, w: 10, h: 0.55, fontSize: 20, fontFace: F, bold: true, color: ACCENT, margin: 0 });
   s.addText([
     { text: "标书快反 BidPilot — 工程机械投标文件 AI 智能体", options: { color: MUTED, breakLine: true } },
-    { text: "GitHub / 在线演示：参赛后补充链接 · 官方咨询：4001109999", options: { color: FAINT } }
+    { text: "在线演示：https://azzb66223944qq.github.io/bidpilot/ · 官方咨询：4001109999", options: { color: FAINT } }
   ], { x: M, y: 5.6, w: 10, h: 0.9, fontSize: 14, fontFace: F, margin: 0, paraSpaceAfter: 8 });
   s.addText("演示数据均为虚构 · AI 辅助分析不能替代人工复核", { x: M, y: H - 0.62, w: 10, h: 0.32, fontSize: 11, fontFace: F, color: FAINT, margin: 0 });
   s.addNotes("收尾回到第一句话，形成闭环。");
 }
 
-p.writeFile({ fileName: "docs/路演PPT-标书快反.pptx" }).then(() => console.log("PPT done: docs/路演PPT-标书快反.pptx"));
+p.writeFile({ fileName: "docs/Roadshow-Deck-BidPilot.pptx" }).then(() => console.log("PPT done: docs/Roadshow-Deck-BidPilot.pptx"));

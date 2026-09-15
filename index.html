@@ -548,10 +548,10 @@
     var f = this.files[0]; if (!f) return;
     try {
       var pack = JSON.parse(await f.text());
-      if (pack.app !== 'bidpilot' && pack.kind !== 'assets') throw new Error('不是有效的标书快反资产包');
-      if (pack.aliases) store.set('bidpilot_aliases', pack.aliases);
-      if (pack.devices) store.set('bidpilot_machines', pack.devices);
-      if (pack.weights) store.set('bidpilot_weights', pack.weights);
+      if (pack.app !== 'bidpilot' || pack.kind !== 'assets') throw new Error('不是有效的标书快反资产包');
+      if (pack.aliases) localStorage.setItem('bidpilot_aliases', JSON.stringify(pack.aliases));
+      if (pack.devices) localStorage.setItem('bidpilot_machines', JSON.stringify(pack.devices));
+      if (pack.weights) localStorage.setItem('bidpilot_weights', JSON.stringify(pack.weights));
       if (pack.prefs){ if (pack.prefs.theme) cfg.theme = pack.prefs.theme; if (pack.prefs.company) cfg.company = pack.prefs.company; if (pack.prefs.model) cfg.model = pack.prefs.model; saveCfg(); }
       renderLex(); var th = document.getElementById('cfgTheme'); if (th) th.value = cfg.theme || '';
       setStatus('✔ 资产包已导入。重新生成分析后生效。','');
@@ -862,8 +862,7 @@
       ctx.fillStyle = '#93a5c4'; ctx.textAlign = 'center';
       var lx = cx + (R+26)*Math.cos(ang), ly = cy + (R+20)*Math.sin(ang);
       lx = Math.max(28, Math.min(cv.width-28, lx)); ly = Math.max(12, Math.min(cv.height-4, ly));
-      var lx = cx + (R+26)*Math.cos(ang), ly = cy + (R+20)*Math.sin(ang);
-      ctx.fillText(shared[i].name.slice(0, 5), cx + (R+26)*Math.cos(ang), cy + (R+20)*Math.sin(ang));
+      ctx.fillText(shared[i].name.slice(0, 5), lx, ly);
     }
     function poly(rows, color, fill){
       ctx.beginPath();
@@ -1115,7 +1114,10 @@
       var a = document.createElement('a'); a.href = URL.createObjectURL(blob);
       a.download = 'bidpilot-audit-' + new Date().toISOString().slice(0,10) + '.json'; a.click(); URL.revokeObjectURL(a.href);
     }
-    if (e.target && e.target.id === 'btnAuditClear2'){ store.set('bidpilot_audit', []); renderAuditPanel(); }
+    if (e.target && e.target.id === 'btnAuditClear2'){
+      if (!confirm('确定清空审计日志？此操作不可恢复。')) return;
+      localStorage.setItem('bidpilot_audit', '[]'); renderAuditPanel();
+    }
   });
   $('btnPrint').onclick = function(){ window.print(); };
   $('btnCheck').onclick = function(){

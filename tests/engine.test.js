@@ -56,6 +56,10 @@ const RH = E.analyze('我方设备额定功率 150马力。', '要求额定功�
 t('马力→kW: 150马力≈110.3 → 正偏离(附换算说明)', statusOf(RH,'power') === '正偏离');
 const RHALF = E.analyze('质保：半年。', '质保期：不低于 1 年。');
 t('半年质保=负偏离(附提示)', statusOf(RHALF,'warranty') === '负偏离');
+const RHALF2 = E.analyze('质保：半年。', '质保期：不低于 0.5 年。');
+t('半年质保:要求0.5年=满足(回归)', statusOf(RHALF2,'warranty') === '满足');
+const RHALF3 = E.analyze('质保：半年。', '质保期：不超过 2 年。');
+t('半年质保:上限型要求=满足(回归)', statusOf(RHALF3,'warranty') === '满足');
 const RMIX = E.analyze('爬坡能力 30度。', '爬坡能力 ≥70%。');
 t('爬坡 % vs 度 = 待人工核对(拒绝瞎换算)', statusOf(RMIX,'ride') === '待人工核对');
 const RRANGE = E.analyze('整机工作质量 21t。', '整机工作质量 20~22t。');
