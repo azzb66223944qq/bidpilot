@@ -1,5 +1,5 @@
 /* ============================================================
- * 标书快反 (BidPilot) · 核心解析引擎 v1.1
+ * 标书快反 (BidPilot) · 核心解析引擎 v3.0
  * 纯函数模块：浏览器与 Node 均可运行（无 DOM 依赖）
  * 设计原则（反幻觉铁律）：
  *   1. 只允许使用【资料库】与【招标公告】两份输入中的信息；
@@ -390,7 +390,7 @@
     var aliases = opts && opts.aliases;
     var params = analyzeParams(libText, tenderText, aliases);
     var quals = analyzeQuals(libText, tenderText, meta);
-    var risks = buildRisks(meta, libText);
+    var risks = buildRisks(meta, libText, opts && opts.caseLib);
     var conclusion = buildConclusion(params, meta, opts && opts.weights);
     var timeline = buildTimeline(meta);
 
@@ -650,7 +650,17 @@
   }
 
   /* ---------- 废标风险 TOP5 ---------- */
-  function buildRisks(meta, libText) {
+  var RISK_CASE_CAT = { 1: '解密超时', 2: '串标', 3: '保证金', 4: '授权书', 5: '报价' };
+  /* 判例引用（J1·2026-09）：按风险类别挂载同类判例；无库不渲染，无同类判例诚实标注 */
+  function pickCases(caseLib, category) {
+    if (!caseLib) return undefined;
+    var hits = caseLib.filter(function (c) { return c && c.category === category && c.verified !== false; });
+    if (!hits.length) return { none: true };
+    return hits.slice(0, 2).map(function (c) {
+      return { title: c.title, authority: c.authority, date: c.date, url: c.url, quote: c.quote || null, basis: c.basis || null };
+    });
+  }
+  function buildRisks(meta, libText, caseLib) {
     var risks = [];
     var decMin = meta.decryptMin || 60;
     risks.push({
@@ -686,6 +696,10 @@
         (meta.enrollDeadline ? '报名/下载标书 ' + meta.enrollDeadline + ' 截止，' : '') +
         (meta.bidDeadline ? '开标 ' + meta.bidDeadline + '。' : '各节点时间请核对原文。') +
         ' 动作：倒排时间表，新账号办CA要2-5个工作日，别拖到最后一天。'
+    });
+    risks.forEach(function (r) {
+      var cs = pickCases(caseLib, RISK_CASE_CAT[r.rank]);
+      if (cs) r.cases = cs;
     });
     return risks;
   }
@@ -803,6 +817,14 @@
       L.push('');
       L.push(r.body);
       L.push('');
+      if (r.cases) {
+        if (r.cases.none) L.push('> ⚖ 同类判例：暂无公开同类判例（将持续跟踪补充）。');
+        else r.cases.forEach(function (c) {
+          L.push('> ⚖ 同类判例：[' + c.title + '](' + c.url + ')（' + c.authority + '，' + c.date + '）' +
+            (c.quote ? '："' + c.quote + '"' : '') + (c.basis ? '｜依据：' + c.basis : '') + '。');
+        });
+        L.push('');
+      }
     });
     L.push('## 四、结论与建议');
     L.push('');
@@ -955,7 +977,18 @@
 
     H.push('<h2>三、废标风险 TOP5</h2>');
     R.risks.forEach(function (r) {
-      H.push('<div class="risk' + (r.level === '中' ? ' mid' : '') + '"><b>TOP' + r.rank + ' · ' + esc(r.title) + '</b>（风险' + esc(r.level) + '）<br><span style="color:#5a6a88">' + esc(r.body) + '</span></div>');
+      var caseHtml = '';
+      if (r.cases) {
+        caseHtml = r.cases.none
+          ? '<div style="font-size:11px;color:#8896b3;margin-top:6px;border-top:1px dashed #dde3ee;padding-top:5px">⚖ 同类判例：暂无公开同类判例，将持续跟踪补充</div>'
+          : '<div style="font-size:11px;color:#5a6a88;margin-top:6px;border-top:1px dashed #dde3ee;padding-top:5px"><b>⚖ 同类判例</b><br>' +
+            r.cases.map(function (c) {
+              return '<a href="' + esc(c.url) + '" target="_blank" style="color:#2f6fe0">' + esc(c.title) + '</a>（' + esc(c.authority) + '，' + esc(c.date) + '）' +
+                (c.quote ? '<br><span style="color:#7a88a3">"' + esc(c.quote) + '"</span>' : '') +
+                (c.basis ? '<br><span style="color:#7a88a3">依据：' + esc(c.basis) + '</span>' : '');
+            }).join('<br>') + '</div>';
+      }
+      H.push('<div class="risk' + (r.level === '中' ? ' mid' : '') + '"><b>TOP' + r.rank + ' · ' + esc(r.title) + '</b>（风险' + esc(r.level) + '）<br><span style="color:#5a6a88">' + esc(r.body) + '</span>' + caseHtml + '</div>');
     });
 
     H.push('<h2>四、结论与建议</h2><div class="verdict" style="' + (T ? 'border-color:' + T + ';' : '') + '"><b>' + c.score + '/100（' + esc(c.gradeText) + '）</b><br>' + esc(c.verdict) + '<br><span style="font-size:12px;color:#5a6a88">前提：' + esc(c.premises.join('；')) + '</span></div>');
@@ -967,7 +1000,7 @@
         '<span style="font-size:12px;color:#5a6a88">' + esc(Bc.verdict) + '</span><br>' +
         '<b>选型建议</b>：' + (c.score > Bc.score ? 'A设备综合就绪度更高，优先以A设备投本标。' : c.score < Bc.score ? 'B设备综合就绪度更高，优先以B设备投本标。' : '两台设备就绪度相当，按商务报价与库存周期取舍。') + '</div>');
     }
-    H.push('<p class="foot">报告指纹 ' + (opts && opts.fingerprint ? esc(opts.fingerprint) : '—') + ' · 引擎 v2.1.1 · 数据声明：本报告由标书快反规则引擎基于所提供资料生成，内置演示数据为虚构；不编造任何未提供的品牌、机型、参数、业绩与资质。AI辅助分析不能替代人工复核，投标前必须逐条核对招标文件原文。</p>');
+    H.push('<p class="foot">报告指纹 ' + (opts && opts.fingerprint ? esc(opts.fingerprint) : '—') + ' · 引擎 v3.0.0 · 数据声明：本报告由标书快反规则引擎基于所提供资料生成，内置演示数据为虚构；不编造任何未提供的品牌、机型、参数、业绩与资质。AI辅助分析不能替代人工复核，投标前必须逐条核对招标文件原文。</p>');
     H.push('</div></body></html>');
     return H.join('');
   }
@@ -1084,9 +1117,105 @@
     return { found: true, text: text.slice(start, end), start: start, end: end };
   }
 
+  /* ---------- 商机雷达（V3.0-P1）：设备指纹 × 公告批量预筛 ----------
+   * 确定性预筛：不生成新结论，只复用参数判定做"可投/边缘/不可投/机型不符"分诊
+   */
+  var DEVICE_CATS = [
+    { id: 'loader',     kw: /装载机|铲车/ },
+    { id: 'excavator',  kw: /挖掘机|挖机/ },
+    { id: 'crane',      kw: /起重机|吊车|汽车吊/ },
+    { id: 'pump',       kw: /泵车|混凝土泵送/ },
+    { id: 'roller',     kw: /压路机/ },
+    { id: 'paver',      kw: /摊铺机/ },
+    { id: 'miller',     kw: /铣刨机/ },
+    { id: 'dozer',      kw: /推土机/ },
+    { id: 'sprinkler',  kw: /洒水车|喷洒车/ },
+    { id: 'garbage',    kw: /垃圾车|压缩车|环卫车/ },
+    { id: 'forklift',   kw: /叉车/ },
+    { id: 'drill',      kw: /钻机|旋挖钻/ },
+    { id: 'aerial',     kw: /高空作业|登高车/ }
+  ];
+  var CAT_NAME = { loader: '装载机', excavator: '挖掘机', crane: '起重机', pump: '泵车', roller: '压路机',
+                   paver: '摊铺机', miller: '铣刨机', dozer: '推土机', sprinkler: '洒水车',
+                   garbage: '垃圾/环卫车', forklift: '叉车', drill: '钻机', aerial: '高空作业平台' };
+  function detectDeviceCats(text) {
+    var t = text || '', hits = [];
+    DEVICE_CATS.forEach(function (c) { if (c.kw.test(t)) hits.push(c.id); });
+    return hits;
+  }
+
+  function buildDeviceFingerprint(libText) {
+    var fp = { params: {}, cats: detectDeviceCats(libText || '') };
+    PARAM_DEFS.forEach(function (def) {
+      var lib = extractNum(libText || '', def.kw, def.unit, def.mode);
+      if (lib) fp.params[def.id] = { value: normalizeValue(def, lib.value, lib.unit), unit: lib.unit, raw: lib.raw };
+    });
+    return fp;
+  }
+
+  function triageAnnouncement(fp, tenderText) {
+    tenderText = (tenderText || '').trim();
+    if (!tenderText || !fp) return { error: '缺少设备指纹或公告文本。' };
+    /* 品类预过滤：公告与设备库的机型族不相交 → 机型不符（避免通用参数重叠造成"边缘"误报） */
+    var tCats = detectDeviceCats(tenderText);
+    if (tCats.length && fp.cats.length && !tCats.some(function (c) { return fp.cats.indexOf(c) >= 0; })) {
+      return { verdict: '机型不符', tenderCats: tCats, deviceCats: fp.cats };
+    }
+    var required = [];
+    PARAM_DEFS.forEach(function (def) {
+      var req = extractNum(tenderText, def.kw, def.unit, def.mode);
+      if (req) required.push({ def: def, req: req, star: markForParam(tenderText, req.idx) === '★' });
+    });
+    if (!required.length) return { error: '公告中未检索到可判定参数。' };
+    var kills = [], negs = [], gaps = [], starMissing = 0, matched = 0;
+    required.forEach(function (r) {
+      var lib = fp.params[r.def.id];
+      if (!lib) { if (r.star) starMissing++; else gaps.push(r.def.name); return; }
+      matched++;
+      var reqN = { value: normalizeValue(r.def, r.req.value, r.req.unit), min: r.req.min, max: r.req.max, prefix: r.req.prefix };
+      if (reqN.prefix === 'range' && reqN.max !== null) reqN.max = normalizeValue(r.def, reqN.max, r.req.unit);
+      if (compare(lib.value, reqN, r.def.mode) === '负偏离') {
+        if (r.star) kills.push(r.def.name + '（★负偏离）'); else negs.push(r.def.name);
+      }
+    });
+    var coverage = matched / required.length;
+    var verdict;
+    if (kills.length || negs.length > 1 || coverage < 0.4) verdict = '不可投';
+    else if (negs.length === 0 && starMissing === 0 && coverage >= 0.7) verdict = '可投';
+    else verdict = '边缘';
+    return { verdict: verdict, coverage: Math.round(coverage * 100), requiredCount: required.length,
+             matchedCount: matched, kills: kills, negs: negs, gaps: gaps.slice(0, 6), starMissing: starMissing };
+  }
+
+  function matchFeed(deviceList, announcements) {
+    var fps = (deviceList || []).map(function (d) {
+      return { key: d.key, name: d.name, libText: d.libText, fp: buildDeviceFingerprint(d.libText) };
+    });
+    var RANK = { '可投': 0, '边缘': 1, '不可投': 2, '机型不符': 3 };
+    var rows = (announcements || []).map(function (t, i) {
+      var best = null;
+      fps.forEach(function (d) {
+        var r = triageAnnouncement(d.fp, t);
+        if (r.error) return;
+        var rank = RANK[r.verdict];
+        if (!best || rank < best.rank || (rank === best.rank && r.coverage > best.result.coverage)) {
+          best = { rank: rank, device: d.name, deviceKey: d.key, libText: d.libText, result: r };
+        }
+      });
+      var meta = extractMeta(t);
+      var bd = meta.bidDeadline ? parseCnDate(meta.bidDeadline) : null;
+      var title = (t.split('\n')[0] || ('公告' + (i + 1))).replace(/【|】|（.*?）/g, '').slice(0, 26);
+      return { title: title, tender: t, best: best,
+               bidDeadline: meta.bidDeadline,
+               daysLeft: bd ? Math.ceil((bd - new Date()) / 86400000) : null };
+    });
+    rows.sort(function (a, b) { return (a.best ? a.best.rank : 4) - (b.best ? b.best.rank : 4); });
+    return { rows: rows, deviceCount: fps.length, announcementCount: rows.length };
+  }
+
   /* ---------- 导出 ---------- */
   return {
-    VERSION: '2.1.1',
+    VERSION: '3.0.0',
     DEFAULT_WEIGHTS: DEFAULT_WEIGHTS,
     MISSING_LIB: MISSING_LIB,
     DEMO_LIBRARY: DEMO_LIBRARY,
@@ -1098,6 +1227,10 @@
     analyze: analyze,
     diffAnnouncements: diffAnnouncements,
     locateParamSection: locateParamSection,
+    buildDeviceFingerprint: buildDeviceFingerprint,
+    triageAnnouncement: triageAnnouncement,
+    matchFeed: matchFeed,
+    detectDeviceCats: detectDeviceCats,
     extractMeta: extractMeta,
     analyzeParams: analyzeParams,
     analyzeQuals: analyzeQuals,

@@ -4,11 +4,12 @@
  *   - 其余同源静态资源：缓存优先（版本号内嵌于缓存名，升级即换新）
  * 版本号变更即触发旧缓存清理
  */
-const CACHE = 'bidpilot-v3';
+const CACHE = 'bidpilot-v5';
 const ASSETS = [
   './',
   './index.html',
   './engine.js',
+  './cases.js',
   './manifest.json',
   './icon-192.png',
   './icon-512.png',

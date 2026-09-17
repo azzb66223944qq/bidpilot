@@ -91,7 +91,7 @@ const CL = E.buildRefeedChecklist(R1, '宁波水务装载机');
 t('补料清单:含项目名与缺失证明', CL.indexOf('宁波水务') >= 0 && CL.indexOf('型式试验报告') >= 0 && CL.indexOf('环保信息公开编号') >= 0);
 t('补料清单:含商务待核实项', CL.indexOf('CA数字证书') >= 0);
 t('补料清单:不含已满足参数', CL.indexOf('标准斗容') === -1 && CL.indexOf('额定载重量 ——') === -1);
-t('版本=2.1.1', E.VERSION === '2.1.1');
+t('版本=3.0.0', E.VERSION === '3.0.0');
 
 /* ===== v1.4：★关键参数废标判定 + 行动时间表 + 公司抬头 ===== */
 t('装载机:★斗容已满足=不触发废标', R1.params.find(p => p.id === 'bucket').key === true && R1.conclusion.killRisk === false);
@@ -110,7 +110,7 @@ t('MD报告:含公司抬头', MD2.indexOf('（浙东机械经销有限公司）'
 t('MD报告:含时间表', MD2.indexOf('投标行动时间表') >= 0);
 const HTML2 = E.buildHtmlReport(R1, { company: '浙东机械' });
 t('HTML报告:含公司抬头与倒计时卡', HTML2.indexOf('（浙东机械）') >= 0 && HTML2.indexOf('距开标') >= 0);
-t('版本=2.1.1', E.VERSION === '2.1.1');
+t('版本=3.0.0', E.VERSION === '3.0.0');
 
 /* ===== v1.3：新机型场景与评分权重配置 ===== */
 const RC = E.analyze(E.DEMOS.crane.lib, E.DEMOS.crane.tender);
@@ -151,7 +151,7 @@ const RA2 = E.analyze('设备额定载荷 5t。', '要求额定载重量 ≥4吨
 t('词库+吨kg换算:达标', ['满足','正偏离'].indexOf(statusOf(RA2,'load')) >= 0);
 t('词库:正则特殊字符安全', (() => { const R = E.analyze('斗容(额定) 3.0m³。', '标准斗容 ≥2.7m³。', { aliases: [{ term:'斗容(额定)', param:'bucket' }] }); return statusOf(R,'bucket') !== '资料库无'; })());
 t('导出PARAM_DEFS=32类', E.PARAM_DEFS.length === 32);
-t('版本=2.1.1', E.VERSION === '2.1.1');
+t('版本=3.0.0', E.VERSION === '3.0.0');
 
 
 /* ===== v1.6b：真实公告适配（限价/预算分离 + （元）格式） ===== */
@@ -209,7 +209,7 @@ t('置信度:口径冲突=中', RB4.params.find(p => p.id === 'ride').conf === '
 const HTML20 = E.buildHtmlReport(R20, { company: '浙东机械', theme: '#0e7a4e', logo: 'data:image/png;base64,AAAA' });
 t('品牌报告:主题色渗透', HTML20.indexOf('#0e7a4e') >= 0);
 t('品牌报告:Logo嵌入', HTML20.indexOf('data:image/png;base64') >= 0);
-t('版本=2.1.1', E.VERSION === '2.1.1');
+t('版本=3.0.0', E.VERSION === '3.0.0');
 
 
 /* ===== v2.1：采购文件章节定位 ===== */
@@ -221,7 +221,7 @@ t('定位:第四章边界截断', LOC.text.indexOf('评标办法') === -1);
 t('定位:无章节文本=not found', E.locateParamSection('这里没有任何章节标记。').found === false);
 const RL21 = E.analyze('额定载重量 5000kg。', LOC.text);
 t('定位章节可直接驱动偏离表', RL21.params.find(p => p.id === 'load').status === '满足');
-t('版本=2.1.1', E.VERSION === '2.1.1');
+t('版本=3.0.0', E.VERSION === '3.0.0');
 
 
 /* ===== v2.1.1：导出一致性（置信列+报告指纹） ===== */
@@ -238,7 +238,67 @@ t('v2.1.1:别名匹配中置信进入导出', (() => {
   const M = E.buildMarkdown(RA, { fingerprint: 'x' });
   return M.indexOf('◐ 中') >= 0 && M.indexOf('额定容积') >= 0;
 })());
-t('版本=2.1.1', E.VERSION === '2.1.1');
+/* ===== J1：废标判例引用（2026-09） ===== */
+const CASELIB = [
+  { title: '测试串标判例', authority: '某省财政厅', date: '2025-01', url: 'https://example.com/a', quote: '投标文件相互混装，视为串通投标。', basis: '《实施条例》第74条', category: '串标', verified: true },
+  { title: '测试保证金判例', authority: '某部', date: '2025-02', url: 'https://example.com/b', quote: '未完成线上确认，视为投标无效。', basis: '财政部令第94号', category: '保证金', verified: true }
+];
+const RC1 = E.analyze(E.DEMOS.loader.lib, E.DEMOS.loader.tender, { caseLib: CASELIB });
+t('判例:串标风险挂载同类判例', RC1.risks[1].cases && RC1.risks[1].cases[0].title === '测试串标判例');
+t('判例:保证金风险挂载同类判例', RC1.risks[2].cases && RC1.risks[2].cases[0].title === '测试保证金判例');
+t('判例:解密风险无同类判例诚实标注', RC1.risks[0].cases && RC1.risks[0].cases.none === true);
+t('判例:未验证判例不挂载', (() => {
+  const R = E.analyze(E.DEMOS.loader.lib, E.DEMOS.loader.tender, { caseLib: CASELIB.concat([{ title: '假案', category: '串标', verified: false, url: 'x' }]) });
+  return R.risks[1].cases.length === 1;
+})());
+t('判例:MD导出含判例链接与引句', (() => {
+  const M = E.buildMarkdown(RC1);
+  return M.indexOf('⚖ 同类判例') >= 0 && M.indexOf('https://example.com/a') >= 0 && M.indexOf('视为串通投标') >= 0;
+})());
+t('判例:HTML导出含判例区块', E.buildHtmlReport(RC1).indexOf('⚖ 同类判例') >= 0);
+t('判例:不传库时行为不变(回归)', (() => {
+  const R = E.analyze(E.DEMOS.loader.lib, E.DEMOS.loader.tender);
+  return R.risks.every(r => r.cases === undefined) && E.buildMarkdown(R).indexOf('同类判例') < 0;
+})());
+
+/* ===== V3.0-P1：商机雷达（设备指纹 × 公告批量预筛） ===== */
+const FP1 = E.buildDeviceFingerprint(E.DEMOS.loader.lib);
+t('雷达:装载机指纹含斗容3.0与功率162', Math.abs(FP1.params.bucket.value - 3.0) < 1e-9 && FP1.params.power.value === 162);
+const TR1 = E.triageAnnouncement(FP1, E.DEMOS.loader.tender);
+t('雷达:装载机对装载机公告=可投', TR1.verdict === '可投');
+t('雷达:同型公告覆盖率100%', TR1.coverage === 100 && TR1.requiredCount === 8);
+const TR2 = E.triageAnnouncement(FP1, E.DEMOS.excavator.tender);
+t('雷达:装载机对挖掘机公告=机型不符(品类过滤优先于参数)', TR2.verdict === '机型不符' && TR2.tenderCats.indexOf('excavator') >= 0);
+const FP2 = E.buildDeviceFingerprint(E.DEMOS.excavator.lib);
+const TR2B = E.triageAnnouncement(FP2, E.DEMOS.excavator.tender);
+t('雷达:挖掘机指纹触发★爬坡废标预判', TR2B.verdict === '不可投' && TR2B.kills.join().indexOf('爬坡') >= 0);
+const TR3 = E.triageAnnouncement(FP1, E.DEMOS.loader.tender.replace('交货期：不超过 30 天', '★爬坡能力 ≥30%；交货期：不超过 30 天'));
+t('雷达:同品类★缺认判边缘', TR3.verdict === '边缘' && TR3.starMissing === 1);
+t('雷达:空公告报错', !!E.triageAnnouncement(FP1, '').error);
+t('雷达:无参数公告报错', !!E.triageAnnouncement(FP1, '今天天气不错，没有参数。').error);
+const MF1 = E.matchFeed(
+  [{ key: 'd1', name: '装载机A', libText: E.DEMOS.loader.lib }],
+  [E.DEMOS.excavator.tender, E.DEMOS.loader.tender, E.DEMOS.crane.tender]);
+t('雷达:矩阵行数=3且可投排最前', MF1.announcementCount === 3 && MF1.rows[0].best.result.verdict === '可投');
+t('雷达:公告标题提取', MF1.rows[0].title.indexOf('装载机') >= 0);
+const MF2 = E.matchFeed(
+  [{ key: 'd1', name: '装载机A', libText: E.DEMOS.loader.lib }, { key: 'd2', name: '挖掘机B', libText: E.DEMOS.excavator.lib }],
+  [E.DEMOS.excavator.tender]);
+t('雷达:矩阵为公告选出最优设备', MF2.rows[0].best.device === '挖掘机B');
+const feed100 = Array.from({ length: 100 }, () => E.DEMOS.loader.tender);
+const t0r = Date.now();
+const MF3 = E.matchFeed([{ key: 'd1', name: 'A', libText: E.DEMOS.loader.lib }], feed100);
+const msR = Date.now() - t0r;
+t('雷达:百条公告预筛≤1秒(实测' + msR + 'ms)', msR <= 1000 && MF3.announcementCount === 100);
+/* 雷达优化：品类预过滤 + 截止时间 */
+t('雷达:品类识别(装载机库)', E.detectDeviceCats(E.DEMOS.loader.lib).indexOf('loader') >= 0);
+t('雷达:品类识别(多机型公告)', (function(){ var c = E.detectDeviceCats('采购挖掘机、装载机若干台'); return c.indexOf('excavator') >= 0 && c.indexOf('loader') >= 0; })());
+t('雷达:洒水车公告对装载机=机型不符(修误报)', (function(){ var r = E.triageAnnouncement(FP1, E.DEMOS.sprinkler.tender); return r.verdict === '机型不符' && r.tenderCats.indexOf('sprinkler') >= 0 && r.deviceCats.indexOf('loader') >= 0; })());
+t('雷达:无品类词公告回退覆盖率先行', E.triageAnnouncement(FP1, E.DEMOS.loader.tender.replace(/装载机/g, '设备')).verdict === '可投');
+t('雷达:机型不符沉底排序', (function(){ var M = E.matchFeed([{ key:'d1', name:'装载机A', libText: E.DEMOS.loader.lib }], [E.DEMOS.loader.tender, E.DEMOS.sprinkler.tender]); return M.rows[M.rows.length - 1].best.result.verdict === '机型不符'; })());
+t('雷达:提取截止时间与剩余天数', (function(){ var M = E.matchFeed([{ key:'d1', name:'A', libText: E.DEMOS.loader.lib }], [E.DEMOS.loader.tender]); var r = M.rows[0]; return r.bidDeadline && r.bidDeadline.indexOf('2026年10月13日') >= 0 && r.daysLeft > 20; })());
+
+t('版本=3.0.0', E.VERSION === '3.0.0');
 
 console.log('----------------------------------------');
 console.log('PASS=' + pass + '  FAIL=' + fail + (fail ? '  ← 存在失败，禁止发版' : '  ✅ 全部通过'));

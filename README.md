@@ -2,7 +2,7 @@
 
 [![engine tests](https://github.com/azzb66223944qq/bidpilot/actions/workflows/test.yml/badge.svg)](https://github.com/azzb66223944qq/bidpilot/actions/workflows/test.yml)
 
-工程机械投标文件 AI 智能体（**v2.1.1**）。输入**本公司资料库** + **招标公告**，10 秒生成四份投标必备成果：
+工程机械投标文件 AI 智能体（**v3.0**）。输入**本公司资料库** + **招标公告**，10 秒生成四份投标必备成果：
 
 > 🌐 **在线体验（已上线）：<https://azzb66223944qq.github.io/bidpilot/>**
 
@@ -10,6 +10,11 @@
 2. 📋 **技术偏离表** —— 逐条响应招标参数，标注 `满足 / 正偏离 / 负偏离 / 资料库无 / 待人工补充`
 3. 🚨 **废标风险 TOP5** —— 给业务员看的白话版提醒（解密时限、同网络串标、保证金、授权书用印、限价与截止时间）
 4. 🎯 **结论与评分** —— **投标就绪度评分（0-100）**动态评分环 + A/B/C/D 等级 + 是否建议投标 + 前提条件清单
+
+## v3.0 新增（判例引用风控 + 商机雷达）
+- ⚖ **判例引用风控**：废标风险 TOP5 按类别挂载真实官方判例（财政部指导性案例 / 省级财政厅处理决定 / 交易中心通报 / 司法文书，53 条种子库），五要素齐备（标题/机关/原文引句/法条依据/链接），无同类判例诚实标注"暂无"；
+- 📡 **商机雷达**：设备指纹 × 多公告批量预筛（可投/边缘/不可投/机型不符四档分诊），品类预过滤、截止时间倒排、一键载入完整分析；百条公告预筛实测毫秒级；
+- 测试扩充至 167 项断言。
 
 ## v2.1.1 新增（导出一致性与资产可携带）
 
@@ -159,7 +164,7 @@ git push -u origin main
 | 元信息提取 | 最高限价、保证金、解密分钟数、报名/开标时间、资格后审、联合体条款 |
 | 评分模型 | 见"v1.2 新增"首条，评分随参数完备度实时变化 |
 
-运行测试（142 项断言，四机型场景+单位换算+权重配置+HTML报告+补料清单+黄金快照，见 `tests/engine.test.js` 与 `tests/golden.test.js`）：
+运行测试（167 项断言，四机型场景+单位换算+权重配置+HTML报告+补料清单+黄金快照，见 `tests/engine.test.js` 与 `tests/golden.test.js`）：
 
 ```bash
 node tests/engine.test.js
@@ -173,7 +178,7 @@ bidpilot/
 ├── manifest.json / sw.js / icon-*.png  # PWA 清单、离线缓存与App图标
 ├── engine.js             # 核心解析引擎 v1.5（纯函数，浏览器/Node 通用）
 ├── tests/
-│   ├── engine.test.js    # 142 项自动化断言（node tests/engine.test.js）
+│   ├── engine.test.js    # 149 项自动化断言（node tests/engine.test.js）
     │   └── golden.json         # 6 组黄金快照基线
 ├── docs/
 │   ├── Defense-QA.md         # 评委10问+话术
