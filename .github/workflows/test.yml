@@ -1,0 +1,14 @@
+name: engine-tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: 运行引擎回归测试（167 项断言）
+        run: node tests/engine.test.js
+      - name: 黄金快照测试（面级回归）
+        run: node tests/golden.test.js
