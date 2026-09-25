@@ -9,8 +9,8 @@ const bodyChildren = [];
 
 /* 一、测试概述 */
 bodyChildren.push(C.h1("一、测试概述"));
-bodyChildren.push(C.body("本报告针对标书快反（BidPilot）V2.1的核心判定引擎（engine.js）与应用整体进行质量验证。测试目标：验证投标分析全链路（参数提取、单位换算、偏离判定、★废标识别、评分模型、公告变更检测、自定义词库、报告导出）的正确性、边界鲁棒性与反幻觉约束的有效性，为参赛演示与经销商试点交付提供质量依据。"));
-bodyChildren.push(C.body("测试结论：全部142项自动化断言通过，通过率100%；浏览器人工验收覆盖主要界面路径；文档质检脚本零错误。产品满足可演示、可交付状态。"));
+bodyChildren.push(C.body("本报告针对标书快反（BidPilot）V3.0的核心判定引擎（engine.js）与应用整体进行质量验证。测试目标：验证投标分析全链路（参数提取、单位换算、偏离判定、★废标识别、评分模型、公告变更检测、自定义词库、报告导出）的正确性、边界鲁棒性与反幻觉约束的有效性，为参赛演示与经销商试点交付提供质量依据。"));
+bodyChildren.push(C.body("测试结论：全部167项自动化断言通过，通过率100%；浏览器人工验收覆盖主要界面路径；文档质检脚本零错误。产品满足可演示、可交付状态。"));
 
 /* 二、测试环境 */
 bodyChildren.push(C.h1("二、测试环境"));
@@ -18,21 +18,21 @@ bodyChildren.push(C.tbl(["项目", "配置"], [
   ["操作系统", "macOS（Apple Silicon，Darwin 25.x）"],
   ["运行时", "Node.js v24（引擎与测试）、Python 3（文档质检）"],
   ["浏览器", "Chromium（内置浏览器，含 Service Worker 环境）"],
-  ["测试对象", "engine.js v2.1.1、index.html 前端应用、sw.js PWA"],
+  ["测试对象", "engine.js v3.0.0、index.html 前端应用、sw.js PWA"],
   ["测试工具", "Node 原生 assert 风格自研断言脚本（tests/engine.test.js）"],
 ], [2800, 7300]));
 bodyChildren.push(C.caption("表2-1 测试环境"));
 
 /* 三、测试方法 */
 bodyChildren.push(C.h1("三、测试方法"));
-bodyChildren.push(C.bullet("自动化回归测试：", "142项断言固化于 tests/engine.test.js，一条命令全量复跑（node tests/engine.test.js），任一断言失败即退出码非零、禁止发版；"));
+bodyChildren.push(C.bullet("自动化回归测试：", "167项以上断言固化于 tests/engine.test.js，一条命令全量复跑（node tests/engine.test.js），任一断言失败即退出码非零、禁止发版；"));
 bodyChildren.push(C.bullet("浏览器人工验收：", "对资格自查、偏离表、废标风险、结论评分、公告对比、词库管理等界面路径进行真实渲染验收，并核对动态数据（限价、时间表倒计时、评分环动画）；"));
 bodyChildren.push(C.bullet("正向与反向场景：", "既验证达标设备应给出可投结论，也构造弱设备验证系统敢于给出负偏离、废标与不建议投标结论；"));
 bodyChildren.push(C.bullet("文档质检：", "对导出的分析报告与项目文档执行结构化质检（目录、图片比例、转义、占位符残留等）。"));
 
 /* 四、测试结果 */
 bodyChildren.push(C.h1("四、测试执行结果"));
-bodyChildren.push(C.body("执行命令 node tests/engine.test.js，输出 PASS=142 FAIL=0，通过率100%。断言分类分布如下（与测试源码分节一一对应）："));
+bodyChildren.push(C.body("执行命令 node tests/engine.test.js，输出 PASS=167 FAIL=0，通过率100%。断言分类分布如下（与测试源码分节一一对应）："));
 bodyChildren.push(C.tbl(["测试模块", "断言数", "验证要点"], [
   ["装载机场景（正例）", "20", "元信息提取、参数判定、零负偏离、评分94分A级、建议投标"],
   ["挖掘机场景（反例）", "15", "★参数废标判定、评分压制15分D级、直接否决结论"],
@@ -47,6 +47,8 @@ bodyChildren.push(C.tbl(["测试模块", "断言数", "验证要点"], [
   ["原文批注与置信度", "12", "批注数据排序与区间合法性、★捕获、别名匹配中置信、口径冲突中置信、品牌报告"],
   ["采购文件章节定位", "6", "章节命中、参数截取、第四章边界、无章节诚实返回"],
   ["导出一致性（v2.1.1）", "7", "置信列进入MD/HTML导出、报告指纹、别名中置信传递"],
+  ["判例引用风控（v3.0）", "7", "按类别挂载官方判例、未验证判例不挂载、无判例诚实标注、MD/HTML判例渲染"],
+  ["商机雷达（v3.0）", "18", "设备指纹、四档分诊、品类过滤、矩阵匹配、截止时间、批量性能"],
 ], [2600, 1200, 6300]));
 bodyChildren.push(C.caption("表4-1 自动化断言分类统计"));
 bodyChildren.push(C.body("代表性用例举例：①招标要求斗容不低于2.7立方米而资料库为3.0立方米，判定正偏离并可作为加分亮点；②★爬坡能力65%对要求70%，触发废标级判定且前提条件置顶书面澄清建议；③资料库以马力标注、招标以千瓦要求，自动按1马力等于0.7355千瓦换算后比对并附说明；④爬坡能力百分比对角度制的口径冲突，系统拒绝自动换算并标注待人工核对；⑤资料库粘贴无关新闻后，全部参数输出待核实占位符，零编造。"));
@@ -75,7 +77,7 @@ bodyChildren.push(C.bullet("界面语言", "界面框架支持中英切换，分
 
 /* 七、测试结论 */
 bodyChildren.push(C.h1("七、测试结论"));
-bodyChildren.push(C.body("核心判定引擎在正向、反向、边界与异常输入场景下行为正确；反幻觉约束有效（无编造输出）；公告变更检测与自定义词库功能按设计工作；缺陷均已修复且纳入回归。综合评定：标书快反V2.1.1具备参赛演示与经销商试点交付条件。建议后续将真实招标文件纳入持续测试集，并随规则库扩充同步补充断言。"));
+bodyChildren.push(C.body("核心判定引擎在正向、反向、边界与异常输入场景下行为正确；反幻觉约束有效（无编造输出）；公告变更检测与自定义词库功能按设计工作；缺陷均已修复且纳入回归。综合评定：标书快反V3.0具备参赛演示与经销商试点交付条件。建议后续将真实招标文件纳入持续测试集，并随规则库扩充同步补充断言。"));
 
 /* 组装 */
 const pageSize = { width: 11906, height: 16838 };
@@ -102,8 +104,8 @@ const doc = new Document({
         palette: C.PAL,
         englishLabel: "TEST REPORT",
         title: "标书快反测试报告",
-        subtitle: "核心判定引擎与应用整体质量验证 · V2.1.1",
-        metaLines: ["自动化断言 142 项 · 通过率 100%", "BidPilot 质量报告 · 2026年9月"],
+        subtitle: "核心判定引擎与应用整体质量验证 · V3.0",
+        metaLines: ["自动化断言 167 项 · 通过率 100%", "BidPilot 质量报告 · 2026年9月"],
         footerRight: "BidPilot Team · 演示数据均为虚构",
       }) },
     { properties: { type: SectionType.NEXT_PAGE, page: { size: pageSize, margin: bodyMargin,

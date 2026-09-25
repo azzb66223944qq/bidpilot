@@ -296,7 +296,7 @@ t('雷达:品类识别(多机型公告)', (function(){ var c = E.detectDeviceCat
 t('雷达:洒水车公告对装载机=机型不符(修误报)', (function(){ var r = E.triageAnnouncement(FP1, E.DEMOS.sprinkler.tender); return r.verdict === '机型不符' && r.tenderCats.indexOf('sprinkler') >= 0 && r.deviceCats.indexOf('loader') >= 0; })());
 t('雷达:无品类词公告回退覆盖率先行', E.triageAnnouncement(FP1, E.DEMOS.loader.tender.replace(/装载机/g, '设备')).verdict === '可投');
 t('雷达:机型不符沉底排序', (function(){ var M = E.matchFeed([{ key:'d1', name:'装载机A', libText: E.DEMOS.loader.lib }], [E.DEMOS.loader.tender, E.DEMOS.sprinkler.tender]); return M.rows[M.rows.length - 1].best.result.verdict === '机型不符'; })());
-t('雷达:提取截止时间与剩余天数', (function(){ var M = E.matchFeed([{ key:'d1', name:'A', libText: E.DEMOS.loader.lib }], [E.DEMOS.loader.tender]); var r = M.rows[0]; return r.bidDeadline && r.bidDeadline.indexOf('2026年10月13日') >= 0 && r.daysLeft > 20; })());
+t('雷达:提取截止时间与剩余天数', (function(){ var M = E.matchFeed([{ key:'d1', name:'A', libText: E.DEMOS.loader.lib }], [E.DEMOS.loader.tender]); var r = M.rows[0]; var m = r.bidDeadline && r.bidDeadline.match(/(\d{4})年(\d{1,2})月(\d{1,2})日\s?(\d{1,2}):(\d{2})/); if (!m) return false; var d = new Date(+m[1], +m[2]-1, +m[3], +m[4], +m[5]); var expect = Math.ceil((d - new Date()) / 86400000); return r.bidDeadline.indexOf('2026年10月13日') >= 0 && r.daysLeft === expect; })());
 
 t('版本=3.0.0', E.VERSION === '3.0.0');
 
