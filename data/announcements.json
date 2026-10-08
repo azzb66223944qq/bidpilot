@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-10-08T04:29:45.062Z",
+  "fetchedAt": "2026-10-08T12:18:24.978Z",
   "source": "ccgp.gov.cn 中央+地方",
-  "total": 140,
+  "total": 277,
   "machinery": 0,
   "perSource": [
     {
@@ -41,6 +41,1376 @@
     }
   ],
   "announcements": [
+    {
+      "title": "清华大学介观高通量1.0NA成像物镜（第二次）公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/gkzb/202610/t20261008_27447068.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·公开招标",
+      "sourceScope": "中央",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "清华大学高速超分辨活细胞工作站公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/gkzb/202610/t20261008_27447048.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·公开招标",
+      "sourceScope": "中央",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "清华大学单细胞转录组建库仪公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/gkzb/202610/t20261008_27447050.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·公开招标",
+      "sourceScope": "中央",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "清华大学空间转录组平台公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/gkzb/202610/t20261008_27447047.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·公开招标",
+      "sourceScope": "中央",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "清华大学高速高灵敏多通道信号采集卡公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/gkzb/202610/t20261008_27447052.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·公开招标",
+      "sourceScope": "中央",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "清华大学双光子飞秒脉冲激光器公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/gkzb/202610/t20261008_27447043.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·公开招标",
+      "sourceScope": "中央",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "清华大学全自动冷冻切片机公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/gkzb/202610/t20261008_27447044.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·公开招标",
+      "sourceScope": "中央",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "中国科学院计算机网络信息中心科研管理与经费审监相关业务应用软件开发服务采购项目公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/gkzb/202610/t20261008_27447019.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·公开招标",
+      "sourceScope": "中央",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "西安电子科技大学超高速无损网络测试仪（二次）公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/gkzb/202610/t20261008_27446991.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·公开招标",
+      "sourceScope": "中央",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "清华大学真空玻璃腔、光学超稳腔采购项目（第二次）公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/gkzb/202610/t20261008_27446969.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·公开招标",
+      "sourceScope": "中央",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "自然资源部东海预报减灾中心（自然资源部上海海洋中心）一套浅海10米浮标观测系统建设项目公...",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/gkzb/202610/t20261008_27446971.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·公开招标",
+      "sourceScope": "中央",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "天津大学化工学院天津大学精馏技术国家工程研究中心数字化智能数控滚圆系统和智能表面处理优...",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/gkzb/202610/t20261008_27446937.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·公开招标",
+      "sourceScope": "中央",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "清华大学流式细胞分选仪购置项目公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/gkzb/202610/t20261008_27446941.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·公开招标",
+      "sourceScope": "中央",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "1套海啸浮标观测系统建设项目公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/gkzb/202610/t20261008_27446929.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·公开招标",
+      "sourceScope": "中央",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "四川大学2026-2029年消防维护保养服务采购公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/gkzb/202610/t20261008_27446909.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·公开招标",
+      "sourceScope": "中央",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "西安电子科技大学长波红外热像仪公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/gkzb/202610/t20261008_27446899.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·公开招标",
+      "sourceScope": "中央",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "西安电子科技大学中波红外热像仪公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/gkzb/202610/t20261008_27446895.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·公开招标",
+      "sourceScope": "中央",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "国家税务总局嘉祥县税务局2026年食堂食材配送服务项目招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/gkzb/202610/t20261008_27446890.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·公开招标",
+      "sourceScope": "中央",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "中国科学院国家天文台运控分系统服务器集群采购项目公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/gkzb/202610/t20261008_27446662.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·公开招标",
+      "sourceScope": "中央",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "广州市黄埔区消防救援大队2026年消防车维修服务采购项目招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/gkzb/202610/t20261008_27446635.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·公开招标",
+      "sourceScope": "中央",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "龙岩消防救援机动支队2026年度车辆保险购置服务项目（二次）竞争性磋商公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/jzxcs/202610/t20261008_27447057.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·竞争性磋商",
+      "sourceScope": "中央",
+      "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "怒江边境管理支队独龙江边境派出所灾后重建和房屋及附属设施维修改造项目竞争性磋商公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/jzxcs/202610/t20261008_27447060.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·竞争性磋商",
+      "sourceScope": "中央",
+      "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "中华人民共和国卡拉苏出入境边防检查站2026年公务用车维修维护采购项目竞争性磋商",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/jzxcs/202610/t20261008_27447028.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·竞争性磋商",
+      "sourceScope": "中央",
+      "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "云南消防救援机动总队无人机保险服务采购项目竞争性磋商公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/jzxcs/202610/t20261008_27446945.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·竞争性磋商",
+      "sourceScope": "中央",
+      "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "国家纳米科学中心混合流变仪采购项目竞争性磋商公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/jzxcs/202610/t20261008_27446950.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·竞争性磋商",
+      "sourceScope": "中央",
+      "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "国家纳米科学中心高通量纳米合成工站采购项目竞争性磋商公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/jzxcs/202610/t20261008_27446928.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·竞争性磋商",
+      "sourceScope": "中央",
+      "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "2026年北京海关缉私局一体化讯(询)问设备补买采购项目竞争性磋商公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/jzxcs/202610/t20261008_27446769.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·竞争性磋商",
+      "sourceScope": "中央",
+      "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "中华人民共和国山东出入境边防检查总站轮训大队餐饮服务采购项目（二次）竞争性磋商公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/jzxcs/202610/t20261008_27446571.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·竞争性磋商",
+      "sourceScope": "中央",
+      "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "成都铁路公安局重庆公安处2026年度重庆主城地区在职民警体检服务竞争性磋商",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/jzxcs/202610/t20261008_27446547.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·竞争性磋商",
+      "sourceScope": "中央",
+      "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "广东省汕头市消防救援支队水上大队2026年—2027年食堂配送服务项目竞争性磋商",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/jzxcs/202610/t20261008_27446535.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·竞争性磋商",
+      "sourceScope": "中央",
+      "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "2026年自然资源部东海预报减灾中心（自然资源部上海海洋中心）职工疗休养项目竞争性磋商",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/jzxcs/202610/t20261008_27446238.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·竞争性磋商",
+      "sourceScope": "中央",
+      "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "武汉大学研究生数智课程资源与平台建设服务采购项目竞争性磋商",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/jzxcs/202610/t20261008_27446240.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·竞争性磋商",
+      "sourceScope": "中央",
+      "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "国家粮食和物资储备局新疆局九七六处某项目地质灾害危险性评估报告编制服务竞争性磋商",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/jzxcs/202610/t20261008_27446200.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·竞争性磋商",
+      "sourceScope": "中央",
+      "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "防城港边境管理支队业务技术用房施工图设计服务项目竞争性磋商公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/jzxcs/202610/t20261008_27446164.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·竞争性磋商",
+      "sourceScope": "中央",
+      "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "医疗机构行风建设培训会议竞争性磋商公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/jzxcs/202610/t20261008_27446101.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·竞争性磋商",
+      "sourceScope": "中央",
+      "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "微山县消防救援大队空地一体远程指挥调度系统采购项目竞争性磋商",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/jzxcs/202610/t20261008_27446037.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·竞争性磋商",
+      "sourceScope": "中央",
+      "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "乌鲁木齐海关表面放射性检测仪采购项目（二次）竞争性磋商公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/jzxcs/202610/t20261008_27445853.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·竞争性磋商",
+      "sourceScope": "中央",
+      "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "乌鲁木齐海关移动查验单兵、执法记录仪采购项目（二次）竞争性磋商公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/jzxcs/202610/t20261008_27445859.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·竞争性磋商",
+      "sourceScope": "中央",
+      "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "汉江XX实验室某综合实验设施项目伴随审计竞争性磋商公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/jzxcs/202610/t20261008_27445747.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·竞争性磋商",
+      "sourceScope": "中央",
+      "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "消防安防系统建设及运维-西院电梯加装监控及道路补点购置竞争性磋商公告",
+      "url": "http://www.ccgp.gov.cn/cggg/zygg/jzxcs/202610/t20261008_27445703.htm",
+      "pubDate": "2026-10-08",
+      "source": "中央·竞争性磋商",
+      "sourceScope": "中央",
+      "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "康县2025年度绩效重点评价服务项目(二次)招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27447076.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "镇安县林业综合服务中心镇安县2026年噻虫啉药剂采购及松材线虫病树干注药项目(二次)招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27447077.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "姚安县县域医共体建设项目配套设备采购（4标段二次）公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27447074.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "东津新办公区信息化建设项目公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27447065.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "内蒙古医科大学附属医院新生儿专用无创呼吸机等医疗设备招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27447055.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "吉林省东承项目管理有限公司关于长春2027第33届世界大学生冬季运动会雪上项目进口竞赛器材的...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27447045.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "云南鸿诚项目管理咨询有限公司关于新平县总医院超高清电子胃肠镜系统采购项目的公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27447036.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "寻甸回族彝族自治县倘甸镇初级中学2026-2029年食堂、安保、宿管等临聘人员劳务派遣服务采购项...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27447040.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "武汉软件工程职业学院一张表平台建设项目（一期）公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27447039.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "宁夏医科大学总医院彩色多普勒超声波诊断仪（第一批）采购项目（一标段）（二次）项目招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27447033.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "三原县清河城区段微生物净化水质等综合治理项目招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27447029.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "和静县2026年第二批中央财政“三北”工程补助（林草湿荒一体化保护修复支出）公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27447020.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "新疆维吾尔自治区人民医院血管外科进口腔静脉滤器等耗材采购项目二次公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27447024.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "合水县苹果分选加工及配套设施建设项目暨板桥镇苹果分选加工及配套设施建设项目(二次)公开招...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27447018.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "新疆维吾尔自治区人民医院血管外科进口医用耗材采购项目二次公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27447015.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "柳林县教育体育局公开招标柳林县部分学校2027年度建筑消防审验设计服务项目的公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27447004.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "焉耆县中小学及幼儿园食堂食材采购项目公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27447007.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "新疆共建恒业信息咨询有限责任公司关于叶城县教育系统2026-2027学年高中（含中职）学校学生食...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27447003.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "沈阳工业大学材料科学与工程学院扫描电镜采购招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27447001.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "采购租赁2026-2027年度除雪设施设备招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27447000.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "鹤庆县云鹤镇中心幼儿园整体搬迁项目一设备设施采购公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27446998.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标第2页",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "镇巴县中医院老年病综合服务能力提升医疗设备采购项目招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27446987.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标第2页",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "乌鲁木齐市米东区中医医院中药饮片采购项目（第二包）公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27446986.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标第2页",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "武汉市硚口区应急管理局硚口区2026年消防装备采购项目公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27446985.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标第2页",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "武汉儿童医院武汉儿童医院2026年医疗设备采购项目-5（二次）公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27446981.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标第2页",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "东莞市商业学校“双优”建设交通运输城轨车辆综合实训室配套教学设备采购招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27446984.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标第2页",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "成都市新都区交通运输局食堂食材配送采购项目招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27446974.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标第2页",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "塔什库尔干县无人机反制站建设项目公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27446978.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标第2页",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "2026年“祖国情·中华行”新疆青少年爱国主义参观学习暨赣陶同心铸魂研学活动项目公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27446972.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标第2页",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "西吉县科学技术协会“科普惠民工程”—中央专项彩票公益金支持乡村科普能力提升项目（西吉县...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27446967.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标第2页",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "焦作市公安局2026—2028年度团体人身意外伤害保险服务采购项目的公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27446964.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标第2页",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "内蒙古自治区计量测试研究院内蒙古自治区计量领域检验检测设备更新采购项目（检衡车）招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27446959.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标第2页",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "红城国际工程项目管理有限公司关于灌阳县县域医共体建设项目医疗设备采购的公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27446962.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标第2页",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "安阳市固体废弃物处置中心渗滤液协同处理项目-公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27446958.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标第2页",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "石楼中学公开招标石楼中学餐厅厨房设备采购项目的公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27446960.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标第2页",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "南水北调博物馆复仿制文物项目第二次公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27446963.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标第2页",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "昆明理工大学2026年“双一流”创建专项资金采购项目-一流学科专业建设（计算机科学与技术学科...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261008_27446954.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·公开招标第2页",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "广西万安工程咨询有限公司关于灌阳县2026年绿色高产高效项目的更正公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gzgg/202610/t20261008_27447075.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·更正公告",
+      "sourceScope": "地方",
+      "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "贵阳市教育局关于2026年度贵阳市学校食堂米、油集中采购项目的更正公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gzgg/202610/t20261008_27447071.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·更正公告",
+      "sourceScope": "地方",
+      "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "金果坪乡石板水村沙淌片区产业提档升级建设项目更正公告（工程量清单）",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gzgg/202610/t20261008_27447064.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·更正公告",
+      "sourceScope": "地方",
+      "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "云南翌年工程管理咨询有限公司关于双柏县职业高级中学彝族刺绣产业学院建设更正公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gzgg/202610/t20261008_27447059.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·更正公告",
+      "sourceScope": "地方",
+      "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "关于荆州市消防救援支队荆州市消防救援支队备勤公寓家具采购项目（第二次采购）公开招标更正公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gzgg/202610/t20261008_27447034.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·更正公告",
+      "sourceScope": "地方",
+      "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "运城市盐湖区农业农村局竞争性磋商盐湖区2026年高素质农民培育第二批次培训项目更正公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gzgg/202610/t20261008_27447032.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·更正公告",
+      "sourceScope": "地方",
+      "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "运城市盐湖区农业农村局竞争性磋商盐湖区2026年高素质农民培育第二批次培训项目更正公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gzgg/202610/t20261008_27447030.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·更正公告",
+      "sourceScope": "地方",
+      "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "祁连县中小学暖气设施维修项目的更正公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gzgg/202610/t20261008_27447026.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·更正公告",
+      "sourceScope": "地方",
+      "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "肇庆市第一人民医院(肇庆市医疗紧急救援中心)中央空调过滤器供应商服务项目采购更正公告（第...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gzgg/202610/t20261008_27447025.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·更正公告",
+      "sourceScope": "地方",
+      "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "霍州市文化和旅游局竞争性磋商霍州署景区文物库房建设项目一期工程的更正公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gzgg/202610/t20261008_27447017.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·更正公告",
+      "sourceScope": "地方",
+      "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "蒲县发改工信和科技商务局公开招标蒲县2025年克城镇公峪村清洁取暖煤改电项目的更正公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gzgg/202610/t20261008_27447011.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·更正公告",
+      "sourceScope": "地方",
+      "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "蒲县发改工信和科技商务局公开招标蒲县2025年乔家湾镇前堡村清洁取暖煤改电项目的更正公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gzgg/202610/t20261008_27446996.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·更正公告",
+      "sourceScope": "地方",
+      "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "宜昌市体育运动学校2026-2027年食堂食材供货采购第二次更正公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gzgg/202610/t20261008_27446956.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·更正公告",
+      "sourceScope": "地方",
+      "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "内蒙古自治区国际蒙医医院二期扩建项目智能药浴机等医疗设备采购项目采购更正公告（第一次）",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gzgg/202610/t20261008_27446951.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·更正公告",
+      "sourceScope": "地方",
+      "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "江西省机电设备招标有限公司关于吉安市中心人民医院医疗设备更新项目-采购磁共振成像系统（项...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gzgg/202610/t20261008_27446925.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·更正公告",
+      "sourceScope": "地方",
+      "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "江西省机电设备招标有限公司关于吉安市中心人民医院采购手术室等科室设备项目（项目编号：JXT...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gzgg/202610/t20261008_27446917.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·更正公告",
+      "sourceScope": "地方",
+      "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "西安建筑科技大学深部多场耦合腐蚀模拟测试系统采购项目采购更正公告（第一次）",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gzgg/202610/t20261008_27446916.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·更正公告",
+      "sourceScope": "地方",
+      "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "江西省机电设备招标有限公司关于吉安市中心人民医院医疗设备更新项目-采购CT1（项目编号：JXT...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gzgg/202610/t20261008_27446924.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·更正公告",
+      "sourceScope": "地方",
+      "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "江西省机电设备招标有限公司关于吉安市中心人民医院医疗设备更新项目-采购全身机彩超及妇产彩...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gzgg/202610/t20261008_27446915.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·更正公告",
+      "sourceScope": "地方",
+      "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "江西省机电设备招标有限公司关于吉安市中心人民医院医疗设备更新项目-采购心脏彩超（项目编号...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gzgg/202610/t20261008_27446923.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·更正公告",
+      "sourceScope": "地方",
+      "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "三岔镇莲花池村蔬菜产业发展项目中标成交公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27447080.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "西安市二府庄军队离休退休干部休养所军休干部服务管理机构用房装修项目中标（成交）结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27447073.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "西安市体育局（本级）2026年“国球两进”器材配送项目（第一批）中标结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27447069.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "肇东市工业信息科技局产业发展实施方案中标（成交）结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27447067.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "山西风陵渡经济开发区建设事业部竞争性磋商芮城县风陵渡经济开发区2026年老旧小区改造项目初...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27447063.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "采购专用车辆2辆中标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27447027.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "三峡大学智慧水利实验室建设项目中标结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27447012.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "浙江中创招投标有限公司关于宁波市地表水水质自动监测数据采购中标(成交)结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27447006.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "辽阳市中医院2026年中央财政医疗服务与保障能力提升（公立医院综合改革）项目设备采购项目（...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27446995.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "黄冈职业技术学院2026年教育领域重大设备更新之智能制造学院（第二批）设备采购项目一中标结...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27446982.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "吴忠市公安局智能枪弹柜及装备柜采购项目中标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27446979.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "吴忠市公安局智能枪弹柜及装备柜采购项目中标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27446976.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "浙江省国际技术设备招标有限公司关于浙江音乐学院2026年度演出设备租赁定点供应商选择中标(成...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27446957.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "伊犁州新华医院医疗护理员外包服务（三年）中标(成交)结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27446961.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "武汉市黄陂区教育局华中师范大学（盘龙城校区）附属小学建设项目-施工全过程控制结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27446932.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "神木市卫生健康局神木市锦界镇中心卫生院（神木市医院第一分院）专用设备采购项目中标（成交...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27446931.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "2026年秋季重大动物疫病疫苗采购项目  中标结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27446920.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "黄冈职业技术大学2026年职业教育质量提升计划之教学实训设备购置项目中标结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27446904.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "四川省成都监狱民警执法及基础安防装备采购中标（成交）结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27446894.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "黑龙江省神经精神病医院黑龙江神经精神病医院重症与心理健康服务能力提升项目第二批设备（三...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27446887.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "陕西省美术博物馆“时代长安——陕西油画百年研究展”广告宣传服务项目中标（成交）结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261008_27446966.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·成交公告",
+      "sourceScope": "地方",
+      "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "晋江市内坑镇（核心片区）人居环境整治提升项目结果公告（采购包1）",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261008_27446930.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·成交公告",
+      "sourceScope": "地方",
+      "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "汝南县公安局专项司法审计服务采购项目-成交公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261008_27446900.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·成交公告",
+      "sourceScope": "地方",
+      "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "潼南区城市更新专项规划编制服务(TNQ26C00116)中标（成交）结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261008_27446868.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·成交公告",
+      "sourceScope": "地方",
+      "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "黑龙江省社会康复医院（黑龙江省康复辅具服务中心）省社会康复医院医疗信息化系统项目（工程...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261008_27446866.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·成交公告",
+      "sourceScope": "地方",
+      "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "广西锦盛工程咨询有限公司关于2026罗城半程马拉松服务成交公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261008_27446864.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·成交公告",
+      "sourceScope": "地方",
+      "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "天津市津南区城市管理委员会机关 津南区建筑垃圾资源化综合利用厂厂房土建工程设计服务 (项目...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261008_27446829.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·成交公告",
+      "sourceScope": "地方",
+      "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "天津市西青区精武镇农业农村发展服务中心 2026年天津市西青区精武镇滨河公园绿化养护项目 (项...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261008_27446828.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·成交公告",
+      "sourceScope": "地方",
+      "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "天津科技大学 天津科技大学产学研融合创新大楼项目工程质量检测服务 (项目编号:FZK2026-2-277...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261008_27446805.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·成交公告",
+      "sourceScope": "地方",
+      "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "天津市河西区人民政府政务服务办公室（天津市河西区行政审批局）机关 天津市河西区政务服务分...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261008_27446803.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·成交公告",
+      "sourceScope": "地方",
+      "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "天津东疆综合保税区工业和信息化局（天津东疆综合保税区科技局、天津东疆综合保税区数据局） ...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261008_27446827.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·成交公告",
+      "sourceScope": "地方",
+      "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "天津市双口教育矫治所 天津市双口教育矫治所干警食堂餐饮服务项目 (项目编号:BCZB-2026-TJBC-...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261008_27446804.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·成交公告",
+      "sourceScope": "地方",
+      "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "广西贵荷项目管理咨询有限公司关于 覃塘区三里镇污水厂设施及其他市政设施水毁修复工程施工（...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261008_27446697.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·成交公告",
+      "sourceScope": "地方",
+      "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "黑桥公园体育设施进百园项目其他专业施工采购项目成交公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261008_27446681.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·成交公告",
+      "sourceScope": "地方",
+      "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "购买服务参与生活无着流散人员救助服务项目中标（成交）结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261008_27446623.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·成交公告",
+      "sourceScope": "地方",
+      "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "2026年云南省公安厅刑事技术专用设备维护采购项目（二次）竞争性磋商成交结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261008_27446610.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·成交公告",
+      "sourceScope": "地方",
+      "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "云南省公安厅安全防护设施设备采购项目（二次）成交结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261008_27446614.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·成交公告",
+      "sourceScope": "地方",
+      "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "绥滨县农业技术推广中心2026年绥滨县基层农技推广体系改革与建设项目农业技术能力提升业务培...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261008_27446601.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·成交公告",
+      "sourceScope": "地方",
+      "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "林口县龙爪镇人民政府2026年龙爪镇龙盛健身广场建设项目中标（成交）结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261008_27446592.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·成交公告",
+      "sourceScope": "地方",
+      "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "肃北县城乡居家养老服务项目框架协议入围成交结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261008_27446603.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·成交公告",
+      "sourceScope": "地方",
+      "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
     {
       "title": "中国地震台网中心中国-东盟地震灾害监测防御能力提升项目地震预警站观测设备采购公开招标公告",
       "url": "http://www.ccgp.gov.cn/cggg/zygg/gkzb/202610/t20261008_27441704.htm",
