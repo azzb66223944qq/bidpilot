@@ -4,7 +4,7 @@
  *   - 其余同源静态资源：缓存优先（版本号内嵌于缓存名，升级即换新）
  * 版本号变更即触发旧缓存清理
  */
-const CACHE = 'bidpilot-v6';
+const CACHE = 'bidpilot-v12';
 const ASSETS = [
   './',
   './index.html',
@@ -15,6 +15,9 @@ const ASSETS = [
   './icon-512.png',
   './icon-maskable-512.png',
   './pdfjs/pdf.min.js',
+  './mammoth/mammoth.browser.min.js',
+  './scripts/load-announcements.js',
+  './data/announcements.json',
   './pdfjs/pdf.worker.min.js',
   './apple-touch-icon.png'
 ];

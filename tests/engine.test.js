@@ -91,7 +91,21 @@ const CL = E.buildRefeedChecklist(R1, '宁波水务装载机');
 t('补料清单:含项目名与缺失证明', CL.indexOf('宁波水务') >= 0 && CL.indexOf('型式试验报告') >= 0 && CL.indexOf('环保信息公开编号') >= 0);
 t('补料清单:含商务待核实项', CL.indexOf('CA数字证书') >= 0);
 t('补料清单:不含已满足参数', CL.indexOf('标准斗容') === -1 && CL.indexOf('额定载重量 ——') === -1);
-t('版本=3.0.0', E.VERSION === '3.0.0');
+/* ===== v3.6 围标特征自检（文本层雷同指纹） ===== */
+t('围标指纹:检出占位符残留', (function(){ var r = E.scanTextFingerprints('投标人了，兹承诺按某某公司要求执行，联系人：____'); return r.some(function(x){ return x.id === 'placeholder'; }); })());
+t('围标指纹:检出模板来源痕迹', (function(){ var r = E.scanTextFingerprints('技术方案如下（本文档为模板仅供参考）'); return r.some(function(x){ return x.id === 'template'; }) && r.length === 1; })());
+t('围标指纹:正常文本零误报', (function(){ var r = E.scanTextFingerprints('我公司装载机额定载重量5000kg，标准斗容3.0立方米，承诺质保两年。'); return r.length === 0; })());
+t('围标指纹:重复句式3次以上检出', (function(){ var r = E.scanTextFingerprints('本项目采用国内领先的智能化技术方案组织实施并确保质量达标。本项目采用国内领先的智能化技术方案组织实施并确保质量达标。本项目采用国内领先的智能化技术方案组织实施并确保质量达标。'); return r.some(function(x){ return x.id === 'repeat'; }); })());
+t('围标指纹:重复不足3次不报', (function(){ var r = E.scanTextFingerprints('本项目采用国内领先的智能化技术方案组织实施并确保质量达标。本项目采用国内领先的智能化技术方案组织实施并确保质量达标。'); return !r.some(function(x){ return x.id === 'repeat'; }); })());
+
+/* ===== v3.7 评分响应索引 ===== */
+t('评分提取:三项提取且分类正确', (function(){ var r = E.extractScoringItems('技术方案先进性30分。投标报价40分。售后服务方案10分。'); return r.length === 3 && r[0].cat === '技术' && r[1].cat === '价格' && r[2].cat === '售后' && r[0].value === 30; })());
+t('评分提取:满分与分钟不误报', (function(){ var r = E.extractScoringItems('本项满分100分。开标后30分钟内解密。业绩与认证5分。'); return r.length === 1 && r[0].text.indexOf('业绩') !== -1; })());
+t('评分提取:超长截断至12项上限', (function(){ var t2 = ''; for (var i = 0; i < 15; i++) t2 += '评分因素甲' + i + '为10分。'; return E.extractScoringItems(t2).length === 12; })());
+t('评分对照:资料库有据词面匹配', (function(){ var it = E.extractScoringItems('业绩与认证5分。'); var r = E.scoreLibEvidence(it, '我司通过ISO9001认证，有同类业绩合同'); return r[0].hasEv === true && r[0].evWords.length >= 1; })());
+t('评分对照:无据诚实标注', (function(){ var it = E.extractScoringItems('技术方案先进性30分。'); var r = E.scoreLibEvidence(it, '今天天气不错'); return r[0].hasEv === false; })());
+
+t('版本=3.8.0', E.VERSION === '3.8.0');
 
 /* ===== v1.4：★关键参数废标判定 + 行动时间表 + 公司抬头 ===== */
 t('装载机:★斗容已满足=不触发废标', R1.params.find(p => p.id === 'bucket').key === true && R1.conclusion.killRisk === false);
@@ -110,7 +124,7 @@ t('MD报告:含公司抬头', MD2.indexOf('（浙东机械经销有限公司）'
 t('MD报告:含时间表', MD2.indexOf('投标行动时间表') >= 0);
 const HTML2 = E.buildHtmlReport(R1, { company: '浙东机械' });
 t('HTML报告:含公司抬头与倒计时卡', HTML2.indexOf('（浙东机械）') >= 0 && HTML2.indexOf('距开标') >= 0);
-t('版本=3.0.0', E.VERSION === '3.0.0');
+t('版本=3.8.0', E.VERSION === '3.8.0');
 
 /* ===== v1.3：新机型场景与评分权重配置 ===== */
 const RC = E.analyze(E.DEMOS.crane.lib, E.DEMOS.crane.tender);
@@ -151,7 +165,7 @@ const RA2 = E.analyze('设备额定载荷 5t。', '要求额定载重量 ≥4吨
 t('词库+吨kg换算:达标', ['满足','正偏离'].indexOf(statusOf(RA2,'load')) >= 0);
 t('词库:正则特殊字符安全', (() => { const R = E.analyze('斗容(额定) 3.0m³。', '标准斗容 ≥2.7m³。', { aliases: [{ term:'斗容(额定)', param:'bucket' }] }); return statusOf(R,'bucket') !== '资料库无'; })());
 t('导出PARAM_DEFS=32类', E.PARAM_DEFS.length === 32);
-t('版本=3.0.0', E.VERSION === '3.0.0');
+t('版本=3.8.0', E.VERSION === '3.8.0');
 
 
 /* ===== v1.6b：真实公告适配（限价/预算分离 + （元）格式） ===== */
@@ -209,7 +223,7 @@ t('置信度:口径冲突=中', RB4.params.find(p => p.id === 'ride').conf === '
 const HTML20 = E.buildHtmlReport(R20, { company: '浙东机械', theme: '#0e7a4e', logo: 'data:image/png;base64,AAAA' });
 t('品牌报告:主题色渗透', HTML20.indexOf('#0e7a4e') >= 0);
 t('品牌报告:Logo嵌入', HTML20.indexOf('data:image/png;base64') >= 0);
-t('版本=3.0.0', E.VERSION === '3.0.0');
+t('版本=3.8.0', E.VERSION === '3.8.0');
 
 
 /* ===== v2.1：采购文件章节定位 ===== */
@@ -221,7 +235,7 @@ t('定位:第四章边界截断', LOC.text.indexOf('评标办法') === -1);
 t('定位:无章节文本=not found', E.locateParamSection('这里没有任何章节标记。').found === false);
 const RL21 = E.analyze('额定载重量 5000kg。', LOC.text);
 t('定位章节可直接驱动偏离表', RL21.params.find(p => p.id === 'load').status === '满足');
-t('版本=3.0.0', E.VERSION === '3.0.0');
+t('版本=3.8.0', E.VERSION === '3.8.0');
 
 
 /* ===== v2.1.1：导出一致性（置信列+报告指纹） ===== */
@@ -298,7 +312,28 @@ t('雷达:无品类词公告回退覆盖率先行', E.triageAnnouncement(FP1, E.
 t('雷达:机型不符沉底排序', (function(){ var M = E.matchFeed([{ key:'d1', name:'装载机A', libText: E.DEMOS.loader.lib }], [E.DEMOS.loader.tender, E.DEMOS.sprinkler.tender]); return M.rows[M.rows.length - 1].best.result.verdict === '机型不符'; })());
 t('雷达:提取截止时间与剩余天数', (function(){ var M = E.matchFeed([{ key:'d1', name:'A', libText: E.DEMOS.loader.lib }], [E.DEMOS.loader.tender]); var r = M.rows[0]; var m = r.bidDeadline && r.bidDeadline.match(/(\d{4})年(\d{1,2})月(\d{1,2})日\s?(\d{1,2}):(\d{2})/); if (!m) return false; var d = new Date(+m[1], +m[2]-1, +m[3], +m[4], +m[5]); var expect = Math.ceil((d - new Date()) / 86400000); return r.bidDeadline.indexOf('2026年10月13日') >= 0 && r.daysLeft === expect; })());
 
-t('版本=3.0.0', E.VERSION === '3.0.0');
+/* ===== v3.2 废标关键词扫描 ===== */
+t('关键词扫描:检出废标条款且需补充', (function(){ var r = E.scanCriticalKeywords('★标准斗容≥2.7m³，否则作废标处理。', '标准斗容3.0m³'); var f = r.find(function(x){ return x.kw === '废标'; }); return f && f.count === 1 && f.status === '需补充' && f.why.length > 3; })());
+t('关键词扫描:资料库有据判定', (function(){ var r = E.scanCriticalKeywords('需提供承诺函并加盖公章。', '我司承诺：公章在手，承诺函可随时出具'); return r.filter(function(x){ return x.status === '有据'; }).length >= 2; })());
+/* ===== v3.3 陷阱条款检测 + 递交要求提取 ===== */
+t('陷阱条款:背对背付款检出(高风险)', (function(){ var r = E.scanTrapClauses('甲方收到建设单位工程款后再向乙方支付货款。'); return r.length >= 1 && r[0].id === 'b2b' && r[0].level === '高' && r[0].advice.length > 5; })());
+t('陷阱条款:垫资要求检出', (function(){ var r = E.scanTrapClauses('乙方需全额垫资施工。'); return r.some(function(x){ return x.id === 'advance'; }); })());
+t('陷阱条款:以工抵账检出', (function(){ var r = E.scanTrapClauses('结算款可以房产冲抵工程款。'); return r.some(function(x){ return x.id === 'barter'; }); })());
+t('陷阱条款:等审计结算检出', (function(){ var r = E.scanTrapClauses('工程最终以审计结果作为结算依据。'); return r.some(function(x){ return x.id === 'audit'; }); })());
+t('陷阱条款:无陷阱返回空数组', (function(){ return E.scanTrapClauses('按合同约定及时足额支付货款。').length === 0; })());
+t('递交要求:检出在线解密', (function(){ var r = E.scanSubmissionReqs('开标后60分钟内须完成在线解密。'); return r.some(function(x){ return x.kw === '在线解密'; }); })());
+t('递交要求:检出电子签章与封面', (function(){ var r = E.scanSubmissionReqs('投标文件需加盖电子签章，并按给定封面格式。'); return r.some(function(x){ return x.kw === '电子签章'; }) && r.some(function(x){ return x.kw === '封面要求'; }); })());
+
+t('关键词扫描:无关键词返回空数组', (function(){ return E.scanCriticalKeywords('今天天气不错适合逛街', '天气预报').length === 0; })());
+
+/* ===== v3.0.1：PDF拼行文本的★归属（防止★泄漏给同行参数→假废标） ===== */
+const FLAT_TENDER = '第四章 技术参数 额定载重量 ≥5000kg ★标准斗容 ≥2.7m³ 额定功率 ≥160kW 整机工作质量 ≤18t 最大卸载高度 ≥2900mm 最大掘起力 ≥170kN 交货期：不超过30天 质保期：不低于1年';
+const FLAT_LIB = '额定载重量5000kg；标准斗容3.0m³；额定功率162kW；整机工作质量17.5t；最大卸载高度3.1m；最大掘起力175kN；交货期≤30天；质保1年或2000小时';
+t('PDF拼行:★只归属斗容（不泄漏给同行参数）', (function(){ var R = E.analyze(FLAT_LIB, FLAT_TENDER); return R.params.filter(function(p){ return p.key; }).map(function(p){ return p.id; }).join(',') === 'bucket'; })());
+t('PDF拼行:质量19t负偏离不触发假废标', (function(){ var R = E.analyze(FLAT_LIB.replace('17.5t', '19t'), FLAT_TENDER); return R.conclusion.killRisk === false && R.conclusion.score > 15 && statusOf(R, 'mass') === '负偏离'; })());
+t('PDF拼行:斗容★真负偏离仍触发真废标', (function(){ var R = E.analyze(FLAT_LIB.replace('3.0m³', '2.0m³'), FLAT_TENDER); return R.conclusion.killRisk === true; })());
+
+t('版本=3.8.0', E.VERSION === '3.8.0');
 
 console.log('----------------------------------------');
 console.log('PASS=' + pass + '  FAIL=' + fail + (fail ? '  ← 存在失败，禁止发版' : '  ✅ 全部通过'));

@@ -241,39 +241,34 @@
     return { value: v1, min: v1, max: v2, prefix: prefix, raw: m[0], unit: m[5], gap: gap, idx: m.index };
   }
 
-  /* ★归属判定：★只属于其所在"参数段"（以行内 ；;。 分隔），而非整行 */
+  /* ★归属判定：★只属于其紧邻的参数（详见 nearestMarkBefore） */
   function markForParam(text, idx) {
     if (idx == null) return null;
     var ls = text.lastIndexOf('\n', idx);
     var le = text.indexOf('\n', idx); if (le < 0) le = text.length;
-    var line = text.slice(ls + 1, le);
-    var pos = idx - (ls + 1);
-    var segStart = 0, m; var seps = /[；;。]/g;
-    while ((m = seps.exec(line))) { if (m.index < pos) segStart = m.index + 1; else break; }
-    var segEnd = line.length;
-    ['；', ';', '。'].forEach(function (sep) { var v = line.indexOf(sep, pos); if (v >= 0 && v < segEnd) segEnd = v; });
-    var seg = line.slice(segStart, segEnd);
-    if (seg.indexOf('★') >= 0) return '★';
-    if (seg.indexOf('▲') >= 0) return '▲';
-    return null;
+    return nearestMarkBefore(text.slice(ls + 1, le), idx - (ls + 1));
   }
 
+  /* ★/▲归属：向前找同行最近的标记，且标记与参数名之间不得隔着分段符或任何字母数字——
+     PDF提取会把整页参数拼成一行（无分段符），旧分段逻辑会让★泄漏给同行所有参数导致假废标 */
+  function nearestMarkBefore(line, pos) {
+    var best = -1, ch = null;
+    ['★', '▲'].forEach(function (mk) {
+      var v = line.lastIndexOf(mk, pos - 1);
+      if (v > best) { best = v; ch = mk; }
+    });
+    if (best < 0) return null;
+    var between = line.slice(best + 1, pos);
+    if (/[；;。]/.test(between)) return null;
+    if (/[0-9a-zA-Z]/.test(between)) return null;
+    return ch;
+  }
   function starForParam(text, idx) {
     if (idx == null) return false;
     var ls = text.lastIndexOf('\n', idx);
     var le = text.indexOf('\n', idx);
     if (le < 0) le = text.length;
-    var line = text.slice(ls + 1, le);
-    var pos = idx - (ls + 1);
-    var segStart = 0, m;
-    var seps = /[；;。]/g;
-    while ((m = seps.exec(line))) { if (m.index < pos) segStart = m.index + 1; else break; }
-    var segEnd = line.length;
-    ['；', ';', '。'].forEach(function (sep) {
-      var v = line.indexOf(sep, pos);
-      if (v >= 0 && v < segEnd) segEnd = v;
-    });
-    return line.slice(segStart, segEnd).indexOf('★') >= 0;
+    return nearestMarkBefore(text.slice(ls + 1, le), idx - (ls + 1)) === '★';
   }
 
   /* 单位口径归类：同类可比较，异类标"待人工核对" */
@@ -1000,7 +995,7 @@
         '<span style="font-size:12px;color:#5a6a88">' + esc(Bc.verdict) + '</span><br>' +
         '<b>选型建议</b>：' + (c.score > Bc.score ? 'A设备综合就绪度更高，优先以A设备投本标。' : c.score < Bc.score ? 'B设备综合就绪度更高，优先以B设备投本标。' : '两台设备就绪度相当，按商务报价与库存周期取舍。') + '</div>');
     }
-    H.push('<p class="foot">报告指纹 ' + (opts && opts.fingerprint ? esc(opts.fingerprint) : '—') + ' · 引擎 v3.0.0 · 数据声明：本报告由标书快反规则引擎基于所提供资料生成，内置演示数据为虚构；不编造任何未提供的品牌、机型、参数、业绩与资质。AI辅助分析不能替代人工复核，投标前必须逐条核对招标文件原文。</p>');
+    H.push('<p class="foot">报告指纹 ' + (opts && opts.fingerprint ? esc(opts.fingerprint) : '—') + ' · 引擎 v3.8.0 · 数据声明：本报告由标书快反规则引擎基于所提供资料生成，内置演示数据为虚构；不编造任何未提供的品牌、机型、参数、业绩与资质。AI辅助分析不能替代人工复核，投标前必须逐条核对招标文件原文。</p>');
     H.push('</div></body></html>');
     return H.join('');
   }
@@ -1093,6 +1088,212 @@
    * 输出：{ found, text, start } —— 定位失败时 found=false（如扫描件/无文本层）
    * 策略：优先命中明确章节标题，其次命中参数关键词密集段；不做任何内容改写
    */
+  /* v3.2 废标关键词扫描：自动化用户手工Word高级搜索防废标的流程
+   * 来源：抖音评论区验证——用户逐个查[承诺废标否决禁止必须无效]等关键词 */
+  var CRITICAL_KEYWORDS = [
+    { kw: '承诺', cat: '承诺函', why: '未附承诺函是高发废标项' },
+    { kw: '签字', cat: '签字要求', why: '签字遗漏是高发废标项' },
+    { kw: '盖章', cat: '盖章要求', why: '漏盖章是最高发废标项' },
+    { kw: '公章', cat: '盖章要求', why: '公章要求需逐处核对' },
+    { kw: '联合体', cat: '联合体声明', why: '联合体表态遗漏可能废标' },
+    { kw: '保证金', cat: '保证金条款', why: '金额/账户/时限三查' },
+    { kw: '资格', cat: '资格条件', why: '资格要求需逐条响应' },
+    { kw: '授权', cat: '授权书', why: '代理商投标必须附授权' },
+    { kw: '业绩', cat: '业绩要求', why: '业绩证明需在有效期内' },
+    { kw: '无效', cat: '无效条款', why: '触发无效条款即出局' },
+    { kw: '否决', cat: '否决条款', why: '否决条款即出局' },
+    { kw: '废标', cat: '废标条款', why: '明确废标条款需重点响应' }
+  ];
+
+  /* v3.3 陷阱条款检测：8 类高危条款确定性识别
+   * 依据：法院判例（背对背 441 万案）+ 总包套路自述 + 抖音真实案例（垫资/以工抵账/压价结算） */
+  var TRAP_RULES = [
+    { id: 'b2b', name: '背对背付款条款', level: '高',
+      re: /收到[^。\n]{0,14}(付款|工程款|款项)[^。\n]{0,8}(后|之后)[^。\n]{0,18}(支付|付款)|((业主|建设单位|上家|投资公司)[^。\n]{0,12}(拨付|支付|付款)[^。\n]{0,12}(再|以后?)[^。\n]{0,8}(支付|付款|结))/,
+      why: '背对背条款：上家不付款你就拿不到钱。判例显示对方过错致条件不成就时法院可突破，但需诉讼（案例：441 万货款，一审二审历时逾年）',
+      advice: '签约前要求删除，或改为"非因乙方原因，付款期限届满即应付"' },
+    { id: 'audit', name: '等审计结算条款', level: '高',
+      re: /(审计|审计单位|审计结果)[^。\n]{0,12}(结算|决算|后支付|作为.{0,6}依据)/,
+      why: '以审计结果作为结算依据：审计周期不可控，可能成为拖延付款手段（"审计不出来我就没法给你结算"）',
+      advice: '改为"竣工验收后 X 日内完成结算，逾期视为认可"' },
+    { id: 'advance', name: '垫资要求', level: '高',
+      re: /(全额|部分)?垫资(施工|进场|承包)|((乙方|承包人|供应商?)[^。\n]{0,10}(垫付|垫资))/,
+      why: '垫资条款：需评估资金实力。垫资+背对背叠加=风险倍增。真实案例：垫资 300 万后以工抵账；110 万合同完工后压价至 80 万',
+      advice: '要求预付款，或设置垫资上限与利息条款' },
+    { id: 'barter', name: '以工抵账条款', level: '高',
+      re: /(以|用)[^。\n]{0,8}(工程|房产|车辆|物资|商品|房屋)[^。\n]{0,6}(抵|冲抵|折抵)[^。\n]{0,8}(款|账)/,
+      why: '以工抵账：拿到手的是变现困难的资产，且常见强制让利。真实案例：110 万结算压至 80 万（压价 27%）',
+      advice: '坚持货币结算；接受抵账时书面确认资产估值与过户责任' },
+    { id: 'lowball', name: '低价进场承诺调整', level: '中',
+      re: /(进场|先干|中标)[^。\n]{0,22}(涨价|调整单价|补充协议|据实调整)|暂按[^。\n]{0,10}价[^。\n]{0,10}(执行|结算)[^。\n]{0,12}(后续|另行)/,
+      why: '低价进场+口头承诺后续调整：口头承诺无保障，补充协议主动权在对方',
+      advice: '所有调整条款书面化，明确调价触发条件与幅度' },
+    { id: 'unlimited', name: '无限责任兜底', level: '中',
+      re: /(一切|所有|全部)[^。\n]{0,10}(责任|费用|风险)[^。\n]{0,10}(由(乙方|承包|供|投标人))/,
+      why: '无限责任兜底：范围过宽，任何意外都归你——包括非你所能控制的原因',
+      advice: '限定责任范围与上限，排除不可抗力与对方原因' },
+    { id: 'unilateral', name: '甲方单方变更权', level: '中',
+      re: /(甲方|招标人|采购人|发包人)[^。\n]{0,14}(有权|保留权利)[^。\n]{0,12}(调整|变更|修改|解除)/,
+      why: '甲方单方变更权：范围过宽时你的履约计划随时可被推翻',
+      advice: '要求变更为双方协商一致，且调整应同步调整价款工期' },
+    { id: 'retention', name: '质保金比例过高', level: '中',
+      re: /质保金[^。\n]{0,12}([4-9]\d?%|[4-9]%)/,
+      why: '质保金比例偏高：行业常见 3%，法规上限 3%（建设工程质量保证金管理办法）',
+      advice: '按法规上限 3% 谈，并明确返还时限' }
+  ];
+
+  function scanTrapClauses(tenderText) {
+    tenderText = tenderText || '';
+    var hits = [];
+    TRAP_RULES.forEach(function (rule) {
+      var m = tenderText.match(rule.re);
+      if (!m) return;
+      var idx = m.index != null ? m.index : tenderText.indexOf(m[0]);
+      var snippet = tenderText.slice(Math.max(0, idx - 15), idx + m[0].length + 30).replace(/\s+/g, ' ');
+      hits.push({
+        id: rule.id, name: rule.name, level: rule.level,
+        snippet: snippet, why: rule.why, advice: rule.advice
+      });
+    });
+    return hits;
+  }
+
+  /* v3.3 递交要求提取：自动识别招标文件中的递交环节要求 */
+  var SUBMISSION_REQ_RULES = [
+    { kw: '在线解密', re: /在线解密|解密/, tip: '确认解密客户端版本并提前试解密' },
+    { kw: '指定浏览器', re: /指定浏览器|360浏览器|IE浏览器|推荐浏览器/, tip: '按平台要求安装指定浏览器并测试' },
+    { kw: '电子签章', re: /电子(签?章)|签章/, tip: '确认签章页数与电子章要求，漏签=废标高发' },
+    { kw: '封面要求', re: /封面/, tip: '按招标文件格式制作封面，暗标漏封面=整批废' },
+    { kw: '格式模板', re: /按下列格式|格式要求|统一格式/, tip: '严格按给定格式；未给格式时注明"本表不适用"并盖章' }
+  ];
+  function scanSubmissionReqs(tenderText) {
+    tenderText = tenderText || '';
+    var out = [];
+    SUBMISSION_REQ_RULES.forEach(function (r) {
+      var m = tenderText.match(r.re);
+      if (!m) return;
+      var idx = m.index != null ? m.index : 0;
+      out.push({
+        kw: r.kw, tip: r.tip,
+        snippet: tenderText.slice(Math.max(0, idx - 12), idx + m[0].length + 25).replace(/\s+/g, ' ')
+      });
+    });
+    return out;
+  }
+
+  /* v3.6 围标特征自检：文本层雷同指纹
+   * 边界声明：机器码/MAC/IP 由招投标平台在递交时采集，浏览器侧无法检测；
+   * 本函数只查投标人自己文件里可见的文本痕迹，降低被误伤与细节废标的风险。 */
+  var FP_RULES = [
+    { id: 'placeholder', name: '占位符残留',
+      re: /(?:[Xx]{4,}|_{5,}|【\s*】|某某(?:公司|单位|集团)|××(?:公司|集团)|此处填)/,
+      why: '疑似套用模板未替换干净的占位符——既是细节废标高发点，也是"投标文件雷同"审查的关注特征',
+      advice: '全文搜索 X、×、下划线与"某某"，逐个替换为本项目真实信息' },
+    { id: 'template', name: '模板来源痕迹',
+      re: /(?:范文|本文档为模板|模板仅供参考|示例文本|百度文库|道客巴巴|豆丁网|原创力文档|文档下载站)/,
+      why: '正文残留模板市场/文档站字样，属"投标文件雷同"认定的直观实锤',
+      advice: '删除一切模板来源相关字样；不要直接使用网上下载的公开模板' }
+  ];
+  function scanTextFingerprints(text) {
+    text = text || '';
+    var hits = [];
+    /* PDF 提取的中文常字间带空格（某 某 公 司），规则扫描前先压平空白副本 */
+    var flat = text.replace(/\s+/g, '');
+    FP_RULES.forEach(function (rule) {
+      var m = flat.match(rule.re);
+      if (!m) return;
+      var idx = m.index != null ? m.index : flat.indexOf(m[0]);
+      hits.push({
+        id: rule.id, name: rule.name,
+        snippet: flat.slice(Math.max(0, idx - 15), idx + m[0].length + 30),
+        why: rule.why, advice: rule.advice
+      });
+    });
+    /* 异常重复句式：同一 ≥20 字句子出现 ≥3 次（雷同率审查的常见触发点） */
+    var sentences = {};
+    text.split(/[。；;！!？?\n]/).forEach(function (sen) {
+      sen = sen.trim().replace(/\s+/g, '');
+      if (sen.length < 20) return;
+      sentences[sen] = (sentences[sen] || 0) + 1;
+    });
+    Object.keys(sentences).filter(function (k) { return sentences[k] >= 3; }).slice(0, 3).forEach(function (sen) {
+      hits.push({
+        id: 'repeat', name: '异常重复句式',
+        snippet: '「' + sen.slice(0, 30) + '…」出现 ' + sentences[sen] + ' 次',
+        why: '同一段 20 字以上文本重复出现 3 次以上，可能被重复率/雷同性审查标记',
+        advice: '检查是否复制粘贴后未改：重复段落应改为针对本项目的表述'
+      });
+    });
+    return hits;
+  }
+
+  /* v3.7 评分响应索引：确定性提取评分点 + 资料库证据对照
+   * 口径对齐 195号文"智能辅助评标"（要素提取+响应度解析）——投标人侧自查每一分是否有对应内容。
+   * 边界：只做条款级提取与词面证据匹配，不做打分猜测；评分办法原文仍须人工核对。 */
+  var SCORE_CAT_RULES = [
+    { cat: '价格', re: /价格|报价|预算|下浮|费率/ },
+    { cat: '售后', re: /售后|服务|维修|响应时间|质保|备件|培训/ },
+    { cat: '商务', re: /资质|业绩|信用|财务|认证|类似/ },
+    { cat: '技术', re: /技术|参数|性能|配置|方案|设备|施工|工法/ }
+  ];
+  var SCORE_EVID_TERMS = ['ISO','3C','认证','业绩','合同','授权','资质','营业执照','检测报告','质保','备件','培训','响应时间'];
+  function extractScoringItems(tenderText) {
+    tenderText = tenderText || '';
+    var items = [], seen = {};
+    tenderText.split(/[。；;\n]/).forEach(function (seg) {
+      seg = seg.trim();
+      if (seg.length < 6 || seg.length > 80) return;
+      var m = seg.match(/(\d{1,3}(?:\.\d+)?)\s*分/);
+      if (!m) return;
+      var val = parseFloat(m[1]);
+      if (val <= 0 || val > 100) return;
+      if (/满分|总分|合计|共\d+分/.test(seg)) return;      // 总分表述不是评分项
+      if (/分钟|分之/.test(seg)) return;                     // 时长/分数表述误报
+      if (seen[seg]) return; seen[seg] = 1;
+      var cat = '其他';
+      for (var i = 0; i < SCORE_CAT_RULES.length; i++) {
+        if (SCORE_CAT_RULES[i].re.test(seg)) { cat = SCORE_CAT_RULES[i].cat; break; }
+      }
+      items.push({ text: seg.slice(0, 60), value: val, cat: cat });
+    });
+    return items.slice(0, 12);
+  }
+  function scoreLibEvidence(items, libText) {
+    libText = libText || '';
+    var terms = SCORE_EVID_TERMS.slice();
+    try { PARAM_DEFS.forEach(function (d) { terms.push(d.name); }); } catch (e) {}
+    return items.map(function (it) {
+      var ev = [];
+      terms.forEach(function (t) {
+        if (ev.length >= 3) return;
+        if (it.text.indexOf(t) !== -1 && libText.indexOf(t) !== -1 && ev.indexOf(t) === -1) ev.push(t);
+      });
+      return { hasEv: ev.length > 0, evWords: ev };
+    });
+  }
+
+  function scanCriticalKeywords(tenderText, libText) {
+    tenderText = tenderText || '';
+    libText = libText || '';
+    return CRITICAL_KEYWORDS.map(function (def) {
+      var count = 0, firstIdx = -1, m;
+      var re = new RegExp(def.kw, 'g');
+      while ((m = re.exec(tenderText)) !== null) {
+        count++;
+        if (firstIdx < 0) firstIdx = m.index;
+      }
+      if (!count) return null;
+      var snippet = tenderText.slice(Math.max(0, firstIdx - 15), firstIdx + def.kw.length + 25).replace(/\s+/g, ' ');
+      var inLib = libText.indexOf(def.kw) >= 0;
+      return {
+        kw: def.kw, cat: def.cat, why: def.why,
+        count: count, snippet: snippet,
+        inLib: inLib,
+        status: inLib ? '有据' : '需补充'
+      };
+    }).filter(Boolean);
+  }
+
   function locateParamSection(text) {
     text = (text || '').replace(/\r\n?/g, '\n');
     if (!text.trim()) return { found: false, text: '', start: -1 };
@@ -1215,7 +1416,7 @@
 
   /* ---------- 导出 ---------- */
   return {
-    VERSION: '3.0.0',
+    VERSION: '3.8.0',
     DEFAULT_WEIGHTS: DEFAULT_WEIGHTS,
     MISSING_LIB: MISSING_LIB,
     DEMO_LIBRARY: DEMO_LIBRARY,
@@ -1227,6 +1428,14 @@
     analyze: analyze,
     diffAnnouncements: diffAnnouncements,
     locateParamSection: locateParamSection,
+    scanCriticalKeywords: scanCriticalKeywords,
+    scanTrapClauses: scanTrapClauses,
+    scanTextFingerprints: scanTextFingerprints,
+    extractScoringItems: extractScoringItems,
+    scoreLibEvidence: scoreLibEvidence,
+    scanSubmissionReqs: scanSubmissionReqs,
+    TRAP_RULES: TRAP_RULES,
+    CRITICAL_KEYWORDS: CRITICAL_KEYWORDS,
     buildDeviceFingerprint: buildDeviceFingerprint,
     triageAnnouncement: triageAnnouncement,
     matchFeed: matchFeed,
