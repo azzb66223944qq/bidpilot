@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-10-09T16:51:55.417Z",
+  "fetchedAt": "2026-10-09T22:24:11.045Z",
   "source": "ccgp.gov.cn 中央+地方",
-  "total": 669,
+  "total": 671,
   "machinery": 0,
   "perSource": [
     {
@@ -88,6 +88,26 @@
       "source": "地方·更正公告",
       "sourceScope": "地方",
       "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "武汉市公共资源交易中心（武汉市政府采购中心）2026-2027年武汉市直预算单位物业管理服务开放...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261010_27456878.htm",
+      "pubDate": "2026-10-10",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "多功能一体化固定系统等设备中标(成交)结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261010_27456877.htm",
+      "pubDate": "2026-10-10",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
       "category": null,
       "isMachinery": false
     },
@@ -1222,26 +1242,6 @@
       "isMachinery": false
     },
     {
-      "title": "2026年莱州市郭家店镇夼里宅科道路硬化修缮项目（政府采购工程）（面向中小企业）成交结果公告",
-      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261009_27456764.htm",
-      "pubDate": "2026-10-09",
-      "source": "地方·中标公告",
-      "sourceScope": "地方",
-      "sourceKind": "中标公告",
-      "category": null,
-      "isMachinery": false
-    },
-    {
-      "title": "天津市卫生健康委员会综合服务中心 避孕药具套装 (项目编号:TJRD-2026-A-0127)中标公告",
-      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261009_27456781.htm",
-      "pubDate": "2026-10-09",
-      "source": "地方·中标公告",
-      "sourceScope": "地方",
-      "sourceKind": "中标公告",
-      "category": null,
-      "isMachinery": false
-    },
-    {
       "title": "曲靖市师宗县残疾人体育健身示范点设备采购成交公告",
       "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261009_27456858.htm",
       "pubDate": "2026-10-09",
@@ -1438,6 +1438,26 @@
       "source": "地方·成交公告",
       "sourceScope": "地方",
       "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "2026年莱州市郭家店镇夼里宅科道路硬化修缮项目（政府采购工程）（面向中小企业）成交结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261009_27456764.htm",
+      "pubDate": "2026-10-09",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "天津市卫生健康委员会综合服务中心 避孕药具套装 (项目编号:TJRD-2026-A-0127)中标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261009_27456781.htm",
+      "pubDate": "2026-10-09",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
       "category": null,
       "isMachinery": false
     },
