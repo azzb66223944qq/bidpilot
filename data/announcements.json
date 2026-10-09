@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-10-08T19:43:00.204Z",
+  "fetchedAt": "2026-10-09T00:12:00.155Z",
   "source": "ccgp.gov.cn 中央+地方",
-  "total": 387,
+  "total": 389,
   "machinery": 0,
   "perSource": [
     {
@@ -398,6 +398,26 @@
       "source": "地方·更正公告",
       "sourceScope": "地方",
       "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "大宁县2026森林植被恢复费项目无人机采购结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261009_27447812.htm",
+      "pubDate": "2026-10-09",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "吉林长白山国家级自然保护区古树名木资源普查服务项目（三次）中标(成交)结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261009_27447811.htm",
+      "pubDate": "2026-10-09",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
       "category": null,
       "isMachinery": false
     },
@@ -1052,6 +1072,16 @@
       "isMachinery": false
     },
     {
+      "title": "天津轻工职业技术学院 天津轻工职业技术学院柔性制造精益生产实训设备采购项目 (项目编号:SHG...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27447732.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
       "title": "天津商业大学 天津商业大学冷链物流产教融合实训设备更新差示扫描量热仪购置项目 (项目编号:T...",
       "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27447727.htm",
       "pubDate": "2026-10-08",
@@ -1064,16 +1094,6 @@
     {
       "title": "天津铁道职业技术学院 天津铁道职业技术学院智能实训室及教室智慧控制系统项目（2026年强教兴...",
       "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27447726.htm",
-      "pubDate": "2026-10-08",
-      "source": "地方·中标公告",
-      "sourceScope": "地方",
-      "sourceKind": "中标公告",
-      "category": null,
-      "isMachinery": false
-    },
-    {
-      "title": "天津轻工职业技术学院 天津轻工职业技术学院柔性制造精益生产实训设备采购项目 (项目编号:SHG...",
-      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27447732.htm",
       "pubDate": "2026-10-08",
       "source": "地方·中标公告",
       "sourceScope": "地方",
@@ -1102,8 +1122,8 @@
       "isMachinery": false
     },
     {
-      "title": "天津渤海职业技术学院 天津渤海职业技术学院人工智能算法生产与3D激光扫描综合应用设备采购项...",
-      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27447730.htm",
+      "title": "天津市公安医院 天津市公安医院全高清电子肠镜系统采购项目 (项目编号:SHGP-2026-A541)中标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27447724.htm",
       "pubDate": "2026-10-08",
       "source": "地方·中标公告",
       "sourceScope": "地方",
@@ -1112,8 +1132,8 @@
       "isMachinery": false
     },
     {
-      "title": "天津市公安医院 天津市公安医院全高清电子肠镜系统采购项目 (项目编号:SHGP-2026-A541)中标公告",
-      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27447724.htm",
+      "title": "天津渤海职业技术学院 天津渤海职业技术学院人工智能算法生产与3D激光扫描综合应用设备采购项...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27447730.htm",
       "pubDate": "2026-10-08",
       "source": "地方·中标公告",
       "sourceScope": "地方",
@@ -1214,26 +1234,6 @@
     {
       "title": "山东省滨州北海经济开发区北海至无棣、沾化以及区内免费公交运行项目结果公告（采购包1）",
       "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27447529.htm",
-      "pubDate": "2026-10-08",
-      "source": "地方·中标公告",
-      "sourceScope": "地方",
-      "sourceKind": "中标公告",
-      "category": null,
-      "isMachinery": false
-    },
-    {
-      "title": "青岛市疾病预防控制中心2026年中心运行经费、重大提前下达、基本公卫试剂耗材采购项目三次招...",
-      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27447528.htm",
-      "pubDate": "2026-10-08",
-      "source": "地方·中标公告",
-      "sourceScope": "地方",
-      "sourceKind": "中标公告",
-      "category": null,
-      "isMachinery": false
-    },
-    {
-      "title": "青岛工程职业学院2026年教育管理服务项目（二期）成交公告",
-      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27447630.htm",
       "pubDate": "2026-10-08",
       "source": "地方·中标公告",
       "sourceScope": "地方",
@@ -1438,6 +1438,26 @@
       "source": "地方·成交公告",
       "sourceScope": "地方",
       "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "青岛市疾病预防控制中心2026年中心运行经费、重大提前下达、基本公卫试剂耗材采购项目三次招...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27447528.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "青岛工程职业学院2026年教育管理服务项目（二期）成交公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261008_27447630.htm",
+      "pubDate": "2026-10-08",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
       "category": null,
       "isMachinery": false
     },
