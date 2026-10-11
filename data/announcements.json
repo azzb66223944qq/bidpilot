@@ -1,43 +1,37 @@
 {
-  "fetchedAt": "2026-10-11T12:18:35.689Z",
+  "fetchedAt": "2026-10-11T18:42:00.450Z",
   "source": "ccgp.gov.cn 中央+地方",
   "total": 1295,
   "machinery": 3,
-  "perSource": [
+  "perSource": [],
+  "errors": [
     {
       "source": "中央·公开招标",
-      "count": 20,
-      "machinery": 0
+      "error": "HTTP 403"
     },
     {
       "source": "中央·竞争性磋商",
-      "count": 20,
-      "machinery": 0
+      "error": "HTTP 403"
     },
     {
       "source": "地方·公开招标",
-      "count": 20,
-      "machinery": 0
+      "error": "HTTP 403"
     },
     {
       "source": "地方·公开招标第2页",
-      "count": 20,
-      "machinery": 0
+      "error": "HTTP 403"
     },
     {
       "source": "地方·更正公告",
-      "count": 20,
-      "machinery": 0
+      "error": "HTTP 403"
     },
     {
       "source": "地方·中标公告",
-      "count": 20,
-      "machinery": 0
+      "error": "HTTP 403"
     },
     {
       "source": "地方·成交公告",
-      "count": 20,
-      "machinery": 0
+      "error": "HTTP 403"
     }
   ],
   "announcements": [
