@@ -143,13 +143,19 @@
 
 内置演示数据（浙东机械/北岭设备）均为**虚构**，仅用于演示。
 
-## 产品截图
+## 产品截图（v3.8.0）
 
-| 资格自查页（速览卡+行动时间表·距开标41天） | 挖掘机场景（★关键参数负偏离→废标红条·15分/D级） |
+**风险仪表盘**（装载机演示场景：就绪度 94 分 · A 级建议投标；下方为 v3.8 检查中心——废标词 / 陷阱 / 递交 / 指纹 / 评分 / 别名六项检查集中收纳）：
+
+![风险仪表盘](docs/screenshots/1-qual-loader.png)
+
+| 技术偏离表（挖掘机场景：第4行 6.58m vs ≥6500mm 跨单位自动换算；★爬坡能力 65%<70% 记负偏离） | 结论与评分（敢于说不：★关键参数负偏离→本标不可投，15分/D级·暂缓，并列出投标前提条件） |
 |---|---|
-| ![资格自查](docs/screenshots/1-qual-loader.png) | ![废标判定](docs/screenshots/2-conclusion-excavator-kill.png) |
+| ![技术偏离表](docs/screenshots/3-deviation-table.png) | ![废标判定](docs/screenshots/2-conclusion-excavator-kill.png) |
 
-技术偏离表（★仅标记爬坡能力=段级定位；注意第4行 6.58m vs ≥6500mm 跨单位自动换算）：![偏离表](docs/screenshots/3-deviation-table.png)
+v3.8 检查中心 · 递交安全：开标日防滑单清单（解密时限 / CA / 网络隔离等）、保证金安全须知（附退款时限法条）、平台仪式清单（通用不见面开标 / 政采云系分站差异流程）：
+
+![递交安全检查](docs/screenshots/4-bidsafe-checkhub.png)
 
 ## 参赛文档
 
