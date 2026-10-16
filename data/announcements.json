@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-10-16T19:25:24.996Z",
+  "fetchedAt": "2026-10-16T22:39:17.548Z",
   "source": "ccgp.gov.cn 中央+地方",
-  "total": 3209,
+  "total": 3210,
   "machinery": 10,
   "perSource": [
     {
@@ -418,6 +418,16 @@
       "source": "地方·公开招标第2页",
       "sourceScope": "地方",
       "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "浙江富力诚欣工程顾问有限公司关于桐乡市交通运输综合行政执法队临杭大道非现点位迁建项目的...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gzgg/202610/t20261017_27512022.htm",
+      "pubDate": "2026-10-17",
+      "source": "地方·更正公告",
+      "sourceScope": "地方",
+      "sourceKind": "更正公告",
       "category": null,
       "isMachinery": false
     },
@@ -1062,16 +1072,6 @@
       "isMachinery": false
     },
     {
-      "title": "“古韵新生·潮购朐博”临朐县博物馆文旅消费新场景数字幻境体验项目采购更正公告（第一次）",
-      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gzgg/202610/t20261016_27511880.htm",
-      "pubDate": "2026-10-16",
-      "source": "地方·更正公告",
-      "sourceScope": "地方",
-      "sourceKind": "更正公告",
-      "category": null,
-      "isMachinery": false
-    },
-    {
       "title": "天津市第五中心医院 天津市第五中心医院正电子发射计算机断层显像系统采购项目 (项目编号:XCS...",
       "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261016_27511927.htm",
       "pubDate": "2026-10-16",
@@ -1418,6 +1418,16 @@
       "source": "地方·成交公告",
       "sourceScope": "地方",
       "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "“古韵新生·潮购朐博”临朐县博物馆文旅消费新场景数字幻境体验项目采购更正公告（第一次）",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gzgg/202610/t20261016_27511880.htm",
+      "pubDate": "2026-10-16",
+      "source": "地方·更正公告",
+      "sourceScope": "地方",
+      "sourceKind": "更正公告",
       "category": null,
       "isMachinery": false
     },
