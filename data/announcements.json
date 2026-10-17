@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-10-17T20:17:29.570Z",
+  "fetchedAt": "2026-10-17T23:50:41.217Z",
   "source": "ccgp.gov.cn 中央+地方",
-  "total": 3255,
+  "total": 3257,
   "machinery": 10,
   "perSource": [
     {
@@ -88,6 +88,26 @@
       "source": "地方·更正公告",
       "sourceScope": "地方",
       "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "武汉市公共资源交易中心（武汉市政府采购中心）2026-2027年武汉市直预算单位物业管理服务开放...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261018_27513601.htm",
+      "pubDate": "2026-10-18",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "武汉市公共资源交易中心（武汉市政府采购中心）2026-2027年武汉市直预算单位车辆维修和保养服...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261018_27513600.htm",
+      "pubDate": "2026-10-18",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
       "category": null,
       "isMachinery": false
     },
@@ -842,26 +862,6 @@
       "isMachinery": false
     },
     {
-      "title": "回城乡沙枣井村人居环境整治建设项目中标(成交)结果公告",
-      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261017_27513488.htm",
-      "pubDate": "2026-10-17",
-      "source": "地方·中标公告",
-      "sourceScope": "地方",
-      "sourceKind": "中标公告",
-      "category": null,
-      "isMachinery": false
-    },
-    {
-      "title": "温州建澜工程项目管理有限公司关于温州市平阳县公建民营养老机构设备更新项目-护理床及附带设...",
-      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261017_27513480.htm",
-      "pubDate": "2026-10-17",
-      "source": "地方·中标公告",
-      "sourceScope": "地方",
-      "sourceKind": "中标公告",
-      "category": null,
-      "isMachinery": false
-    },
-    {
       "title": "鄂尔多斯市东胜区金融广场幼儿园玩教具采购中标（成交）结果公告",
       "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261017_27513505.htm",
       "pubDate": "2026-10-17",
@@ -1438,6 +1438,26 @@
       "source": "中央·竞争性磋商",
       "sourceScope": "中央",
       "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "回城乡沙枣井村人居环境整治建设项目中标(成交)结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261017_27513488.htm",
+      "pubDate": "2026-10-17",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "温州建澜工程项目管理有限公司关于温州市平阳县公建民营养老机构设备更新项目-护理床及附带设...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261017_27513480.htm",
+      "pubDate": "2026-10-17",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
       "category": null,
       "isMachinery": false
     },
