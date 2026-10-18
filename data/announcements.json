@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-10-18T20:15:51.205Z",
+  "fetchedAt": "2026-10-18T23:58:30.060Z",
   "source": "ccgp.gov.cn 中央+地方",
-  "total": 3032,
+  "total": 3034,
   "machinery": 7,
   "perSource": [
     {
@@ -58,6 +58,26 @@
       "source": "地方·公开招标",
       "sourceScope": "地方",
       "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "长治市市场监督管理局竞争性磋商2026年度产（商）品质量、污染防治及风险监测监督抽查采购项...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261019_27513969.htm",
+      "pubDate": "2026-10-19",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "山西省晋中市人民检察院竞争性磋商办公楼外墙维修工程结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261019_27513968.htm",
+      "pubDate": "2026-10-19",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
       "category": null,
       "isMachinery": false
     },
@@ -922,26 +942,6 @@
       "isMachinery": false
     },
     {
-      "title": "2026年至2027年陆河县政府投资项目概算审核服务资格采购项目结果公告",
-      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261018_27513688.htm",
-      "pubDate": "2026-10-18",
-      "source": "地方·中标公告",
-      "sourceScope": "地方",
-      "sourceKind": "中标公告",
-      "category": null,
-      "isMachinery": false
-    },
-    {
-      "title": "2026年至2027年陆河县政府投资项目概算审核服务资格采购项目结果公告",
-      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261018_27513687.htm",
-      "pubDate": "2026-10-18",
-      "source": "地方·中标公告",
-      "sourceScope": "地方",
-      "sourceKind": "中标公告",
-      "category": null,
-      "isMachinery": false
-    },
-    {
       "title": "爱华镇爱华社区日间照料中心建设项目设计施工总承包成交公告",
       "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261018_27513962.htm",
       "pubDate": "2026-10-18",
@@ -1428,6 +1428,26 @@
       "source": "中央·竞争性磋商",
       "sourceScope": "中央",
       "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "2026年至2027年陆河县政府投资项目概算审核服务资格采购项目结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261018_27513688.htm",
+      "pubDate": "2026-10-18",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "2026年至2027年陆河县政府投资项目概算审核服务资格采购项目结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261018_27513687.htm",
+      "pubDate": "2026-10-18",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
       "category": null,
       "isMachinery": false
     },
