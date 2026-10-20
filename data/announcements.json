@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-10-20T19:53:19.025Z",
+  "fetchedAt": "2026-10-20T22:59:10.879Z",
   "source": "ccgp.gov.cn 中央+地方",
-  "total": 3251,
+  "total": 3253,
   "machinery": 8,
   "perSource": [
     {
@@ -108,6 +108,26 @@
       "source": "地方·更正公告",
       "sourceScope": "地方",
       "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "宁波中基国际招标有限公司关于2026年重点工业产品检验检测设备更新项目（第三批）中标(成交)...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261021_27530124.htm",
+      "pubDate": "2026-10-21",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "化学发光成像系统(CQS26A02289)中标（成交）结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261021_27530123.htm",
+      "pubDate": "2026-10-21",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
       "category": null,
       "isMachinery": false
     },
@@ -1222,26 +1242,6 @@
       "isMachinery": false
     },
     {
-      "title": "济南市公安局LTE宽带数字集群系统基站站址服务（2026年度）结果公告",
-      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261020_27530022.htm",
-      "pubDate": "2026-10-20",
-      "source": "地方·中标公告",
-      "sourceScope": "地方",
-      "sourceKind": "中标公告",
-      "category": null,
-      "isMachinery": false
-    },
-    {
-      "title": "济南市公安局出入境便民服务设备维保服务（2026年度）结果公告（采购包2）",
-      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261020_27530064.htm",
-      "pubDate": "2026-10-20",
-      "source": "地方·中标公告",
-      "sourceScope": "地方",
-      "sourceKind": "中标公告",
-      "category": null,
-      "isMachinery": false
-    },
-    {
       "title": "广州市白云区夏茅村项目清表平整、围蔽、拆卸工程监理服务结果公告",
       "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261020_27529605.htm",
       "pubDate": "2026-10-20",
@@ -1438,6 +1438,26 @@
       "source": "地方·成交公告",
       "sourceScope": "地方",
       "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "济南市公安局LTE宽带数字集群系统基站站址服务（2026年度）结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261020_27530022.htm",
+      "pubDate": "2026-10-20",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "济南市公安局出入境便民服务设备维保服务（2026年度）结果公告（采购包2）",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261020_27530064.htm",
+      "pubDate": "2026-10-20",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
       "category": null,
       "isMachinery": false
     },
