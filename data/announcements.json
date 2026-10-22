@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-10-22T19:49:06.077Z",
+  "fetchedAt": "2026-10-22T23:01:45.500Z",
   "source": "ccgp.gov.cn 中央+地方",
-  "total": 3469,
+  "total": 3470,
   "machinery": 9,
   "perSource": [
     {
@@ -41,6 +41,16 @@
     }
   ],
   "announcements": [
+    {
+      "title": "重庆医科大学附属第二医院医用电动病床(CQS26A05111)公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261023_27547418.htm",
+      "pubDate": "2026-10-23",
+      "source": "地方·公开招标",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
     {
       "title": "深圳市新华医院窗帘采购项目（第二批）（A）招标公告",
       "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261023_27547407.htm",
@@ -235,7 +245,7 @@
       "title": "罗湖医院集团罗湖区妇幼保健院新大楼中央胎心监护系统一批采购项目（A）招标公告",
       "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261023_27547382.htm",
       "pubDate": "2026-10-23",
-      "source": "地方·公开招标",
+      "source": "地方·公开招标第2页",
       "sourceScope": "地方",
       "sourceKind": "招标公告",
       "category": null,
@@ -414,16 +424,6 @@
     {
       "title": "2026年大场镇主要地铁站口和部分重点路段非机动车管理项目的公开招标公告",
       "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261023_27547363.htm",
-      "pubDate": "2026-10-23",
-      "source": "地方·公开招标第2页",
-      "sourceScope": "地方",
-      "sourceKind": "招标公告",
-      "category": null,
-      "isMachinery": false
-    },
-    {
-      "title": "“数智统管”系统建设及配套硬件采购的公开招标公告",
-      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261023_27547359.htm",
       "pubDate": "2026-10-23",
       "source": "地方·公开招标第2页",
       "sourceScope": "地方",
@@ -1428,6 +1428,16 @@
       "source": "地方·成交公告",
       "sourceScope": "地方",
       "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "“数智统管”系统建设及配套硬件采购的公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261023_27547359.htm",
+      "pubDate": "2026-10-23",
+      "source": "地方·公开招标第2页",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
       "category": null,
       "isMachinery": false
     },
