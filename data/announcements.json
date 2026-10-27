@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-10-27T17:40:04.413Z",
+  "fetchedAt": "2026-10-27T21:55:05.385Z",
   "source": "ccgp.gov.cn 中央+地方",
-  "total": 3358,
+  "total": 3361,
   "machinery": 9,
   "perSource": [
     {
@@ -78,6 +78,36 @@
       "source": "地方·更正公告",
       "sourceScope": "地方",
       "sourceKind": "更正公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "武汉市公共资源交易中心（武汉市政府采购中心）2026-2027年武汉市直预算单位物业管理服务开放...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261028_27573432.htm",
+      "pubDate": "2026-10-28",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "武汉市公共资源交易中心（武汉市政府采购中心）2026-2027年武汉市直预算单位机动车保险服务开...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261028_27573431.htm",
+      "pubDate": "2026-10-28",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "上海市杨浦区城市管理行政执法局执法大队执法车辆采购项目的中标（成交）结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261028_27573430.htm",
+      "pubDate": "2026-10-28",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
       "category": null,
       "isMachinery": false
     },
@@ -1212,36 +1242,6 @@
       "isMachinery": false
     },
     {
-      "title": "2027年度预算绩效管理第三方服务结果公告（采购包2）",
-      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261027_27573338.htm",
-      "pubDate": "2026-10-27",
-      "source": "地方·中标公告",
-      "sourceScope": "地方",
-      "sourceKind": "中标公告",
-      "category": null,
-      "isMachinery": false
-    },
-    {
-      "title": "淄博市博物总馆淄博陶瓷琉璃博物馆可移动文物预防性保护（二期）采购项目中标结果公告",
-      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261027_27573404.htm",
-      "pubDate": "2026-10-27",
-      "source": "地方·中标公告",
-      "sourceScope": "地方",
-      "sourceKind": "中标公告",
-      "category": null,
-      "isMachinery": false
-    },
-    {
-      "title": "2026年临沂第一实验小学维修维护工程成交公示",
-      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261027_27573403.htm",
-      "pubDate": "2026-10-27",
-      "source": "地方·中标公告",
-      "sourceScope": "地方",
-      "sourceKind": "中标公告",
-      "category": null,
-      "isMachinery": false
-    },
-    {
       "title": "天津开放大学 天津市教育领域重要信息系统等保测评服务项目 (项目编号:TGPC-2026-D-1118)成交...",
       "url": "http://www.ccgp.gov.cn/cggg/dfgg/cjgg/202610/t20261027_27573327.htm",
       "pubDate": "2026-10-27",
@@ -1438,6 +1438,36 @@
       "source": "地方·成交公告",
       "sourceScope": "地方",
       "sourceKind": "成交公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "2027年度预算绩效管理第三方服务结果公告（采购包2）",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261027_27573338.htm",
+      "pubDate": "2026-10-27",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "淄博市博物总馆淄博陶瓷琉璃博物馆可移动文物预防性保护（二期）采购项目中标结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261027_27573404.htm",
+      "pubDate": "2026-10-27",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "2026年临沂第一实验小学维修维护工程成交公示",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202610/t20261027_27573403.htm",
+      "pubDate": "2026-10-27",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
       "category": null,
       "isMachinery": false
     },
