@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-10-31T16:58:10.676Z",
+  "fetchedAt": "2026-10-31T21:10:02.225Z",
   "source": "ccgp.gov.cn 中央+地方",
-  "total": 2808,
+  "total": 2810,
   "machinery": 9,
   "perSource": [
     {
@@ -41,6 +41,26 @@
     }
   ],
   "announcements": [
+    {
+      "title": "深圳市中西医结合医院开办费监护仪等设备一批（A）招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202611/t20261101_27598529.htm",
+      "pubDate": "2026-11-01",
+      "source": "地方·公开招标",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "创新中心过渡载体场地扩容租赁项目公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202611/t20261101_27598528.htm",
+      "pubDate": "2026-11-01",
+      "source": "地方·公开招标",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
     {
       "title": "采购监所迁建标识标牌、文化氛围及氛围布置项目的公开招标公告",
       "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202611/t20261101_27598526.htm",
@@ -315,7 +335,7 @@
       "title": "泰宇建筑工程技术咨询有限公司关于岱山县职业技术学校数智酒店赛训融合实训设备更新项目的公...",
       "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261031_27598456.htm",
       "pubDate": "2026-10-31",
-      "source": "地方·公开招标",
+      "source": "地方·公开招标第2页",
       "sourceScope": "地方",
       "sourceKind": "招标公告",
       "category": null,
@@ -325,7 +345,7 @@
       "title": "浙江翔实建设项目管理有限公司关于绍兴市人民医院便携式超声仪采购项目的公开招标公告",
       "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261031_27598454.htm",
       "pubDate": "2026-10-31",
-      "source": "地方·公开招标",
+      "source": "地方·公开招标第2页",
       "sourceScope": "地方",
       "sourceKind": "招标公告",
       "category": null,
@@ -504,26 +524,6 @@
     {
       "title": "轮台县2026年中央专项彩票公益金支持县域养老服务提升项目（设备采购）公开招标公告",
       "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261031_27598356.htm",
-      "pubDate": "2026-10-31",
-      "source": "地方·公开招标第2页",
-      "sourceScope": "地方",
-      "sourceKind": "招标公告",
-      "category": null,
-      "isMachinery": false
-    },
-    {
-      "title": "浙江工商大学课程视频拍摄制作与运行服务（2026）公开招标公告",
-      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261031_27598345.htm",
-      "pubDate": "2026-10-31",
-      "source": "地方·公开招标第2页",
-      "sourceScope": "地方",
-      "sourceKind": "招标公告",
-      "category": null,
-      "isMachinery": false
-    },
-    {
-      "title": "新疆中正恒通造价咨询有限公司关于新疆生产建设兵团第十师北屯医院2026年上半年医疗设备项目...",
-      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261031_27598333.htm",
       "pubDate": "2026-10-31",
       "source": "地方·公开招标第2页",
       "sourceScope": "地方",
@@ -1438,6 +1438,26 @@
       "source": "中央·竞争性磋商",
       "sourceScope": "中央",
       "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "浙江工商大学课程视频拍摄制作与运行服务（2026）公开招标公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261031_27598345.htm",
+      "pubDate": "2026-10-31",
+      "source": "地方·公开招标第2页",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "新疆中正恒通造价咨询有限公司关于新疆生产建设兵团第十师北屯医院2026年上半年医疗设备项目...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/gkzb/202610/t20261031_27598333.htm",
+      "pubDate": "2026-10-31",
+      "source": "地方·公开招标第2页",
+      "sourceScope": "地方",
+      "sourceKind": "招标公告",
       "category": null,
       "isMachinery": false
     },
