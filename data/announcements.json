@@ -1,7 +1,7 @@
 {
-  "fetchedAt": "2026-11-01T16:37:31.808Z",
+  "fetchedAt": "2026-11-01T21:48:23.918Z",
   "source": "ccgp.gov.cn 中央+地方",
-  "total": 2631,
+  "total": 2633,
   "machinery": 8,
   "perSource": [
     {
@@ -58,6 +58,26 @@
       "source": "地方·公开招标",
       "sourceScope": "地方",
       "sourceKind": "招标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "喀什市思政教育一体化项目（喀什市国家通用语言文字社会化培训推广活动项目）（二次）中标(成...",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202611/t20261102_27599018.htm",
+      "pubDate": "2026-11-02",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "柳林县庄上镇路灯采购项目结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202611/t20261102_27599016.htm",
+      "pubDate": "2026-11-02",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
       "category": null,
       "isMachinery": false
     },
@@ -992,28 +1012,8 @@
       "isMachinery": false
     },
     {
-      "title": "瓦洪公路下立交及雨水泵站综合整治工程的中标（成交）结果公告",
-      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202611/t20261101_27598670.htm",
-      "pubDate": "2026-11-01",
-      "source": "地方·中标公告",
-      "sourceScope": "地方",
-      "sourceKind": "中标公告",
-      "category": null,
-      "isMachinery": false
-    },
-    {
       "title": "捷迅路（江山路~健祥路）道路维修工程的中标（成交）结果公告",
       "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202611/t20261101_27598668.htm",
-      "pubDate": "2026-11-01",
-      "source": "地方·中标公告",
-      "sourceScope": "地方",
-      "sourceKind": "中标公告",
-      "category": null,
-      "isMachinery": false
-    },
-    {
-      "title": "捷兴路（千祥路~茂祥路）道路维修工程的中标（成交）结果公告",
-      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202611/t20261101_27598667.htm",
       "pubDate": "2026-11-01",
       "source": "地方·中标公告",
       "sourceScope": "地方",
@@ -1438,6 +1438,26 @@
       "source": "中央·竞争性磋商",
       "sourceScope": "中央",
       "sourceKind": "磋商公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "瓦洪公路下立交及雨水泵站综合整治工程的中标（成交）结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202611/t20261101_27598670.htm",
+      "pubDate": "2026-11-01",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
+      "category": null,
+      "isMachinery": false
+    },
+    {
+      "title": "捷兴路（千祥路~茂祥路）道路维修工程的中标（成交）结果公告",
+      "url": "http://www.ccgp.gov.cn/cggg/dfgg/zbgg/202611/t20261101_27598667.htm",
+      "pubDate": "2026-11-01",
+      "source": "地方·中标公告",
+      "sourceScope": "地方",
+      "sourceKind": "中标公告",
       "category": null,
       "isMachinery": false
     },
